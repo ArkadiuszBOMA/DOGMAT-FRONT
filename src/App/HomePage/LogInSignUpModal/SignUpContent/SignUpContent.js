@@ -34,7 +34,7 @@ const SignUpContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <form className="login" onSubmit={onSubmitClick}>
+                <form className="signUpForm" onSubmit={onSubmitClick}>
                     <h2 className="text">Zarejestruj się jako nowy Psyjaciel</h2>
                     <input type="text" name="firstName" placeholder="Imię"></input>
                     <input type="text" name="lastName" placeholder="Nazwisko"></input>

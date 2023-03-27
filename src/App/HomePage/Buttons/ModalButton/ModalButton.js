@@ -6,5 +6,4 @@ const ModalButton = props => {
         <button className="modalButton" onClick={props.onClick}>{props.text}</button>
     )
 }
-
 export default ModalButton;

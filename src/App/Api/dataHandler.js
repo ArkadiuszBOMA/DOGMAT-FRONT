@@ -18,6 +18,10 @@ export let dataHandler = {
 	addNewUser: async function (data) {
 	return await apiPost(api.newAppUsers, data);
 	},
+
+	logginAppUser: async function (data) {
+		return await apiGet(api.loginAppUsers, data);
+	},
 }
 
 

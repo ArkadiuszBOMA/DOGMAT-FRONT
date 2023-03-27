@@ -1,11 +1,9 @@
 .modal {
-    position: fixed;
+    position:center;
     z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
-    overflow: auto;
     background-color: transparent;
 }
 
@@ -21,20 +19,20 @@
 
 .modal-content {
     background-color: transparent;
-    margin: 10% auto;
+    margin: 0 auto;
     padding: 1em;
     border: 0;
     border-radius: 0.5em;
-    width: 40%;
     text-align: center;
     animation: open-modal 0.5s;
 }
 
 .close {
-    color: #aaaaaa;
+    color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    background: black;
 }
 
 .close:hover,

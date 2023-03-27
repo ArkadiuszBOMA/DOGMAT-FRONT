@@ -16,7 +16,7 @@ const LogInContent = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const user = await dataHandler.loginUser(data);
+        const user = await dataHandler.logginAppUser(data);
         setIsLoading(false);
         if (!user) {
             setIsError(true);
@@ -35,8 +35,8 @@ const LogInContent = props => {
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
                     <form className="login" onSubmit={onSubmitClick}>
                         <h2 className="text">Psyjacielu zaloguj się</h2>
-                        <input className="form-control mt-1" type="text" name="email" placeholder="Email"></input>
-                        <input className="form-control mt-1" type="password" name="password" placeholder="Password"></input>
+                        <input className="" type="text" name="email" placeholder="Email"></input>
+                        <input className="" type="password" name="password" placeholder="Password"></input>
                         <button className="button" type="submit">Submit</button>
                     </form>
             </div>
