@@ -24,7 +24,7 @@ const SignUpContent = props => {
             return;
         }
         navigate('/HomePage');
-        authenticate.loginUser(user.id, user.email, user.userType);
+        authenticate.loginUser(user.id, user.email);
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
@@ -41,8 +41,8 @@ const SignUpContent = props => {
                     <input type="email" name="email" placeholder="Email"></input>
                     <input type="password" name="password" placeholder="Hasło"></input>
                     <input type="password" name="repeatPassword" placeholder="Powtórz hasło"></input>
-                    <input type="hidden" value={1}></input>
-                    <input type="hidden" value={0}></input>
+                    <input type="hidden" value="1"></input>
+                    <input type="hidden" value="0"></input>
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>

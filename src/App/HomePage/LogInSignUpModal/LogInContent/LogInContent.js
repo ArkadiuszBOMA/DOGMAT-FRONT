@@ -16,14 +16,14 @@ const LogInContent = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const user = await dataHandler.logginAppUser(data);
+        const user = await dataHandler.logInAppUser(data);
         setIsLoading(false);
         if (!user) {
             setIsError(true);
             return;
         }
-        navigate('/dashboard');
-        authenticate.loginUser(user.id, user.username);
+        navigate('register');
+        authenticate.loginUser(user.email, user.password);
     }
 
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;
