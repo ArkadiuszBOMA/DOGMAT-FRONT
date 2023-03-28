@@ -1,5 +1,5 @@
 import './HomePage.css';
-import NavBar from "./NavBar/Navbar";
+import NavBar from "../../NavBar/Navbar";
 import videoMain from "../../../assets/video/bac1.mp4";
 import MiddleSection from "./MiddleSection/MiddleSection";
 
