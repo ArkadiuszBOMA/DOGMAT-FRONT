@@ -41,8 +41,8 @@ const SignUpContent = props => {
                     <input type="email" name="email" placeholder="Email"></input>
                     <input type="password" name="password" placeholder="Hasło"></input>
                     <input type="password" name="repeatPassword" placeholder="Powtórz hasło"></input>
-                    <input type="hidden" value="1"></input>
-                    <input type="hidden" value="0"></input>
+                    <input type="hidden" name="userType" value={1}></input>
+                    <input type="hidden" name="cityId" value={0}></input>
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>
