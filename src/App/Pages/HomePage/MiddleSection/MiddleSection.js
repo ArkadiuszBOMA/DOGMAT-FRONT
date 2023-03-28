@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import LogInSignUpModal from "../LogInSignUpModal/LogInSignUpModal";
-import ModalButton from "../../Buttons/ModalButton/ModalButton";
+import ModalButton from "../../../Utils/Buttons/ModalButton/ModalButton";
 import "./MiddleSection.css"
 
 const MiddleSection = props => {
@@ -12,7 +12,7 @@ const MiddleSection = props => {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [delta, setDelta] = useState(300 - Math.random() * 100);
 	const [text, setText] = useState('');
-	const [index, setIndex] = useState(1);
+	const [, setIndex] = useState(1);
 	const toRotate = [ "przy", "psyjaciela" ];
 	const period = 1000;
 

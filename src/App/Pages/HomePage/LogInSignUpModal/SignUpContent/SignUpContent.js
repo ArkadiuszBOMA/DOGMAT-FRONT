@@ -1,10 +1,10 @@
 import './SignUpContent.css'
-import {dataHandler} from "../../../Api/dataHandler";
+import {dataHandler} from "../../../../Utils/Api/dataHandler";
 import {useState} from "react";
-import Spinner from "../../../Spinners/Spinner";
+import Spinner from "../../../../Utils/Spinners/Spinner";
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from "../ErrorModal/ErrorModal";
-import {authenticate} from "../../../Authenticate/authenticate";
+import {authenticate} from "../../../../Authenticate/authenticate";
 
 const SignUpContent = props => {
 

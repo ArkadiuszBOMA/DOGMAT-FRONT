@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import HomePage from "../HomePage/HomePage";
+import HomePage from "../Pages/HomePage/HomePage";
 
 const RouterReact = () => (
 	<Router>
