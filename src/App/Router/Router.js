@@ -6,6 +6,8 @@ const RouterReact = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/about" element={<HomePage/>} />
+			<Route path="/profile" element={<HomePage/>} />
+			<Route path="/admin" element={<HomePage/>} />
 		</Routes>
 	</Router>
 )

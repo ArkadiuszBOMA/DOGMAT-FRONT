@@ -9,7 +9,9 @@ const NavBar = (props) => {
 	const [isTop, setIsTop] = useState(true);
 	const [, setIsSignUp] = useState(false);
 	const navigate = useNavigate();
-	const navigateToProfile = () => {navigate('/about');}
+	const navigateToAbout = () => {navigate('/about');}
+	const navigateToProfile = () => {navigate('/profile');}
+	const navigateToAdmin = () => {navigate('/admin');}
 	const navigateToLogout = () => {navigate('/');}
 
 	const changeOnScroll = useCallback(() => {
@@ -34,7 +36,9 @@ const NavBar = (props) => {
 
 	return (
 		<div className={navBarClasses}>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToProfile()}} text="O nas"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToAbout()}} text="O nas"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToProfile()}} text="Mój profil"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToAdmin()}} text="Administracja"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToLogout()}} text="Wyloguj się"/>
 		</div>
 
