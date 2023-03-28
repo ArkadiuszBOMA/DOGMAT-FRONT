@@ -24,16 +24,16 @@ export let dataHandler = {
 	logInAppUser: async function (data) {
 		 console.log(api.hostCredential + api.loginAppUsers);
 		console.log(data);
-		return await apiGet(api.hostCredential + api.loginAppUsers, data);
+		return await apiPost(api.hostCredential + api.loginAppUsers, data);
 	},
 }
 
 
 // funkcje asynchroniczne to powtórka z JS
 async function apiGet(url) {
-	console.log(url)
 	let response = await fetch(url, {
 		method: "GET",
+		mode:'no-cors',
 	});
 	if (response.ok) {
 		return await response.json();
@@ -41,8 +41,10 @@ async function apiGet(url) {
 }
 
 async function apiPost(url, payload) {
+	console.log(payload)
 	let response = await fetch(url, {
 		method: 'POST',
+		mode:'no-cors',
 		headers: {
 			'Content-Type': 'application/json',
 		},

@@ -33,11 +33,11 @@ const LogInContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
-                    <form className="login" onSubmit={onSubmitClick}>
+                    <form className="loginUpForm" onSubmit={onSubmitClick}>
                         <h2 className="text">Psyjacielu zaloguj się</h2>
                         <input className="" type="text" name="email" placeholder="Email"></input>
                         <input className="" type="password" name="password" placeholder="Password"></input>
-                        <button className="button" type="submit">Submit</button>
+                        <button className="submitButton" type="submit">Wykonaj</button>
                     </form>
             </div>
         </div>

@@ -1,9 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .NavBar {
     display: flex;
     align-items: center;
@@ -22,8 +16,8 @@
 }
 
 .nav-links {
-    display: flex;
-    justify-content: flex-end;
+    display: compact;
+    justify-content: center;
     list-style: none;
     width: 75%;
     color: #39312C !important;

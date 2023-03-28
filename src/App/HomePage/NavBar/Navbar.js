@@ -1,12 +1,16 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import './Navbar.css';
 import MainColorButton from "../Buttons/MainColorButton/MainColorButton";
+import {useNavigate} from "react-router-dom";
 
 const SCROLL_POSITION = 50;
 
 const NavBar = (props) => {
 	const [isTop, setIsTop] = useState(true);
 	const [isSignUp, setIsSignUp] = useState(false);
+	const navigate = useNavigate();
+	const navigateToProfile = () => {navigate('/about');}
+	const navigateToLogout = () => {navigate('/');}
 
 	const changeOnScroll = useCallback(() => {
 		const scrollPosition = window.scrollY;
@@ -30,10 +34,11 @@ const NavBar = (props) => {
 
 	return (
 		<div className={navBarClasses}>
-			<MainColorButton className = "nav-links" onClick={() => setIsSignUp(false)} text="O nas"/>
-			<MainColorButton className = "nav-links" onClick={() => setIsSignUp(false)} text="Wyloguj się"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);{navigateToProfile()}}} text="O nas"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);{navigateToLogout()}}} text="Wyloguj się"/>
 		</div>
 
+								 // <NavBarLink action={navigateToProfile} image={dashboardIcon} text="Moje Dane"/>}
 	);
 };
 
