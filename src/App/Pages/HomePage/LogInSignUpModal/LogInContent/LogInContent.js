@@ -32,14 +32,14 @@ const LogInContent = props => {
         setIsLoading(true);
 
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const user = await dataHandler.logInAppUser(data);
+        const user = await dataHandler.loginUser(data);
         setIsLoading(false);
         if (!user) {
             setIsError(true);
             return;
         }
         navigate('login');
-        authenticate.loginUser(user.id, user.password,user.userType, user.lastName, user.firstName, user.avatarSmallLocation);
+        authenticate.loginUser(user.email, user.password);
     }
 
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;
@@ -49,8 +49,8 @@ const LogInContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
+                <h2 className="text">Psyjacielu zaloguj się</h2>
                     <form className="loginUpForm" onSubmit={onSubmitClick}>
-                        <h2 className="text">Psyjacielu zaloguj się</h2>
                         <input className="" type="text" name="email" placeholder="Email"></input>
                         <input className="" type="password" name="password" placeholder="Password"></input>
                         <button className="submitButton" type="submit">Wykonaj</button>

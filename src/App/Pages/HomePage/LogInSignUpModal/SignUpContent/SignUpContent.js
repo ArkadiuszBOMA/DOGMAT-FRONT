@@ -16,9 +16,7 @@ const SignUpContent = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        delete data.repeatPassword;
         const user = await dataHandler.addNewUser(data);
-        console.log(data)
         setIsLoading(false);
         if (!user) {
             setIsError(true);
@@ -35,8 +33,8 @@ const SignUpContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
+                <h2 className="text">Zarejestruj się jako nowy Psyjaciel</h2>
                 <form className="signUpForm" onSubmit={onSubmitClick}>
-                    <h2 className="text">Zarejestruj się jako nowy Psyjaciel</h2>
                     <input type="text" name="firstName" placeholder="Imię"></input>
                     <input type="text" name="lastName" placeholder="Nazwisko"></input>
                     <input type="email" name="email" placeholder="Email"></input>

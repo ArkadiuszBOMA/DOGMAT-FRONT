@@ -19,7 +19,7 @@ export let dataHandler = {
 	return await apiPost(api.hostCredential + api.newAppUsers, data);
 	},
 
-	logInAppUser: async function (data) {
+	loginUser: async function (data) {
 		return await apiPost(api.hostCredential + api.loginAppUsers, data);
 	},
 }
@@ -37,7 +37,6 @@ async function apiGet(url) {
 }
 
 async function apiPost(url, payload) {
-	console.log(payload)
 	let response = await fetch(url, {
 		method: 'POST',
 		mode:'no-cors',

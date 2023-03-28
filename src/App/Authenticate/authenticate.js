@@ -1,12 +1,8 @@
 export let authenticate = {
-    loginUser: function(id, email, userType, lastName, firstName, avatarSmallLocation) {
+    loginUser: function(email, password) {
         const user = {
-            id: id,
             email: email,
-            userType: userType,
-            lastName: lastName,
-            firstName: firstName,
-            avatarSmallLocation: avatarSmallLocation
+            password: password,
         };
         sessionStorage.setItem("user", JSON.stringify(user))
     },
