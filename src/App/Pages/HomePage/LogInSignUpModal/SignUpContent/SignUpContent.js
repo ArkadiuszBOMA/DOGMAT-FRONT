@@ -18,13 +18,14 @@ const SignUpContent = props => {
         const data = Object.fromEntries(new FormData(e.target).entries());
         delete data.repeatPassword;
         const user = await dataHandler.addNewUser(data);
+        console.log(data)
         setIsLoading(false);
         if (!user) {
             setIsError(true);
             return;
         }
-        navigate('/HomePage');
-        authenticate.loginUser(user.id, user.email);
+        navigate('register');
+        authenticate.loginUser(user.email, user.password);
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;

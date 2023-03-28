@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState} from 'react';
 import './Navbar.css';
 import MainColorButton from "../Utils/Buttons/MainColorButton/MainColorButton";
 import {useNavigate} from "react-router-dom";

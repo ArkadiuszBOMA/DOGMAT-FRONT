@@ -16,14 +16,10 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllBreeds);
 	},
 	addNewUser: async function (data) {
-		console.log(api.hostCredential + api.loginAppUsers);
-		console.log(data);
 	return await apiPost(api.hostCredential + api.newAppUsers, data);
 	},
 
 	logInAppUser: async function (data) {
-		 console.log(api.hostCredential + api.loginAppUsers);
-		console.log(data);
 		return await apiPost(api.hostCredential + api.loginAppUsers, data);
 	},
 }
