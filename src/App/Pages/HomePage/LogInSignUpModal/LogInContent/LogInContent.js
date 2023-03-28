@@ -1,5 +1,5 @@
 import './LogInContent.css'
-import {dataHandler} from "../../../../Utils/Api/dataHandler";
+import {dataHandler} from "../../../../Api/dataHandler";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import ErrorModal from "../ErrorModal/ErrorModal";

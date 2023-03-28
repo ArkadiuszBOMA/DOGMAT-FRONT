@@ -1,5 +1,5 @@
 import './SignUpContent.css'
-import {dataHandler} from "../../../../Utils/Api/dataHandler";
+import {dataHandler} from "../../../../Api/dataHandler";
 import {useState} from "react";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import { useNavigate } from 'react-router-dom';
