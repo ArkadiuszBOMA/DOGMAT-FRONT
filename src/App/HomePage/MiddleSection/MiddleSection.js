@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import LogInSignUpModal from "../LogInSignUpModal/LogInSignUpModal";
-import ModalButton from "../Buttons/ModalButton/ModalButton";
+import ModalButton from "../../Buttons/ModalButton/ModalButton";
 import "./MiddleSection.css"
 
 const MiddleSection = props => {

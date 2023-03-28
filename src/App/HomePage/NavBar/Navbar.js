@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import './Navbar.css';
-import MainColorButton from "../Buttons/MainColorButton/MainColorButton";
+import MainColorButton from "../../Buttons/MainColorButton/MainColorButton";
 import {useNavigate} from "react-router-dom";
 
 const SCROLL_POSITION = 50;
