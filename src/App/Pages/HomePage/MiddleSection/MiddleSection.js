@@ -58,7 +58,7 @@ const MiddleSection = props => {
 						<span className="wrap">{text}</span>
 					</span>
 				</h1>
-				<p>Od prawdziwych psyjaciół!</p>
+				<p>od prawdziwych psyjaciół!</p>
 				<ModalButton onClick={() => {setIsModal(true); setIsSignUp(false)}} text="Masz już konto zaloguj się"/>
 				<ModalButton onClick={() => {setIsModal(true); setIsSignUp(true)}}  text="Zarejestruj się"/>
 				{isModal ? <LogInSignUpModal isSignUp={isSignUp} onClose={() => setIsModal(false)}/> : null}

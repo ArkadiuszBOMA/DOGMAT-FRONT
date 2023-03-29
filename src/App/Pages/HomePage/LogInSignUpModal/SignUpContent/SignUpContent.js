@@ -22,7 +22,7 @@ const SignUpContent = props => {
             setIsError(true);
             return;
         }
-        navigate('register');
+        navigate('/');
         authenticate.loginUser(user.email, user.password);
     }
 
@@ -33,7 +33,7 @@ const SignUpContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="text">Zarejestruj się jako nowy Psyjaciel</h2>
+                <h2 className="text">Zarejestruj się</h2>
                 <form className="signUpForm" onSubmit={onSubmitClick}>
                     <input type="text" name="firstName" placeholder="Imię"></input>
                     <input type="text" name="lastName" placeholder="Nazwisko"></input>

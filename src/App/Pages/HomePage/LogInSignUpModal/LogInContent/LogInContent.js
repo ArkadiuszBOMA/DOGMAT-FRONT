@@ -38,7 +38,7 @@ const LogInContent = props => {
             setIsError(true);
             return;
         }
-        navigate('login');
+        navigate('/');
         authenticate.loginUser(user.email, user.password);
     }
 
@@ -49,7 +49,7 @@ const LogInContent = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
-                <h2 className="text">Psyjacielu zaloguj się</h2>
+                <h2 className="text">Zaloguj się</h2>
                     <form className="loginUpForm" onSubmit={onSubmitClick}>
                         <input className="" type="text" name="email" placeholder="Email"></input>
                         <input className="" type="password" name="password" placeholder="Password"></input>

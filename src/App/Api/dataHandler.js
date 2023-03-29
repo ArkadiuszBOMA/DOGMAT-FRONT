@@ -1,5 +1,6 @@
 import api from './apis.json'
 
+
 export let dataHandler = {
 	// get all data from DB tables
 	getAppUsers: async function () {
@@ -29,7 +30,7 @@ export let dataHandler = {
 async function apiGet(url) {
 	let response = await fetch(url, {
 		method: "GET",
-		mode:'no-cors',
+		mode: "no-cors",
 	});
 	if (response.ok) {
 		return await response.json();
@@ -39,7 +40,7 @@ async function apiGet(url) {
 async function apiPost(url, payload) {
 	let response = await fetch(url, {
 		method: 'POST',
-		mode:'no-cors',
+		mode: "no-cors",
 		headers: {
 			'Content-Type': 'application/json',
 		},
