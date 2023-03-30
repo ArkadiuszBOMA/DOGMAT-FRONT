@@ -3,7 +3,7 @@ import React from 'react'
 import Table from "./Table/Table"
 import videoMain from "../../../../../assets/video/bac1.mp4";
 
-export const Voivodeship = () => {
+export const Provinces = () => {
 
 	return (
 		<div>
@@ -12,4 +12,4 @@ export const Voivodeship = () => {
 		</div>
 	)
 }
-export default Voivodeship
+export default Provinces

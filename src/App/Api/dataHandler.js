@@ -1,6 +1,5 @@
 import api from './apis.json'
 
-
 export let dataHandler = {
 	// get all data from DB tables
 	getAppUsers: async function () {
@@ -16,6 +15,15 @@ export let dataHandler = {
 	getBreeds: async function () {
 		return await apiGet(api.hostCredential + api.getAllBreeds);
 	},
+	getVoivodeships: async function () {
+		return await apiGet(api.hostCredential + api.getAllVoivodeship);
+	},
+	getProvinces: async function () {
+		return await apiGet(api.hostCredential + api.getAllProvinces);
+	},
+	getCities: async function () {
+		return await apiGet(api.hostCredential + api.getAllCities);
+	},
 	addNewUser: async function (data) {
 	return await apiPost(api.hostCredential + api.newAppUsers, data);
 	},
@@ -30,7 +38,6 @@ export let dataHandler = {
 async function apiGet(url) {
 	let response = await fetch(url, {
 		method: "GET",
-		mode: "no-cors",
 	});
 	if (response.ok) {
 		return await response.json();
@@ -40,7 +47,6 @@ async function apiGet(url) {
 async function apiPost(url, payload) {
 	let response = await fetch(url, {
 		method: 'POST',
-		mode: "no-cors",
 		headers: {
 			'Content-Type': 'application/json',
 		},

@@ -9,7 +9,9 @@ const NavBar = (props) => {
 	const navigate = useNavigate();
 	const navigateToAbout = () => {navigate('/about');}
 	const navigateToProfile = () => {navigate('/profile');}
-	const navigateToAdmin = () => {navigate('/admin');}
+	const navigateToProvinces = () => {navigate('/provinces');}
+	const navigateToVoivodeships = () => {navigate('/voivodeships');}
+	const navigateToCities = () => {navigate('/Cities');}
 	const navigateToLogout = () => {navigate('/');}
 
 
@@ -19,7 +21,9 @@ const NavBar = (props) => {
 		<div className={navBarClasses}>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToAbout()}} text="O nas"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToProfile()}} text="Mój profil"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToAdmin()}} text="Administracja"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToVoivodeships()}} text="Województwa"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToProvinces()}} text="Powiaty"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToCities()}} text="Miasta"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToLogout()}} text="Wyloguj się"/>
 		</div>
 

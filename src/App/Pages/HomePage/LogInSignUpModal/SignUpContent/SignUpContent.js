@@ -23,7 +23,7 @@ const SignUpContent = props => {
             return;
         }
         navigate('/');
-        authenticate.loginUser(user.email, user.password);
+        authenticate.loginUser(user.id, user.email, user.firstName, user.lastName, user.userType, user.avatarSmallLocation);
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;

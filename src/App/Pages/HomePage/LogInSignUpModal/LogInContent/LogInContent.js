@@ -38,8 +38,8 @@ const LogInContent = props => {
             setIsError(true);
             return;
         }
-        navigate('/');
-        authenticate.loginUser(user.email, user.password);
+        navigate('/About');
+        authenticate.loginUser(user.id, user.email, user.firstName, user.lastName, user.userType, user.avatarSmallLocation);
     }
 
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;
