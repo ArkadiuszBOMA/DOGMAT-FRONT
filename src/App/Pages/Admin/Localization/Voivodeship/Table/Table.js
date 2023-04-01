@@ -19,7 +19,7 @@ export const Table = () => {
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
 		filename:"Dogmat_Voivodeshops",
-		sheet:"Voivodeshops"
+		sheet:"Provinces"
 	})
 
 	const updateMyData = (rowIndex, columnId, value) => {
@@ -114,7 +114,6 @@ export const Table = () => {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		row,
 		page,
 		prepareRow,
 		nextPage,
@@ -151,7 +150,7 @@ export const Table = () => {
 							<div key={column.id}>
 								<lavel>
 									<input type='checkbox' {...column.getToggleHiddenProps()} />
-										{column.Header}
+									{column.Header}
 								</lavel>
 							</div>
 						))
@@ -225,7 +224,7 @@ export const Table = () => {
 							<button onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
 						</div>
 						</tfoot>
-							<pre>
+						<pre>
 								<code>
 									{JSON.stringify(
 										{
