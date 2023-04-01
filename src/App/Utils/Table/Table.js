@@ -1,14 +1,12 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
-import {dataHandler} from "../../../../../Api/dataHandler";
-import {COLUMNS} from "./columns";
-import Spinner from "../../../../../Utils/Spinners/Spinner";
-import {GlobalFilter} from "../../../../../Utils/Table/Filters/GlobalFilter";
-import {ColumnFilter} from "../../../../../Utils/Table/Filters/ColumnFilter";
-import NavBar from "../../../../../NavBar/Navbar";
+import Spinner from "../../Utils/Spinners/Spinner";
+import {GlobalFilter} from "./Filters/GlobalFilter";
+import {ColumnFilter} from "./Filters/ColumnFilter";
+import NavBar from "../../NavBar/Navbar.css";
 import "./Table.css"
-import {CheckBox} from "../../../../../Utils/Table/CheckBox/CheckBox";
+import {CheckBox} from "./CheckBox/CheckBox";
 
 export const Table = () => {
 
@@ -19,7 +17,7 @@ export const Table = () => {
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
 		filename:"Dogmat_Voivodeshops",
-		sheet:"Provinces"
+		sheet:"Voivodeshops"
 	})
 
 	const updateMyData = (rowIndex, columnId, value) => {
@@ -55,7 +53,7 @@ export const Table = () => {
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getProvinces();
+			const databaseData = await dataHandler.getVoivodeships();
 			setData(databaseData);
 			setIsLoading(false);
 
@@ -151,7 +149,7 @@ export const Table = () => {
 							<div key={column.id}>
 								<lavel>
 									<input type='checkbox' {...column.getToggleHiddenProps()} />
-									{column.Header}
+										{column.Header}
 								</lavel>
 							</div>
 						))
@@ -225,7 +223,7 @@ export const Table = () => {
 							<button onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
 						</div>
 						</tfoot>
-						<pre>
+							<pre>
 								<code>
 									{JSON.stringify(
 										{

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Table from "./Table/Table"
 import videoMain from "../../../../../assets/video/bac1.mp4";
+import Table from "./Table/Table"
 
 export const Provinces = () => {
 
