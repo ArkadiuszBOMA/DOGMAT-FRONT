@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useMemo} from 'react'
 
 import videoMain from "../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
@@ -14,12 +14,12 @@ export const AnimalType = () => {
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
-	const sheet = "AniamlType";
+	const sheet = "AnimalType";
 
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getVoivodeships();
+			const databaseData = await dataHandler.getAnimalTypes();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -31,7 +31,7 @@ export const AnimalType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table {data} {columns} {file} {sheet}/>
+			<Table data={data} columns={columns} file={file} sheet={sheet} />
 		</div>
 	)
 }

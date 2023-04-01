@@ -50,11 +50,4 @@ export const COLUMNS = [
 		isEditable: false,
 		accessor: d => { return d.archive ? 'W archiwum' : 'Używane' },
 	},
-	{
-		Header: 'Powiat',
-		Footer: 'Powiat',
-		isEditable: true,
-		accessor: 'province',
-
-	},
 ]

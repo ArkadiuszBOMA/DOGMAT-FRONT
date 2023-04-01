@@ -6,28 +6,19 @@ import {ColumnFilter} from "../Filters/ColumnFilter";
 import "./Table.css"
 import {CheckBox} from "../CheckBox/CheckBox";
 
-// tutaj przekazujesz 3 zmienne
-// 1 columny - definiwany w odpowiednim komponencie
-// 2 data - wygenerowane dane
-// 3 nazwe pliku w którym mają się dane zapisywać
-
-export const Table = props => {
+export const Table = (props) => {
 
 	const data = props.data
-	const columns = props.columns
-	const myFilename = props.columns
-	const myheet= props.columns
 
-
-	const tableRef = useRef(null)
+	const tableRef = useRef(null);
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
-		filename:myFilename,
-		sheet:myheet
-	})
+		filename:props.file,
+		sheet:props.sheet
+	});
 
 	const updateMyData = (rowIndex, columnId, value) => {
-		setData(old =>
+		props.data(old =>
 			old.map((row, index) => {
 				if (index === rowIndex) {
 					return {
@@ -55,12 +46,16 @@ export const Table = props => {
 		return value;
 	};
 
+
+
+	const columns = useMemo(() => props.columns, [props.columns])
+
 	const defaultColumn = useMemo(() => {
 		return{
 			Filter:ColumnFilter,
 			Cell: EditableCell
 		}
-	},[])
+	},[]);
 
 	const tableInstance = useTable({
 			columns,
@@ -98,13 +93,12 @@ export const Table = props => {
 			]
 		})
 		}
-	)
+	);
 
 	const {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		row,
 		page,
 		prepareRow,
 		nextPage,
@@ -127,102 +121,104 @@ export const Table = props => {
 
 	return (
 		<div>
-			<div className="middleSection">
-				<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
-				<div>
-					<CheckBox {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
-				</div>
-				{
-					allColumns.map(column => (
-						<div key={column.id}>
-							<lavel>
-								<input type='checkbox' {...column.getToggleHiddenProps()} />
-								{column.Header}
-							</lavel>
-						</div>
-					))
-				}
-				<button onClick={onDownload}>EXCEL</button>
-				<table ref={tableRef} className="blueTable" {...getTableProps()}>
-					<thead>
-					{headerGroups.map((headerGroup) => (
-						<tr {...headerGroup.getHeaderGroupProps()}>
-							{
-								headerGroup.headers.map((columns) => (
-									<th {...columns.getHeaderProps(columns.getSortByToggleProps)}>
-										{columns.render('Header')}
-										<div>
-											{columns.canFilter ? columns.render('Filter') : null}
-										</div>
-										<span>
-										{columns.isSorted ? (columns.isSortedDesc ? '🠛' : '🠙') :''}
-									</span>
-									</th>
-								))
-							}
-						</tr>
-					))}
-					</thead>
-					<tbody {...getTableBodyProps()}>
-					{page.map((row) => {
-						prepareRow(row)
-						return (
-							<tr {...row.getRowProps()}>
-								{row.cells.map((cell) => {
-									return <td {...cell.getCellProps()}>
-										{cell.render('Cell')}
-									</td>
-								})}
-							</tr>
-						)
-					})}
-					</tbody>
-					<tfoot>
+			<div>
+				<div className="middleSection">
+					<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
 					<div>
-					<span>
-						Strona{' '}
-						<strong> {pageIndex +1} z {pageOptions.length}
-						</strong>{' '}
-					</span>
-						<span>
-						| Idż do strony {' '}
-							<input
-								type='number'
-								defaultValue={pageIndex+1}
-								onChange={e => {
-									const pageNumber = e.target.value ? Number(e.target.value) -1 : 0
-									gotoPage(pageNumber)
-								}}
-								style ={{width: '50px'}}
-							/>
-					</span>
-						<select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
-							{
-								[5,10,25,50,100].map(pageSize => (
-									<option key={pageSize} value={pageSize}>
-										Pokaż {pageSize}
-									</option>
-								))
-							}
-						</select>
-						<button onClick={()=> gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
-						<button onClick={()=> previousPage()} disabled={!canPreviousPage}>Poprzednia Strona</button>
-						<button onClick={()=> nextPage()} disabled={!canNextPage}>Następna Strona</button>
-						<button onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+						<CheckBox {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
 					</div>
-					</tfoot>
-					<pre>
-							<code>
-								{JSON.stringify(
-									{
-										selectedFlatRows: selectedFlatRows.map((row) => row.original),
-									},
-									null,
-									2
-								)}
-							</code>
-						</pre>
-				</table>
+					{
+						allColumns.map(column => (
+							<div key={column.id}>
+								<lavel>
+									<input type='checkbox' {...column.getToggleHiddenProps()} />
+									{column.Header}
+								</lavel>
+							</div>
+						))
+					}
+					<button onClick={onDownload}>EXCEL</button>
+					<table ref={tableRef} className="blueTable" {...getTableProps()}>
+						<thead>
+						{headerGroups.map((headerGroup) => (
+							<tr {...headerGroup.getHeaderGroupProps()}>
+								{
+									headerGroup.headers.map((columns) => (
+										<th {...columns.getHeaderProps(columns.getSortByToggleProps)}>
+											{columns.render('Header')}
+											<div>
+												{columns.canFilter ? columns.render('Filter') : null}
+											</div>
+											<span>
+											{columns.isSorted ? (columns.isSortedDesc ? '🠛' : '🠙') :''}
+										</span>
+										</th>
+									))
+								}
+							</tr>
+						))}
+						</thead>
+						<tbody {...getTableBodyProps()}>
+						{page.map((row) => {
+							prepareRow(row)
+							return (
+								<tr {...row.getRowProps()}>
+									{row.cells.map((cell) => {
+										return <td {...cell.getCellProps()}>
+											{cell.render('Cell')}
+										</td>
+									})}
+								</tr>
+							)
+						})}
+						</tbody>
+						<tfoot>
+						<div>
+						<span>
+							Strona{' '}
+							<strong> {pageIndex +1} z {pageOptions.length}
+							</strong>{' '}
+						</span>
+							<span>
+							| Idż do strony {' '}
+								<input
+									type='number'
+									defaultValue={pageIndex+1}
+									onChange={e => {
+										const pageNumber = e.target.value ? Number(e.target.value) -1 : 0
+										gotoPage(pageNumber)
+									}}
+									style ={{width: '50px'}}
+								/>
+						</span>
+							<select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+								{
+									[5,10,25,50,100].map(pageSize => (
+										<option key={pageSize} value={pageSize}>
+											Pokaż {pageSize}
+										</option>
+									))
+								}
+							</select>
+							<button onClick={()=> gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+							<button onClick={()=> previousPage()} disabled={!canPreviousPage}>Poprzednia Strona</button>
+							<button onClick={()=> nextPage()} disabled={!canNextPage}>Następna Strona</button>
+							<button onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+						</div>
+						</tfoot>
+						<pre>
+								<code>
+									{JSON.stringify(
+										{
+											selectedFlatRows: selectedFlatRows.map((row) => row.original),
+										},
+										null,
+										2
+									)}
+								</code>
+							</pre>
+					</table>
+				</div>
 			</div>
 		</div>
 

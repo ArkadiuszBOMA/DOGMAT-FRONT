@@ -12,6 +12,7 @@ const NavBar = (props) => {
 	const navigateToProvinces = () => {navigate('/provinces');}
 	const navigateToVoivodeships = () => {navigate('/voivodeships');}
 	const navigateToCities = () => {navigate('/Cities');}
+	const navigateToAnimalType = () => {navigate('/animal-type');}
 	const navigateToLogout = () => {navigate('/');}
 
 
@@ -24,6 +25,7 @@ const NavBar = (props) => {
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToVoivodeships()}} text="Województwa"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToProvinces()}} text="Powiaty"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToCities()}} text="Miasta"/>
+			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToAnimalType()}} text="Typy Zwierzaków"/>
 			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToLogout()}} text="Wyloguj się"/>
 		</div>
 

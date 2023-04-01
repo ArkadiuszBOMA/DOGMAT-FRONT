@@ -4,6 +4,7 @@ import About from "../Pages/About/About";
 import Voivodeship from "../Pages/Admin/Localization/Voivodeship/Voivodeship";
 import Provinces from "../Pages/Admin/Localization/Province/Provinces";
 import Cities from "../Pages/Admin/Localization/City/City";
+import AnimalType from "../Pages/Admin/Animal/AnimaType/Animal";
 
 const RouterReact = () => (
 	<Router>
@@ -13,6 +14,7 @@ const RouterReact = () => (
 			<Route path="/voivodeships" element={<Voivodeship/>} />
 			<Route path="/provinces" element={<Provinces/>} />
 			<Route path="/cities" element={<Cities/>} />
+			<Route path="/animal-type" element={<AnimalType/>} />
 			<Route path="/admin" element={<HomePage/>} />
 		</Routes>
 	</Router>

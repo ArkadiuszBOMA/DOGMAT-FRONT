@@ -1,4 +1,5 @@
 import {format} from "date-fns"
+
 export const COLUMNS = [
 	{
 		Header: 'ID',
@@ -10,12 +11,12 @@ export const COLUMNS = [
 	{
 		Header: 'TERYT ID',
 		Footer: 'TERYT ID',
+		accessor: 'terytId',
 		isEditable: true,
-		accessor: 'terytId'
 	},
 	{
-		Header: 'Nazwa Powiatu',
-		Footer: 'Nazwa Powiatu',
+		Header: 'Nazwa Województwa',
+		Footer: 'Nazwa Województwa',
 		accessor: 'name',
 		isEditable: true,
 	},
@@ -54,12 +55,5 @@ export const COLUMNS = [
 		Footer: 'Archiwizowane?',
 		isEditable: false,
 		accessor: d => { return d.archive ? 'W archiwum' : 'Używane' },
-	},
-	{
-		Header: 'Województwo',
-		Footer: 'Województwo',
-		accessor: 'voivodeship',
-		isEditable: true
-
 	},
 ]
