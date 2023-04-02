@@ -73,10 +73,10 @@ export const Table = (props) => {
 				{
 					id:'selection',
 					Header:({getToggleAllRowsSelectedProps}) => (
-						<CheckBox {...getToggleAllRowsSelectedProps()} />
+						<CheckBox className="checkbox" {...getToggleAllRowsSelectedProps()} />
 					),
 					Cell: ({row}) => (
-						<CheckBox {...row.getToggleRowSelectedProps()}/>
+						<CheckBox className="checkbox" {...row.getToggleRowSelectedProps()}/>
 					)
 				},
 				{
@@ -120,18 +120,18 @@ export const Table = (props) => {
 	const {pageIndex, pageSize} = state
 
 	return (
-		<div>
-			<div>
-				<div className="middleSection">
-					<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
-					<div>
-						<CheckBox {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
+		<div className="middleSection">
+			<div >
+				<div className="header">
+					<GlobalFilter className="checkbox" filter={globalFilter} setFilter={setGlobalFilter}/>
+					<div className="grid-container">
+						<CheckBox className="checkbox" {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
 					</div>
 					{
 						allColumns.map(column => (
 							<div key={column.id}>
 								<lavel>
-									<input type='checkbox' {...column.getToggleHiddenProps()} />
+									<input className="checkbox" type='checkbox' {...column.getToggleHiddenProps()} />
 									{column.Header}
 								</lavel>
 							</div>
