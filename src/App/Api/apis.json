@@ -4,7 +4,7 @@
   "newAppUsers": "/api/v1/app-users/register",
   "loginAppUsers": "/api/v1/app-users/login",
   "getAllAnimals": "/api/v1/animals/",
-  "getAllAnimalTypes": "/api/animal-types/",
+  "getAllAnimalTypes": "/api/v1/animal-types/",
   "getAllBreeds": "/api/v1/breeds/",
   "getAllCareAnnouncementTypes": "/api/v1/care-announcement-types/",
   "getAllCities": "/api/v1/cities/",
@@ -13,7 +13,7 @@
   "getAllLessonSteps": "/api/v1/lesson-steps/",
   "getAllProvinces": "/api/v1/provinces/",
   "getAllTimeUnits": "/api/v1/time-units/",
-  "getAllTrainingLevel": "/api/v1/training-levels/",
+  "getAllTrainingLevels": "/api/v1/training-levels/",
   "getAllUserTypes": "/api/v1/user-types/",
   "getAllVoivodeship": "/api/v1/voivodeships/"
 }

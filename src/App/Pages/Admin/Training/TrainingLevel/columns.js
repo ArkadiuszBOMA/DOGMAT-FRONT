@@ -1,4 +1,5 @@
 import {format} from "date-fns"
+
 export const COLUMNS = [
 	{
 		Header: 'ID',
@@ -8,11 +9,10 @@ export const COLUMNS = [
 		disableFilters: true
 	},
 	{
-		Header: 'Nazwa Jednostki Miary',
-		Footer: 'Nazwa Jednostki Miary',
+		Header: 'Nazwa jednostki miary',
+		Footer: 'Nazwa jednostki miary',
+		accessor: 'name',
 		isEditable: false,
-		accessor: 'name'
-
 	},
 	{
 		Header: 'Daty',

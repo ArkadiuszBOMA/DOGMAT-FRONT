@@ -7,19 +7,19 @@ import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
 
-export const Province = () => {
+export const Breed = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
-	const sheet = "Powiaty";
+	const sheet = "AnimalType";
 
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getProvinces();
+			const databaseData = await dataHandler.getBreeds();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -35,4 +35,4 @@ export const Province = () => {
 		</div>
 	)
 }
-export default Province
+export default Breed

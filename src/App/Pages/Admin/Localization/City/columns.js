@@ -10,7 +10,7 @@ export const COLUMNS = [
 	{
 		Header: 'Nazwa Miasta',
 		Footer: 'Nazwa Miasta',
-		isEditable: true,
+		isEditable: false,
 		accessor: 'name'
 
 	},
@@ -53,7 +53,7 @@ export const COLUMNS = [
 	{
 		Header: 'Powiat',
 		Footer: 'Powiat',
-		isEditable: true,
+		isEditable: false,
 		accessor: 'province',
 
 	},

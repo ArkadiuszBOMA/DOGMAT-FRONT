@@ -12,13 +12,13 @@ export const COLUMNS = [
 		Header: 'TERYT ID',
 		Footer: 'TERYT ID',
 		accessor: 'terytId',
-		isEditable: true,
+		isEditable: false,
 	},
 	{
 		Header: 'Nazwa Województwa',
 		Footer: 'Nazwa Województwa',
 		accessor: 'name',
-		isEditable: true,
+		isEditable: false,
 	},
 	{
 		Header: 'Daty',

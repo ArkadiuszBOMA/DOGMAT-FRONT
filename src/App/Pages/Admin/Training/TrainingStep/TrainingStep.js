@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useMemo} from 'react'
-
 import videoMain from "../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
@@ -7,19 +6,19 @@ import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
 
-export const Province = () => {
+export const TrainingStep = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
-	const sheet = "Powiaty";
+	const sheet = "Time Unit";
 
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getProvinces();
+			const databaseData = await dataHandler.getTrainingSteps();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -35,4 +34,4 @@ export const Province = () => {
 		</div>
 	)
 }
-export default Province
+export default TrainingStep

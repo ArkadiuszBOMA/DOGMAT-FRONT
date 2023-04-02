@@ -6,14 +6,14 @@ import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
 
-export const AnimalType = () => {
+export const City = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
-	const sheet = "AnimalType";
+	const sheet = "Miasta";
 
 	useEffect(() => {
 		async function fetchData() {
@@ -34,4 +34,4 @@ export const AnimalType = () => {
 		</div>
 	)
 }
-export default AnimalType
+export default City

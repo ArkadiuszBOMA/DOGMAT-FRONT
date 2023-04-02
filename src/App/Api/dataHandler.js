@@ -24,14 +24,24 @@ export let dataHandler = {
 	getCities: async function () {
 		return await apiGet(api.hostCredential + api.getAllCities);
 	},
-
-	getAnimalType: async function () {
-		return await apiGet(api.hostCredential + api.getAllAnimalTypes);
+	getTrainingType: async function () {
+		return await apiGet(api.hostCredential + api.getAllLessons);
+	},
+	getTrainingLevels: async function () {
+		return await apiGet(api.hostCredential + api.getAllTrainingLevels);
+	},
+	getTrainingSteps: async function () {
+		return await apiGet(api.hostCredential + api.getAllLessonSteps);
+	},
+	getTimeUnits: async function () {
+		return await apiGet(api.hostCredential + api.getAllTimeUnits);
+	},
+	getUserTypes: async function () {
+		return await apiGet(api.hostCredential + api.getAllUserTypes);
 	},
 	addNewUser: async function (data) {
 	return await apiPost(api.hostCredential + api.newAppUsers, data);
 	},
-
 	loginUser: async function (data) {
 		return await apiPost(api.hostCredential + api.loginAppUsers, data);
 	},

@@ -6,7 +6,7 @@ import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
 
-export const AnimalType = () => {
+export const VoivodeShip = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
@@ -34,4 +34,4 @@ export const AnimalType = () => {
 		</div>
 	)
 }
-export default AnimalType
+export default VoivodeShip

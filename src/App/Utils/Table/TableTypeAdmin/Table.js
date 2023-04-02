@@ -5,11 +5,14 @@ import {GlobalFilter} from "../Filters/GlobalFilter";
 import {ColumnFilter} from "../Filters/ColumnFilter";
 import "./Table.css"
 import {CheckBox} from "../CheckBox/CheckBox";
+import {Box, Button, Tooltip} from "@mui/material";
+import {AddCard, Delete, Edit, Send} from "@mui/icons-material";
 
 export const Table = (props) => {
 
 	const data = props.data
 
+	const [isVisible, setIsVisible]= useState(true)
 	const tableRef = useRef(null);
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
@@ -53,7 +56,6 @@ export const Table = (props) => {
 	const defaultColumn = useMemo(() => {
 		return{
 			Filter:ColumnFilter,
-			Cell: EditableCell
 		}
 	},[]);
 
@@ -83,9 +85,14 @@ export const Table = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({row}) => (
 						<div>
-							<button >Edit</button>
-							<button >Update</button>
-							<button >Delete</button>
+							<Box sx={{ display: 'flex', gap: '1rem' }}>
+								<Tooltip arrow placement="left" title="Edit">
+										<Edit color="success"/>
+								</Tooltip>
+								<Tooltip arrow placement="right" title="Delete">
+										<Delete color="error"/>
+								</Tooltip>
+							</Box>
 						</div>
 					)
 				},
@@ -137,7 +144,12 @@ export const Table = (props) => {
 							</div>
 						))
 					}
-					<button onClick={onDownload}>EXCEL</button>
+					<Button onClick={onDownload} title="Excel">
+						<Send/>
+						</Button>
+					<Button onClick={onDownload} title="AddNewRecord">
+						<AddCard/>
+					</Button>
 					<table ref={tableRef} className="blueTable" {...getTableProps()}>
 						<thead>
 						{headerGroups.map((headerGroup) => (
