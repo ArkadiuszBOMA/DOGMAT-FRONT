@@ -30,21 +30,21 @@ export const COLUMNS = [
 				Footer: 'Utworzenia',
 				accessor: 'date_create',
 				isEditable: false,
-				Cell: ({ value }) => {return format(new Date(value), 'dd-MM-yyyy')}
+				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
 			},
 			{
 				Header: 'Modyfikacji',
 				Footer: 'Modyfikacji',
 				accessor: 'date_modify',
 				isEditable: false,
-				Cell: ({ value }) => {return format(new Date(value), 'dd-MM-yyyy')}
+				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
 			},
 			{
 				Header: 'Archiwizacji',
 				Footer: 'Archiwizacji',
 				accessor: 'date_archive',
 				isEditable: false,
-				Cell: ({ value }) => {return format(new Date(value), 'dd-MM-yyyy')}
+				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
 
 			}
 		]

@@ -1,4 +1,4 @@
-import icon from "../../../../assets/icons/checked.png";
+import icon from "../../../assets/icons/checked.png";
 import './CheckedIcon.css'
 
 const CheckedIcon = props => {
