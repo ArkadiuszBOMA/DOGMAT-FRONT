@@ -1,4 +1,4 @@
-import './LogInSignUpModal.css'
+import "./LogInSignUpModal.css"
 import SignUpContent from "./SignUpContent/SignUpContent";
 import LogInContent from "./LogInContent/LogInContent";
 

@@ -1,173 +1,105 @@
-/************ IGA ************/
-.loginUpForm {
-    padding: 150px 0 100px 0;
-    background-position: top center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+.middleSection {
+    display: inline-block;
+    margin-left: 10%;
 }
 
-.loginUpForm input {
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-    background-color: #242233;
-    box-shadow: none;
-    border: 1px solid grey;
-    color: white;
-    padding: 0.5em;
-    transition: 0.5s ease-out;
-}
-
-.loginUpForm input:hover {
-    border: 1px solid white;
-    transition: 0.5s ease-out;
-}
-
-.submitButton {
-    color: white;
-    background-color: #242233;
-    cursor: pointer;
-    border: 1px solid grey;
-    border-radius: 1em;
-    padding: 0.7em 1.2em;
-    transition: 0.5s ease-out;
-    font-size: 1em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-}
-
-.submitButton:hover {
-    border: 1px solid white;
-    transition: 0.5s ease-out;
-}
-
-.hidden {
-    display: none;
-}
-
-.login {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    padding: 250px 0 100px 0;
-    background-position: top center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.login .aligh-items-center {
-    color: #39312C;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    padding: 30px 60px;
-    background: rgb(234,216,205, 0.5);
-    border-radius: 21px;
-    font-size: 20px;
-    margin-bottom: 16px;
-    display: block;
+.header {
+    background-color: red;
+    border-radius: 15px;
+    padding: 30px;
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, 70%)
+    font-size: 35px;
+}
+.column {
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
 }
 
-.login h1 {
-    color: #39312C;
-    font-size: 65px;
-    font-weight: 300;
-    letter-spacing: 0.8px;
-    line-height: 1;
-    margin-bottom: 20px;
-    display: block;
-
+.grid-container {
+    display: inline-block;
+    padding: 10px;
 }
-.login h2 {
-    color: #ffffff !important;
+
+.grid-row {
+    display: flex;
+    padding: 10px;
+}
+
+.grid-row .item1 {
+    grid-row: 1/4;
+}
+
+.checkbox{
+    transform: scale(3);
+    padding: 1px;
+    margin: auto;
+}
+
+.grid-column {
+    display: grid;
+    padding: 10px;
+}
+.grid-item {
+    background-color: red;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+table.blueTable {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+table.blueTable tbody td {
+    font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+    background: #f2f2f2;
+}
+table.blueTable thead {
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
     font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    line-height: 2em;
-    display: block;
-    width: 96%;
-    text-decoration: underline;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+    border-left: none;
 }
 
-.login h4 {
-    color: #39312C;
+table.blueTable tfoot {
     font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    line-height: 0.8em;
-    display: block;
-    width: 96%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 2px solid #444444;
 }
-
-.login p {
-    color: #39312C;
-    font-size: 17px;
-    letter-spacing: 1px;
-    line-height: 1.5em;
-    width: 96%;
-    font-weight: 400;
+table.blueTable tfoot td {
+    font-size: 14px;
 }
-.login button {
-    color: #fff;
-    font-weight: 400;
-    font-size: 15px;
-    margin-top: 15px;
-    letter-spacing: 1px;
-    border-radius: 21px;
-    background: #39312C;
-    padding: 10px 40px;
-    align-items: center;
+table.blueTable tfoot .links {
+    text-align: right;
 }
-
-.login button svg {
-    font-size: 25px;
-    font-weight: 400;
-    margin-left: 5px;
-    transition: 0.3s ease-in-out;
-    line-height: 1;
-}
-.login button:hover svg {
-    margin-left: 25px;
-}
-
-input:placeholder-shown {
-    margin-top: 10px;
-    border: 0.8px transparent;
-    background: white;
-    color: #39312C;
-    border-radius: 21px;
-    padding: 10px 40px;
-    align-items: center;
-}
-
-input:not(:placeholder-shown) {
-    margin-top: 10px;
-    border: 0.8px transparent;
-    background: white;
-    color: #39312C;
-    border-radius: 21px;
-    padding: 10px 40px;
-    align-items: center;
-}
-
-input::placeholder {
-    color: #EAD8CD;
-    font-weight: 400;
-    font-size: 15px;
-    text-align: center;
-}
-
-input {
-    text-align: center;
-    color: transparent;
-    font-weight: 400;
-    font-size: 15px;
+table.blueTable tfoot .links a{
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
 }

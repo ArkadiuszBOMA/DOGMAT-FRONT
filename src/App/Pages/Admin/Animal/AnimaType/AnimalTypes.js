@@ -31,7 +31,7 @@ export const AnimalType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} />
+			<Table data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)
 }

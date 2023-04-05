@@ -10,7 +10,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 // Potrzebne rzeczy z innych komponentów
-import ErrorModal from "../ErrorModal/ErrorModal";
+import ErrorModal from "../../../../Utils/ErrorModal/ErrorModal";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 
 
