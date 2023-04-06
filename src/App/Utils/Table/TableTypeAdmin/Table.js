@@ -44,7 +44,9 @@ export const Table = (props) => {
 				{
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
-						<Button id={row.original}>Archiwizuj</Button>
+						<div>
+							<Button>Archiwizuj</Button>
+						</div>
 					),
 				},
 				...columns
@@ -78,8 +80,8 @@ export const Table = (props) => {
 
 
 	return (
-		<div>
-			<Box filter={globalFilter} setFilter={setGlobalFilter}/>
+		<div className="abc">
+			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
 			<Box {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
 			{
 				allColumns.map(column => (

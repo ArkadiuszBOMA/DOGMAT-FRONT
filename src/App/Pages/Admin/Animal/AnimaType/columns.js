@@ -5,7 +5,10 @@ export const COLUMNS = [
 		Footer: 'ID',
 		accessor: 'id',
 		isEditable: false,
-		disableFilters: true
+		disableFilters: true,
+		style: {
+			background: "orange",
+		},
 	},
 	{
 		Header: 'Nazwa Jednostki Miary',

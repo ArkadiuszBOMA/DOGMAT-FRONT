@@ -1,3 +1,10 @@
 .abc{
-    color: red;
+    margin-top: 5em;
+}
+
+.checkbox{
+    top: 50%;
+    left: 50%;
+    background: red !important;
+    border-radius: 5%;
 }
