@@ -11,8 +11,8 @@ export const COLUMNS = [
 		},
 	},
 	{
-		Header: 'Nazwa Jednostki Miary',
-		Footer: 'Nazwa Jednostki Miary',
+		Header: 'Zwierzę',
+		Footer: 'Zwierzę',
 		isEditable: false,
 		accessor: 'name'
 

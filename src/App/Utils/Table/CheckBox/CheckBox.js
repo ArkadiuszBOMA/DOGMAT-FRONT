@@ -1,4 +1,5 @@
 import React from 'react'
+import "./CheckBox.css"
 
 export const CheckBox = React.forwardRef(({ indeterminate, ...rest }, ref) =>{
 	const defaultRef = React.useRef()

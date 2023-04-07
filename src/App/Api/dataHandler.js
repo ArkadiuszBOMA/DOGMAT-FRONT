@@ -19,10 +19,10 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllAnimalTypes);
 	},
 	updateAnimalTypes: async function () {
-		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes);
+		return await apiPutWithBody(api.hostCredential + api.updateAnimalType);
 	},
 	archiveAnimalTypes: async function () {
-		return await apiPutNoBody(api.hostCredential + api.getAllAnimalTypes);
+		return await apiPutNoBody(api.hostCredential + api.archiveAnimalType);
 	},
 	getBreeds: async function () {
 		return await apiGet(api.hostCredential + api.getAllBreeds);
@@ -84,8 +84,14 @@ export let dataHandler = {
 	getAnimals: async function () {
 		return await apiGet(api.hostCredential + api.getAllAnimals);
 	},
-	addAnimals: async function () {
+	addAnimal: async function () {
 		return await apiPost(api.hostCredential + api.getAllAnimals);
+	},
+	updateAnimal: async function () {
+		return await apiPost(api.hostCredential + api.updateAnimal);
+	},
+	archiveAnimal: async function () {
+		return await apiPost(api.hostCredential + api.archiveAnimal);
 	},
 
 }

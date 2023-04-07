@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect, useId, useMemo, useRef, useState} from 'react'
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
-import {GlobalFilter} from "../Filters/GlobalFilter";
-import {ColumnFilter} from "../Filters/ColumnFilter";
+import {GlobalFilter} from "../Filters/GlobalFilter/GlobalFilter";
+import {ColumnFilter} from "../Filters/ColumnFilter/ColumnFilter";
 import "./Table.css"
 import {CheckBox} from "../CheckBox/CheckBox";
-import {Box, Button, IconButton, Tooltip} from "@mui/material";
-import {AddCard, Delete, Edit, Send, Input} from "@mui/icons-material";
+import MainColorButton from "../../Buttons/MainColorButton/MainColorButton";
+import ButtonWithoutIcon from "../../Buttons/ButtonWithIcon/ButtonWithIcon";
 
 export const Table = (props) => {
 
@@ -17,7 +17,9 @@ export const Table = (props) => {
 		filename:props.file,
 		sheet:props.sheet
 	});
+
 	const columns = useMemo(() => props.columns, [props.columns])
+
 	const defaultColumn = useMemo(() => {return{Filter:ColumnFilter,}},[]);
 
 	const tableInstance = useTable({
@@ -38,14 +40,16 @@ export const Table = (props) => {
 						<CheckBox {...getToggleAllRowsSelectedProps()} />
 					),
 					Cell: ({row}) => (
-						<CheckBox {...row.getToggleRowSelectedProps}/>
+						<CheckBox
+							{...row.getToggleRowSelectedProps()}/>
 					)
 				},
 				{
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
 						<div>
-							<Button>Archiwizuj</Button>
+							<MainColorButton text={"Uaktualnij"}/>
+							<MainColorButton text={row.index}/>
 						</div>
 					),
 				},
@@ -59,6 +63,7 @@ export const Table = (props) => {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
+		rows,
 		page,
 		prepareRow,
 		nextPage,
@@ -80,21 +85,25 @@ export const Table = (props) => {
 
 
 	return (
-		<div className="abc">
+			<div className="table-wrapper">
 			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
-			<Box {...getToggleHideAllColumnsProps()}/> Pokaż wszystkie kolumny
+			<div>
+				<CheckBox {...getToggleHideAllColumnsProps()}></CheckBox>
+					<span className="inputIdzDoStrony">Pokaż wszystkie kolumny</span>
+			</div>
 			{
 				allColumns.map(column => (
-					<span key={column.id}>
-						<input type='checkbox' {...column.getToggleHiddenProps()} />
+					<span className="inputIdzDoStrony" key={column.id}>
+						<input className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()} />
 						{column.Header}
 					</span>
 				))
 			}
-			<Button onClick={onDownload} title="Excel"><Send/></Button>
-			<Button onClick={onDownload} title="AddNewRecord"><AddCard/></Button>
-
-			<table ref={tableRef} {...getTableProps()}>
+			<div>
+				<MainColorButton onClick={onDownload} text={"Excel"}></MainColorButton>
+				<ButtonWithoutIcon onClick={onDownload}></ButtonWithoutIcon>
+			</div>
+			<table className="fl-table" ref={tableRef} {...getTableProps()}>
 				<thead>
 				{headerGroups.map((headerGroup) => (
 					<tr {...headerGroup.getHeaderGroupProps()}>
@@ -131,24 +140,23 @@ export const Table = (props) => {
 				<tfoot>
 				</tfoot>
 			</table>
-				<span>
+				<span className="IdzDoStrony">
 						Strona{' '}
 					<strong> {pageIndex +1} z {pageOptions.length}
 						</strong>{' '}
 					</span>
-				<span>
-						| Idż do strony {' '}
-					<Input
+				<span className="IdzDoStrony">
+						Idż do strony {' '}
+					<input className="inputIdzDoStrony"
 						type='number'
 						defaultValue={pageIndex+1}
 						onChange={e => {
 							const pageNumber = e.target.value ? Number(e.target.value) -1 : 0
 							gotoPage(pageNumber)
 						}}
-						style ={{width: '50px'}}
 					/>
 					</span>
-				<select id="RowByPage" title={"Page"} value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+				<select className="selectPage" id="RowByPage" title={"Page"} value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
 					{
 						[5,10,25,50,100,200].map(pageSize => (
 							<option key={pageSize} value={pageSize}>
@@ -157,10 +165,10 @@ export const Table = (props) => {
 						))
 					}
 				</select>
-			<button onClick={()=> gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
-			<button onClick={()=> previousPage()} disabled={!canPreviousPage}>Poprzednia Strona</button>
-			<button onClick={()=> nextPage()} disabled={!canNextPage}>Następna Strona</button>
-			<button onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+			<MainColorButton onClick={()=> gotoPage(0)} disabled={!canPreviousPage} text={'<<'}/>
+			<MainColorButton onClick={()=> previousPage()} disabled={!canPreviousPage} text={"Poprzednia Strona"}/>
+			<MainColorButton onClick={()=> nextPage()} disabled={!canNextPage} text={"Następna Strona"}/>
+			<MainColorButton onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage} text={'>>'}/>
 		</div>
 
 	)

@@ -1,0 +1,19 @@
+.modalButton {
+    border: 0;
+    background-image: url("assets");
+    color: #39312C;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    width: 96%;
+    font-weight: 400;
+}
+
+.modalButton:hover {
+    border: 1px solid white;
+    transition: 0.5s ease-out;
+}
+
+.clicked {
+    border: 1px solid white;
+}
