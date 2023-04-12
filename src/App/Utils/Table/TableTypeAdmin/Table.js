@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useId, useMemo, useRef, useState} from 'react'
+import React, {Component, useCallback, useEffect, useId, useMemo, useRef, useState} from 'react'
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
 import {GlobalFilter} from "../Filters/GlobalFilter/GlobalFilter";
@@ -6,9 +6,18 @@ import {ColumnFilter} from "../Filters/ColumnFilter/ColumnFilter";
 import "./Table.css"
 import {CheckBox} from "../CheckBox/CheckBox";
 import MainColorButton from "../../Buttons/MainColorButton/MainColorButton";
-import ButtonWithoutIcon from "../../Buttons/ButtonWithIcon/ButtonWithIcon";
-
+import ButtonWithoutIcon from "../../Buttons/ButtonWithIcon/ButtonWithIconAddress";
+import AnimalTypeAdd from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
+import AnimalTypeArchive
+	from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeArchive/AnimalTypeArchive";
 export const Table = (props) => {
+
+	const [isModalAddNew, setIsModalAddNew] = useState(false);
+	const [isModalArchive, setIsModalArchive] = useState(false);
+	const [isModalUpdate, setIsModalUpdate] = useState(false);
+	const addNewRecord = props.addNewRecord
+	const addArchive = props.addArchive
+	const addUpdate = props.addUpdate
 
 	const data = props.data
 	const tableRef = useRef(null);
@@ -48,8 +57,9 @@ export const Table = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
 						<div>
-							<MainColorButton text={"Uaktualnij"}/>
-							<MainColorButton text={row.index}/>
+							<MainColorButton text="Uaktualnij"/>
+							<MainColorButton onClick={() => setIsModalArchive(true)} text={row.original.id.valueOf()}/>
+							{isModalArchive ? <AnimalTypeArchive recordId={row.original.id.valueOf()} setIsModalArchive={setIsModalArchive} onClose={() => setIsModalArchive(false)}/> : null}
 						</div>
 					),
 				},
@@ -63,7 +73,6 @@ export const Table = (props) => {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		rows,
 		page,
 		prepareRow,
 		nextPage,
@@ -89,19 +98,20 @@ export const Table = (props) => {
 			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
 			<div>
 				<CheckBox {...getToggleHideAllColumnsProps()}></CheckBox>
-					<span className="inputIdzDoStrony">Pokaż wszystkie kolumny</span>
+					<span key="totalCheckbox" className="inputIdzDoStrony">Pokaż wszystkie kolumny</span>
 			</div>
 			{
 				allColumns.map(column => (
 					<span className="inputIdzDoStrony" key={column.id}>
-						<input className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()} />
+						<input key={column.Header} className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()} />
 						{column.Header}
 					</span>
 				))
 			}
 			<div>
 				<MainColorButton onClick={onDownload} text={"Excel"}></MainColorButton>
-				<ButtonWithoutIcon onClick={onDownload}></ButtonWithoutIcon>
+				<ButtonWithoutIcon onClick={() => setIsModalAddNew(true) }></ButtonWithoutIcon>
+				{isModalAddNew ? <AnimalTypeAdd setIsModalAddNew={setIsModalAddNew} onClose={() => setIsModalAddNew(false)}/> : null}
 			</div>
 			<table className="fl-table" ref={tableRef} {...getTableProps()}>
 				<thead>

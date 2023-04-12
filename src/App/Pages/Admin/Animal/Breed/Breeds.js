@@ -6,11 +6,17 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import BreedAdd from "./BreedModal/BreedAdd/BreedAdd";
+import BreedArchive from "./BreedModal/BreedArchive/BreedArchive";
+import BreedUpdate from "./BreedModal/BreedUpdate/BreedUpdate";
 
 export const Breed = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
+	const addNewRecord = useState(<BreedAdd/>);
+	const addArchive = useState(<BreedArchive/>);
+	const addUpdate = useState(<BreedUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -31,7 +37,7 @@ export const Breed = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} />
+			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }

@@ -1,16 +1,22 @@
 import React, {useEffect, useState, useMemo} from 'react'
-
 import videoMain from "../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import AnimalTypeAdd from "./AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
+import AnimalTypeArchive from "./AnimalTypeModal/AnimalTypeArchive/AnimalTypeArchive";
+import AnimalTypeUpdate from "./AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
 
-export const AnimalType = () => {
 
-	const [isLoading, setIsLoading] = useState(false);
+export const AnimalType = (props) => {
+
+	const [isLoading, setIsLoading] = useState(false);;
 	const [data, setData] = useState([]);
+	const addNewRecord = useState(<AnimalTypeAdd/>);
+	const addArchive = useState(<AnimalTypeArchive/>);
+	const addUpdate = useState(<AnimalTypeUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -31,7 +37,7 @@ export const AnimalType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet}/>
+			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }

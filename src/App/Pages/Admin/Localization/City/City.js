@@ -5,11 +5,17 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import CityAdd from "./CityModal/CityAdd/CityAdd";
+import CityArchive from "./CityModal/CityArchive/CityArchive";
+import CityUpdate from "./CityModal/CityUpdate/CityUpdate";
 
 export const City = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
+	const addNewRecord = useState(<CityAdd/>);
+	const addArchive = useState(<CityArchive/>);
+	const addUpdate = useState(<CityUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -30,7 +36,7 @@ export const City = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} />
+			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }

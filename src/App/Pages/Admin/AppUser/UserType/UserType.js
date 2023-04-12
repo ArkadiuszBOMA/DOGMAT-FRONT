@@ -5,11 +5,17 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import UserTypeAdd from "./UserTypeModal/UserTypeAdd/UserTypeAdd";
+import UserTypeArchive from "./UserTypeModal/UserTypeArchive/UserTypeArchive";
+import UserTypeUpdate from "./UserTypeModal/UserTypeUpdate/UserTypeUpdate";
 
 export const UserType = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
+	const addNewRecord = useState(<UserTypeAdd/>);
+	const addArchive = useState(<UserTypeArchive/>);
+	const addUpdate = useState(<UserTypeUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -30,7 +36,7 @@ export const UserType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} />
+			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }

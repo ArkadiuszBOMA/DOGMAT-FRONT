@@ -1,0 +1,43 @@
+import React, {useEffect, useState, useMemo} from 'react'
+import videoMain from "../../../../../assets/video/bac1.mp4";
+import {COLUMNS} from "./columns";
+import {dataHandler} from "../../../../Api/dataHandler";
+import NavBar from "../../../../NavBar/Navbar";
+import Spinner from "../../../../Utils/Spinners/Spinner";
+import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import CareTypeAdd from "./CareTypeModal/CareTypeAdd/CareTypeAdd";
+import CareTypeArchive from "./CareTypeModal/CareTypeArchive/CareTypeArchive";
+import CareTypeUpdate from "./CareTypeModal/CareTypeUpdate/CareTypeUpdate";
+
+export const CareType = () => {
+
+	const [isLoading, setIsLoading] = useState(false);
+	const [data, setData] = useState([]);
+	const addNewRecord = useState(<CareTypeAdd/>);
+	const addArchive = useState(<CareTypeArchive/>);
+	const addUpdate = useState(<CareTypeUpdate/>);
+
+	const columns = useMemo(() => COLUMNS, []);
+	const file = "Dogmate";
+	const sheet = "Typ Użytkownika";
+
+	useEffect(() => {
+		async function fetchData() {
+			setIsLoading(true);
+			const databaseData = await dataHandler.getUserTypes();
+			setData(databaseData);
+			setIsLoading(false);
+		}
+		fetchData();
+	}, [])
+
+	return (
+		<div>
+			<video className="video" src={videoMain} autoPlay loop muted />
+			<NavBar/>
+			{isLoading ? <Spinner/> : null}
+			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+		</div>
+	)
+}
+export default CareType
