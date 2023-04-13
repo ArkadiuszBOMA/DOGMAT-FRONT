@@ -7,7 +7,7 @@ import Spinner from "../../../../../../Utils/Spinners/Spinner";
 import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 
 
-const BreedAdd = props => {
+const BreedAdd = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);

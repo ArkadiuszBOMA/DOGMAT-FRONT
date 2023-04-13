@@ -14,9 +14,9 @@ export const Breed = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
-	const addNewRecord = useState(<BreedAdd/>);
-	const addArchive = useState(<BreedArchive/>);
-	const addUpdate = useState(<BreedUpdate/>);
+	const addNewRecord = useState("BreedAdd");
+	const addArchive = useState("BreedArchive");
+	const addUpdate = useState("BreedUpdate");
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";

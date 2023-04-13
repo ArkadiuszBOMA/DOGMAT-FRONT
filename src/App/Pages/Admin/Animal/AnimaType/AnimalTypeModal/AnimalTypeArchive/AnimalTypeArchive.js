@@ -2,7 +2,6 @@ import "./AnimalTypeArchive.css"
 import {dataHandler} from "../../../../../../Api/dataHandler";
 
 const AnimalTypeArchive = async (props) => {
-        console.log(props.recordId);
-        await dataHandler.archiveAnimalType(props.recordId);
+        await dataHandler.archiveAnimalType(props.id);
 }
 export default AnimalTypeArchive;

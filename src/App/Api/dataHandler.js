@@ -24,7 +24,7 @@ export let dataHandler = {
 		return await apiPutWithBody(api.hostCredential + api.getAllAnimals + "/update/" + data.id, data);
 	},
 	archiveAnimal: async function (id) {
-		return await piPutNoBody(api.hostCredential + api.getAllAnimals+ "/archive/" + id);
+		return await apiPutNoBody(api.hostCredential + api.getAllAnimals+ "/archive/" + id);
 	},
 
 	// ANIMAL TYPE
@@ -37,7 +37,7 @@ export let dataHandler = {
 	updateAnimalType: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes + "/update/" + data.id, data);
 	},
-	archiveAnimalType: async function (data) {
+	archiveAnimalType: async function (id) {
 		return await apiPutNoBody(api.hostCredential + api.getAllAnimalTypes + "/archive/" + id);
 	},
 
@@ -51,7 +51,7 @@ export let dataHandler = {
 	updateBreed: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllBreeds + "/update/" + data.id, data);
 	},
-	archiveBreed: async function (data) {
+	archiveBreed: async function (id) {
 		return await apiPutNoBody(api.hostCredential + api.getAllBreeds + "/archive/" + id);
 	},
 
@@ -65,7 +65,7 @@ export let dataHandler = {
 	updateVoivodeship: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllVoivodeship + "/update/" + data.id, data);
 	},
-	archiveVoivodeship: async function (data) {
+	archiveVoivodeship: async function (id) {
 		return await apiPutNoBody(api.hostCredential + api.getAllVoivodeship + "/archive/" + id);
 	},
 

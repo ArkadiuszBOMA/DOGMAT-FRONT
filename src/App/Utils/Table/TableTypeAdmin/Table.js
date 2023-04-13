@@ -1,23 +1,24 @@
-import React, {Component, useCallback, useEffect, useId, useMemo, useRef, useState} from 'react'
+import React, {useMemo, useRef, useState, lazy, Suspense} from "react";
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
 import {GlobalFilter} from "../Filters/GlobalFilter/GlobalFilter";
 import {ColumnFilter} from "../Filters/ColumnFilter/ColumnFilter";
 import "./Table.css"
 import {CheckBox} from "../CheckBox/CheckBox";
-import MainColorButton from "../../Buttons/MainColorButton/MainColorButton";
-import ButtonWithoutIcon from "../../Buttons/ButtonWithIcon/ButtonWithIconAddress";
+// poniższe dane  chce przekazać w formie jakiegoś nie wiem jak to zrobić by dynamicznie przekazać importy
+// const AddNewRecord =  lazy(import(props.addNewRecord));
+// const AddArchive = lazy(import(props.addArchive));
+// const AddUpdate = lazy(import(props.addUpdate));
+import {dataHandler} from "../../../Api/dataHandler";
 import AnimalTypeAdd from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
-import AnimalTypeArchive
-	from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeArchive/AnimalTypeArchive";
+import AnimalTypeUpdate from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
+import {colors} from "@mui/material";
 export const Table = (props) => {
+
 
 	const [isModalAddNew, setIsModalAddNew] = useState(false);
 	const [isModalArchive, setIsModalArchive] = useState(false);
 	const [isModalUpdate, setIsModalUpdate] = useState(false);
-	const addNewRecord = props.addNewRecord
-	const addArchive = props.addArchive
-	const addUpdate = props.addUpdate
 
 	const data = props.data
 	const tableRef = useRef(null);
@@ -57,9 +58,9 @@ export const Table = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
 						<div>
-							<MainColorButton text="Uaktualnij"/>
-							<MainColorButton onClick={() => setIsModalArchive(true)} text={row.original.id.valueOf()}/>
-							{isModalArchive ? <AnimalTypeArchive recordId={row.original.id.valueOf()} setIsModalArchive={setIsModalArchive} onClose={() => setIsModalArchive(false)}/> : null}
+							<button key = {"U" + row.original.id.valueOf()} onClick={() => setIsModalUpdate(false) }>Uaktualnij</button>
+							{isModalUpdate ? <AnimalTypeUpdate dataRow={row.original} key = {"DANE" + row.original.id.valueOf()} setIsModalUpdate={setIsModalUpdate} onClose={() => setIsModalUpdate(false)}/> : null}
+							<button key = {"A" + row.original.id.valueOf()} onClick={async () => await dataHandler.archiveAnimalType(row.original.id.valueOf())}>Archiwizuj</button>
 						</div>
 					),
 				},
@@ -98,20 +99,24 @@ export const Table = (props) => {
 			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
 			<div>
 				<CheckBox {...getToggleHideAllColumnsProps()}></CheckBox>
-					<span key="totalCheckbox" className="inputIdzDoStrony">Pokaż wszystkie kolumny</span>
+					<span key="totalCheckbox" className="text">Pokaż wszystkie kolumny</span>
 			</div>
 			{
 				allColumns.map(column => (
-					<span className="inputIdzDoStrony" key={column.id}>
+					<span className="fl-table td" key={column.id}>
 						<input key={column.Header} className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()} />
 						{column.Header}
 					</span>
 				))
 			}
 			<div>
-				<MainColorButton onClick={onDownload} text={"Excel"}></MainColorButton>
-				<ButtonWithoutIcon onClick={() => setIsModalAddNew(true) }></ButtonWithoutIcon>
-				{isModalAddNew ? <AnimalTypeAdd setIsModalAddNew={setIsModalAddNew} onClose={() => setIsModalAddNew(false)}/> : null}
+				<div>
+					<button onClick={onDownload} title="Excel">{"Excel"}</button>
+				</div>
+				<div>
+					<button onClick={() => setIsModalAddNew(true) } title="Dodaj">{"Dodaj"}</button>
+					{isModalAddNew ? <AnimalTypeAdd setIsModalAddNew={setIsModalAddNew} onClose={() => setIsModalAddNew(false)}/> : null}
+				</div>
 			</div>
 			<table className="fl-table" ref={tableRef} {...getTableProps()}>
 				<thead>
@@ -124,9 +129,9 @@ export const Table = (props) => {
 									<div>
 										{columns.canFilter ? columns.render('Filter') : null}
 									</div>
-									<div>
-									{columns.isSorted ? (columns.isSortedDesc ? '🠛' : '🠙') :''}
-									</div>
+									<h2>
+									{columns.isSorted ? (columns.isSortedDesc ? '🠛' : '🠙') :'-'}
+									</h2>
 								</th>
 							))
 						}
@@ -150,14 +155,14 @@ export const Table = (props) => {
 				<tfoot>
 				</tfoot>
 			</table>
-				<span className="IdzDoStrony">
+				<span className="text">
 						Strona{' '}
 					<strong> {pageIndex +1} z {pageOptions.length}
 						</strong>{' '}
 					</span>
-				<span className="IdzDoStrony">
+				<label className="text">
 						Idż do strony {' '}
-					<input className="inputIdzDoStrony"
+					<input className="text"
 						type='number'
 						defaultValue={pageIndex+1}
 						onChange={e => {
@@ -165,8 +170,8 @@ export const Table = (props) => {
 							gotoPage(pageNumber)
 						}}
 					/>
-					</span>
-				<select className="selectPage" id="RowByPage" title={"Page"} value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+					</label>
+				<select className="text" id="RowByPage" title={"Page"} value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
 					{
 						[5,10,25,50,100,200].map(pageSize => (
 							<option key={pageSize} value={pageSize}>
@@ -175,10 +180,10 @@ export const Table = (props) => {
 						))
 					}
 				</select>
-			<MainColorButton onClick={()=> gotoPage(0)} disabled={!canPreviousPage} text={'<<'}/>
-			<MainColorButton onClick={()=> previousPage()} disabled={!canPreviousPage} text={"Poprzednia Strona"}/>
-			<MainColorButton onClick={()=> nextPage()} disabled={!canNextPage} text={"Następna Strona"}/>
-			<MainColorButton onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage} text={'>>'}/>
+			<button title="firstPage" onClick={()=> gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+			<button title="previousPage" onClick={()=> previousPage()} disabled={!canPreviousPage}>{'<'}</button>
+			<button title="nestPage" onClick={()=> nextPage()} disabled={!canNextPage}>{'>'}</button>
+			<button title="lastPage" onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}> {'>>'}</button>
 		</div>
 
 	)

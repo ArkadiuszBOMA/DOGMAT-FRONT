@@ -21,36 +21,35 @@ export const COLUMNS = [
 		Header: 'Daty',
 		Footer: 'Daty',
 		columns:
-		[
-			{
-				Header: 'Utworzenia',
-				Footer: 'Utworzenia',
-				accessor: 'date_create',
-				isEditable: false,
-				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
-			},
-			{
-				Header: 'Modyfikacji',
-				Footer: 'Modyfikacji',
-				accessor: 'date_modify',
-				isEditable: false,
-				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
-			},
-			{
-				Header: 'Archiwizacji',
-				Footer: 'Archiwizacji',
-				accessor: 'date_archive',
-				isEditable: false,
-				Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
-
-			}
-		]
+			[
+				{
+					Header: 'Utworzono',
+					Footer: 'Utworzono',
+					accessor: 'date_create',
+					isEditable: false,
+					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
+				},
+				{
+					Header: 'Modyfikowano',
+					Footer: 'Modyfikowano',
+					accessor: 'date_modify',
+					isEditable: false,
+					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
+				},
+				{
+					Header: 'Zarchiwizowano',
+					Footer: 'Zarchiwizowano',
+					accessor: 'date_archive',
+					isEditable: false,
+					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
+				}
+			]
 	},
 	{
 		id:'archive',
-		Header: 'Archiwizowane?',
-		Footer: 'Archiwizowane?',
+		Header: 'Czy w archiwum?',
+		Footer: 'Czy w archiwum?',
 		isEditable: false,
-		accessor: d => { return d.archive ? 'W archiwum' : 'Używane' },
+		accessor: d => { return d ? 'Tak' : 'Nie' },
 	},
 ]

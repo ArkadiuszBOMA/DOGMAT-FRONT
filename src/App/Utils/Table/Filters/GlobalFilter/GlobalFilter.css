@@ -1,9 +1,17 @@
 div{
-    background-color: #39312C;
+    background-color: white;
 }
 span{
-    background-color: #39312C;
+    background-color: white;
 }
 input{
-    background-color: #39312C;
+    position: relative;
+    background-color: white;
+    text-align: center;
+    font-size: smaller;
+}
+.text{
+    color: black;
+    text-align: center;
+    font-size: smaller;
 }

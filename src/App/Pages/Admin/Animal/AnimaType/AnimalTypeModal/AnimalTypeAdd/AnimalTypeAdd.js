@@ -4,13 +4,10 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import MainColorButton from "../../../../../../Utils/Buttons/MainColorButton/MainColorButton";
-import ModalButton from "../../../../../../Utils/Buttons/ModalButton/ModalButton";
-import ButtonWithIconAddress from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconAddress";
 import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 
 
-const AnimalTypeAdd = props => {
+const AnimalTypeAdd = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);

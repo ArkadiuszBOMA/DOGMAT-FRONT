@@ -7,17 +7,13 @@ export const GlobalFilter =({filter, setFilter}) =>{
 	const onChange = useAsyncDebounce((value) => {setFilter(value || undefined)},1000)
 
 	return(
-		<div>
-			<span>
-				Znajdź: {' '}
-				<input value={value || ''}
-					   onChange={(e)=> {
-						   setValue(e.target.value)
-						   onChange(e.target.value)
-				}}/>
-
-			</span>
-
-		</div>
+		<label className="text">
+			Znajdź: {' '}
+			<input value={value || ''}
+				   onChange={(e)=> {
+					   setValue(e.target.value)
+					   onChange(e.target.value)
+			}}/>
+		</label>
 	)
 }

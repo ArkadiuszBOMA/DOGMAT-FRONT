@@ -21,51 +21,38 @@ export const COLUMNS = [
 		accessor: 'trainingLevel'
 	},
 	{
-		Header: 'Opis',
-		Footer: 'Opis',
-		isEditable: false,
-		accessor: 'description'
-	},
-	{
-		Header: 'Obraz',
-		Footer: 'Obraz',
-		isEditable: false,
-		accessor: 'imageLocation'
-	},
-	{
 		Header: 'Daty',
 		Footer: 'Daty',
 		columns:
 			[
 				{
-					Header: 'Utworzenia',
-					Footer: 'Utworzenia',
+					Header: 'Utworzono',
+					Footer: 'Utworzono',
 					accessor: 'date_create',
 					isEditable: false,
 					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
 				},
 				{
-					Header: 'Modyfikacji',
-					Footer: 'Modyfikacji',
+					Header: 'Modyfikowano',
+					Footer: 'Modyfikowano',
 					accessor: 'date_modify',
 					isEditable: false,
 					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
 				},
 				{
-					Header: 'Archiwizacji',
-					Footer: 'Archiwizacji',
+					Header: 'Zarchiwizowano',
+					Footer: 'Zarchiwizowano',
 					accessor: 'date_archive',
 					isEditable: false,
 					Cell: ({ value }) => {return value !== null ? format(new Date(value), 'dd-MM-yyyy') : " "},
-
 				}
 			]
 	},
 	{
 		id:'archive',
-		Header: 'Archiwizowane?',
-		Footer: 'Archiwizowane?',
+		Header: 'Czy w archiwum?',
+		Footer: 'Czy w archiwum?',
 		isEditable: false,
-		accessor: d => { return d.archive ? 'W archiwum' : 'Używane' },
+		accessor: d => { return d.archive ? 'Tak' : 'Nie' },
 	},
 ]
