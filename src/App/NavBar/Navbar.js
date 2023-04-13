@@ -24,21 +24,25 @@ const NavBar = (props) => {
 
 	const navBarClasses = `NavBar ${isAdmin ? "NavBar" : "NoTop"}`;
 
+	const lista= [
+		{onClick:() => {setIsSignUp(false);navigateToAbout()}, text:"O nas", id:"0"},
+		{onClick:() => {setIsSignUp(false);navigateToProfile()}, text:"Mój profil", id:"1"},
+		{onClick:() => {setIsSignUp(false);navigateToAnimalTypes()}, text:"Typy Zwierzaków", id:"2"},
+		{onClick:() => {setIsSignUp(false);navigateToBreeds()}, text:"Rasy", id:"3"},
+		{onClick:() => {setIsSignUp(false);navigateToVoivodeships()}, text:"Województwa", id:"4"},
+		{onClick:() => {setIsSignUp(false);navigateToProvinces()}, text:"Powiaty", id:"5"},
+		{onClick:() => {setIsSignUp(false);navigateToCities()}, text:"Miasta", id:"6"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingType()}, text:"Lekcje", id:"7"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingLevel()}, text:"Poziom Trudności", id:"8"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingStep()}, text:"Kroki", id:"9"},
+		{onClick:() => {setIsSignUp(false);navigateToTimeUnits()}, text:"Jednostki miary", id:"10"},
+		{onClick:() => {setIsSignUp(false);navigateToUserTypes()}, text:"Typ użytkownika", id:"11"},
+		{onClick:() => {setIsSignUp(false);navigateToLogout()}, text:"Wyloguj się", id:"12"},
+	]
+
 	return (
 		<div className={navBarClasses}>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToAbout()}} text="O nas"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToProfile()}} text="Mój profil"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToVoivodeships()}} text="Województwa"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToProvinces()}} text="Powiaty"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToCities()}} text="Miasta"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToAnimalTypes()}} text="Typy Zwierzaków"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToBreeds()}} text="Rasy"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToTrainingType()}} text="Lekcje"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToTrainingLevel()}} text="Poziom Trudności"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToTrainingStep()}} text="Kroki"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToTimeUnits()}} text="Typy jednostek miary"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(true);navigateToUserTypes()}} text="Typ użytkownika"/>
-			<MainColorButton className = "nav-links" onClick={() => {setIsSignUp(false);navigateToLogout()}} text="Wyloguj się"/>
+			{lista.map(item => <MainColorButton key={item.id} className = "nav-links" onClick={item.onClick} text={item.text}/>)}
 		</div>
 
 	);

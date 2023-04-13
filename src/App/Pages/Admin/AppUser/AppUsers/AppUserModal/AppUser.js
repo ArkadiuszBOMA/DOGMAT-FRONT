@@ -4,7 +4,7 @@ import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
-import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import Table from "../../../../Utils/TableTypeAdmin/TableTypeAdmin/TableTypeAdmin";
 import UserTypeAdd from "./UserTypeModal/UserTypeAdd/UserTypeAdd";
 import UserTypeArchive from "./UserTypeModal/UserTypeArchive/UserTypeArchive";
 import UserTypeUpdate from "./UserTypeModal/UserTypeUpdate/UserTypeUpdate";

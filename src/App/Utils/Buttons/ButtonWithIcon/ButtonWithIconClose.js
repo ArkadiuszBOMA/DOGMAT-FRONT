@@ -1,14 +1,12 @@
 import './ButtonWithIcon.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClose } from '@fortawesome/free-solid-svg-icons'
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ButtonWithIconAddress = props => {
 
     return (
         <div>
-            <button onClick={props.onClick}>
-                <FontAwesomeIcon icon={faClose}/>
-            </button>
+            <FontAwesomeIcon onClick={props.onClick} icon={faEdit}/>
         </div>
     )
 }

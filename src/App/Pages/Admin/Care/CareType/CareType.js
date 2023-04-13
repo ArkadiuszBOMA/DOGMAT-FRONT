@@ -4,7 +4,7 @@ import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
-import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
 import CareTypeAdd from "./CareTypeModal/CareTypeAdd/CareTypeAdd";
 import CareTypeArchive from "./CareTypeModal/CareTypeArchive/CareTypeArchive";
 import CareTypeUpdate from "./CareTypeModal/CareTypeUpdate/CareTypeUpdate";
@@ -36,7 +36,7 @@ export const CareType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }

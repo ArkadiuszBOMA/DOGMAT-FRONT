@@ -2,7 +2,7 @@ import './ButtonWithIcon.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
-const ButtonWithIconAddress = props => {
+const ButtonWithIconEdit = props => {
 
     return (
         <div>
@@ -12,4 +12,4 @@ const ButtonWithIconAddress = props => {
         </div>
     )
 }
-export default ButtonWithIconAddress;
+export default ButtonWithIconEdit;

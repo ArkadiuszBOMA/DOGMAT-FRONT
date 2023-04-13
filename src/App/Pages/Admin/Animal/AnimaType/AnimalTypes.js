@@ -1,20 +1,18 @@
-import React, {useEffect, useState, useMemo} from 'react'
+import React, {useEffect, useState, useMemo, Component} from 'react'
 import videoMain from "../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
-import Table from "../../../../Utils/Table/TableTypeAdmin/Table";
+import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
 import "./AnimalTypes.css"
+import AnimalTypeAdd from "./AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
 
 
 export const AnimalType = (props) => {
 
 	const [isLoading, setIsLoading] = useState(false);;
 	const [data, setData] = useState([]);
-	const addNewRecord = useState("./AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd");
-	const addArchive = useState("./AnimalTypeModal/AnimalTypeArchive/AnimalTypeArchive");
-	const addUpdate = useState("./AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate");
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -35,7 +33,7 @@ export const AnimalType = (props) => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet}/>
+			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)
 }

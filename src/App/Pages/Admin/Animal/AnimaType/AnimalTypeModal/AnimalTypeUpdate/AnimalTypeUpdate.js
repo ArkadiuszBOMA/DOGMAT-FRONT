@@ -5,6 +5,8 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
 import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const AnimalTypeAdd = props => {
@@ -43,7 +45,7 @@ const AnimalTypeAdd = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
+                <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
                 <h2 className="text">Uaktualnij dane zwierzaka</h2>
                 <form className="add" onSubmit={onSubmitClick}>
                     <input type="hidden" name="id" value={props.dataRow.id.valueOf()}></input>

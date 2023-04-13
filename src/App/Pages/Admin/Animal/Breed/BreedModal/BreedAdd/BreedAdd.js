@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
 import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const BreedAdd = (props) => {
@@ -32,11 +34,11 @@ const BreedAdd = (props) => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-                <h2 className="modal-header">Dodaj zwierzaka</h2>
+                <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
+                <h2 className="modal-header">Dodaj Miasto</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
-                    <input className="modal-header" type="text" name="animalType" placeholder="Wybierz zwierzaka"></input>
+                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę miasta"></input>
+                    <input className="modal-header" type="number" name="province" placeholder="Wybierz powiat"></input>
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>
