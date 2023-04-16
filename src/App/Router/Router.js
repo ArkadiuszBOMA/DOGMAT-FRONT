@@ -11,6 +11,7 @@ import TrainingLevel from "../Pages/Admin/Training/TrainingLevel/TrainingLevel";
 import TrainingStep from "../Pages/Admin/Training/TrainingStep/TrainingStep";
 import TrainingType from "../Pages/Admin/Training/TrainingType/TrainingType";
 import UserType from "../Pages/Admin/AppUser/UserType/UserType";
+import UserRole from "../Pages/Admin/AppUser/UserRole/UserRole";
 
 const RouterReact = () => (
 	<Router>
@@ -27,6 +28,7 @@ const RouterReact = () => (
 			<Route path="/training-steps" element={<TrainingStep/>} />
 			<Route path="/time-units" element={<TimeUnit/>} />
 			<Route path="/user-types" element={<UserType/>} />
+			<Route path="/user-roles" element={<UserRole/>} />
 			<Route path="/admin" element={<HomePage/>} />
 		</Routes>
 	</Router>

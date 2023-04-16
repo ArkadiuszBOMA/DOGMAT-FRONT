@@ -15,5 +15,6 @@
   "getAllTimeUnits": "/api/v1/time-units",
   "getAllTrainingLevels": "/api/v1/training-levels",
   "getAllUserTypes": "/api/v1/user-types",
+  "getAllUserRoles": "/api/v1/user-roles",
   "getAllVoivodeship": "/api/v1/voivodeships"
 }

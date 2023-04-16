@@ -4,7 +4,6 @@ import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -33,9 +32,7 @@ const AnimalTypeAdd = props => {
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
-            return;
         }
-        navigate('/animal-type');
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;

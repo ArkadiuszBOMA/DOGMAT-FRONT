@@ -4,18 +4,18 @@ import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
-import Table from "../../../../Utils/TableTypeAdmin/TableTypeAdmin/TableTypeAdmin";
-import UserTypeAdd from "./UserTypeModal/UserRoleAdd/UserRoleAdd";
-import UserTypeArchive from "./UserTypeModal/UserRoleArchive/UserRoleArchive";
-import UserTypeUpdate from "./UserTypeModal/UserTypeUpdate/UserTypeUpdate";
+import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
+import UserRoleAdd from "./UserRoleModal/UserRoleAdd/UserRoleAdd";
+import UserRoleArchive from "./UserRoleModal/UserRoleArchive/UserRoleArchive";
+import UserRoleUpdate from "./UserRoleModal/UserRoleUpdate/UserRoleUpdate";
 
-export const AppUser = () => {
+export const UserRole = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
-	const addNewRecord = useState(<UserTypeAdd/>);
-	const addArchive = useState(<UserTypeArchive/>);
-	const addUpdate = useState(<UserTypeUpdate/>);
+	const addNewRecord = useState(<UserRoleAdd/>);
+	const addArchive = useState(<UserRoleArchive/>);
+	const addUpdate = useState(<UserRoleUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -24,7 +24,7 @@ export const AppUser = () => {
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getUserTypes();
+			const databaseData = await dataHandler.getUserRoles();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -36,8 +36,8 @@ export const AppUser = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
 		</div>
 	)
 }
-export default AppUser
+export default UserRole

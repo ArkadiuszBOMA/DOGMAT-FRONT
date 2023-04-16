@@ -1,22 +1,18 @@
 import {format} from "date-fns"
-import {ColumnFilter} from "../../../../Utils/Table/Filters/ColumnFilter/ColumnFilter";
+
 export const COLUMNS = [
 	{
 		Header: 'ID',
 		Footer: 'ID',
 		accessor: 'id',
 		isEditable: false,
-		disableFilters: true,
-		style: {
-			background: "orange",
-		},
+		disableFilters: true
 	},
 	{
-		Header: 'Zwierzę',
-		Footer: 'Zwierzę',
+		Header: 'Rasa',
+		Footer: 'Rasa',
+		accessor: 'name',
 		isEditable: false,
-		accessor: 'name'
-
 	},
 	{
 		Header: 'Daty',
@@ -51,6 +47,6 @@ export const COLUMNS = [
 		Header: 'Czy w archiwum?',
 		Footer: 'Czy w archiwum?',
 		isEditable: false,
-		accessor: d => { return d ? 'Tak' : 'Nie' },
+		accessor: d => { return d.archive ? 'Tak' : 'Nie' },
 	},
 ]

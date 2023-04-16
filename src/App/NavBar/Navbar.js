@@ -19,6 +19,7 @@ const NavBar = (props) => {
 	const navigateToTrainingStep = () => {navigate('/training-steps');}
 	const navigateToTimeUnits = () => {navigate('/time-units');}
 	const navigateToUserTypes = () => {navigate('/user-types');}
+	const navigateToUserRole = () => {navigate('/user-roles');}
 	const navigateToLogout = () => {navigate('/');}
 
 
@@ -37,7 +38,9 @@ const NavBar = (props) => {
 		{onClick:() => {setIsSignUp(false);navigateToTrainingStep()}, text:"Kroki", id:"9"},
 		{onClick:() => {setIsSignUp(false);navigateToTimeUnits()}, text:"Jednostki miary", id:"10"},
 		{onClick:() => {setIsSignUp(false);navigateToUserTypes()}, text:"Typ użytkownika", id:"11"},
-		{onClick:() => {setIsSignUp(false);navigateToLogout()}, text:"Wyloguj się", id:"12"},
+		{onClick:() => {setIsSignUp(false);navigateToUserRole()}, text:"Role użytkownika", id:"12"},
+		{onClick:() => {setIsSignUp(false);navigateToLogout()}, text:"Wyloguj się", id:"13"},
+
 	]
 
 	return (

@@ -6,7 +6,6 @@ import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
 import "./AnimalTypes.css"
-import AnimalTypeAdd from "./AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
 
 
 export const AnimalType = (props) => {

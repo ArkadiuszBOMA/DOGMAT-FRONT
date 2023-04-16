@@ -1,21 +1,12 @@
-import React, {useMemo, useRef, useState, lazy, Suspense} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
 import {GlobalFilter} from "../Filters/GlobalFilter/GlobalFilter";
 import {ColumnFilter} from "../Filters/ColumnFilter/ColumnFilter";
 import "./TableTypeAdmin.css"
 import {CheckBox} from "../CheckBox/CheckBox";
-
-// poniższe dane  chce przekazać w formie jakiegoś nie wiem jak to zrobić by dynamicznie przekazać importy
-// const AddNewRecord =  lazy(import(props.addNewRecord));
-
-// const AddArchive = lazy(import(props.addArchive));
 import {dataHandler} from "../../../Api/dataHandler";
-// const AddUpdate = lazy(import(props.addUpdate));
-import AnimalTypeUpdate from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
-
-
-import {faArchive, faEdit, faTableCells} from "@fortawesome/free-solid-svg-icons";
+import {faArchive, faDeleteLeft, faEdit, faTableCells} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 import {useLocation} from "react-router-dom";
@@ -29,65 +20,78 @@ import TrainingLevelAdd from "../../../Pages/Admin/Training/TrainingLevel/Traini
 import TrainingStepAdd from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepAdd/TrainingStepAdd";
 import TimeUnitAdd from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitAdd/TimeUnitAdd";
 import UserTypeAdd from "../../../Pages/Admin/AppUser/UserType/UserTypeModal/UserTypeAdd/UserTypeAdd";
+import AnimalTypeUpdate from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
+import BreedUpdate from "../../../Pages/Admin/Animal/Breed/BreedModal/BreedUpdate/BreedUpdate";
+import VoivodeshipUpdate from "../../../Pages/Admin/Localization/Voivodeship/VoivodeshipModal/VoivodeshipUpdate/VoivodeshipUpdate";
+import ProvinceUpdate from "../../../Pages/Admin/Localization/Province/ProvinceModal/ProvinceUpdate/ProvinceUpdate";
+import CityUpdate from "../../../Pages/Admin/Localization/City/CityModal/CityUpdate/CityUpdate";
+import TrainingTypeUpdate from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeUpdate/TrainingTypeUpdate";
+import TrainingLevelUpdate from "../../../Pages/Admin/Training/TrainingLevel/TrainingLevelModal/TrainingLevelUpdate/TrainingLevelUpdate";
+import TrainingStepUpdate from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepUpdate/TrainingStepUpdate";
+import TimeUnitUpdate from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitUpdate/TimeUnitUpdate";
+import UserTypeUpdate from "../../../Pages/Admin/AppUser/UserType/UserTypeModal/UserTypeUpdate/UserTypeUpdate";
 
 export const TableTypeAdmin = (props) => {
 
+	// zmienne do komunikowania się ze ścieżką
 	const location = useLocation();
+
+	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej storny
 	const getCurrentFormAdd = () => {
 		switch (location.pathname) {
 			case "/animal-types":
-				return <AnimalTypeAdd/>
+				return <AnimalTypeAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/breeds":
-				return <BreedAdd/>
+				return <BreedAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/voivodeships":
-				return <VoivodeshipAdd/>
+				return <VoivodeshipAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/provinces":
-				return <ProvinceAdd/>
+				return <ProvinceAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/cities":
-				return <CityAdd/>
+				return <CityAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-types":
-				return <TrainingTypeAdd/>
+				return <TrainingTypeAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-levels":
-				return <TrainingLevelAdd/>
+				return <TrainingLevelAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-steps":
-				return <TrainingStepAdd/>
+				return <TrainingStepAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/time-units":
-				return <TimeUnitAdd/>
+				return <TimeUnitAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/user-types":
-				return <UserTypeAdd/>
+				return <UserTypeAdd onClose={() => setIsModalAddNew(false)}/>
 			default:
 				return null;
 		}
 	}
-	const recordID = useState(null)
-	const getCurrentFormUpdate = () => {
-		console.log(location.pathname)
+	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla updatów
+	const getCurrentFormUpdate = (dataToModal) => {
 		switch (location.pathname) {
 			case "/animal-types":
-				return <AnimalTypeAdd/>
+				return <AnimalTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/breeds":
-				return <BreedAdd/>
+				return <BreedUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/voivodeships":
-				return <VoivodeshipAdd/>
+				return <VoivodeshipUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/provinces":
-				return <ProvinceAdd/>
+				return <ProvinceUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/cities":
-				return <CityAdd/>
+				return <CityUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/training-types":
-				return <TrainingTypeAdd/>
+				return <TrainingTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/training-levels":
-				return <TrainingLevelAdd/>
+				return <TrainingLevelUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/training-steps":
-				return <TrainingStepAdd/>
+				return <TrainingStepUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/time-units":
-				return <TimeUnitAdd/>
+				return <TimeUnitUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/user-types":
-				return <UserTypeAdd/>
+				return <UserTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			default:
 				return null;
 		}
 	}
-	let getCurrentFormArchive = (id) => {
+	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla archiwizacji
+	const getCurrentFormArchive = (id) => {
 		switch (location.pathname) {
 			case "/animal-types":
 				return async () => await dataHandler.archiveAnimalType(id)
@@ -113,22 +117,36 @@ export const TableTypeAdmin = (props) => {
 				return null
 		}
 	}
+	const getCurrentFormDelete = (id) => {
+		switch (location.pathname) {
+			case "/animal-types":
+				return async () => await dataHandler.deleteAnimalType(id)
+			case "/breeds":
+				return async () => await dataHandler.deleteBreed(id)
+			case "/voivodeships":
+				return async () => await dataHandler.deleteVoivodeship(id)
+			case "/provinces":
+				return async () => await dataHandler.deleteProvince(id)
+			case "/cities":
+				return async () => await dataHandler.deleteCity(id)
+			case "/training-types":
+				return async () => await dataHandler.deleteTrainingType(id)
+			case "/training-levels":
+				return async () => await dataHandler.deleteTrainingLevel(id)
+			case "/training-steps":
+				return async () => await dataHandler.deleteTrainingStep(id)
+			case "/time-units":
+				return async () => await dataHandler.deleteTimeUnit(id)
+			case "/user-types":
+				return async () => await dataHandler.deleteUserType(id)
+			default:
+				return null
+		}
+	}
 
 
-	const [isModalAddNew, setIsModalAddNew] = useState(false);
-	const [isModalArchive, setIsModalArchive] = useState(false);
+	const [isModalAddNew, setIsModalAddNew] = useState(false);;
 	const [isModalUpdate, setIsModalUpdate] = useState(false);
-
-	const handleClickOn = () => {
-		console.log(isModalUpdate);
-		setIsModalUpdate(true);
-		console.log(isModalUpdate);
-	}
-	const handleClickOff = () => {
-		console.log(isModalUpdate);
-		setIsModalUpdate(false);
-		console.log(isModalUpdate);
-	}
 
 	const data = props.data;
 	const tableRef = useRef(null);
@@ -138,7 +156,8 @@ export const TableTypeAdmin = (props) => {
 		sheet:props.sheet
 	});
 
-	const columns = useMemo(() => props.columns, [props.columns])
+
+	const columns = props.columns
 
 	const defaultColumn = useMemo(() => {return{Filter:ColumnFilter,}},[]);
 
@@ -157,7 +176,7 @@ export const TableTypeAdmin = (props) => {
 				{
 					id:'selection',
 					Header:({getToggleAllRowsSelectedProps}) => (
-						<CheckBox {...getToggleAllRowsSelectedProps()} />
+						<CheckBox {...getToggleAllRowsSelectedProps()}/>
 					),
 					Cell: ({row}) => (
 						<CheckBox
@@ -168,12 +187,12 @@ export const TableTypeAdmin = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
 						<div>
-							<FontAwesomeIcon onClick={handleClickOn} icon={faEdit} key = {"U" + row.original.id.valueOf()}></FontAwesomeIcon>
-							{isModalUpdate ? <AnimalTypeUpdate dataRow={row.original}
-															   onClose={handleClickOff}/> : null}
+							<FontAwesomeIcon onClick={() => getCurrentFormUpdate(row.original)} icon={faEdit} />
 							<br/>
-							<FontAwesomeIcon key = {"A" + row.original.id.valueOf()} onClick={getCurrentFormArchive(row.original.id.valueOf())} icon={faArchive}></FontAwesomeIcon>
-							</div>
+							<FontAwesomeIcon onClick={() => getCurrentFormArchive(row.original.id.valueOf())} icon={faArchive}/>
+							<br/>
+							<FontAwesomeIcon onClick={() => getCurrentFormDelete(row.original.id.valueOf())} icon={faDeleteLeft}/>
+						</div>
 					),
 				},
 				...columns
@@ -207,33 +226,27 @@ export const TableTypeAdmin = (props) => {
 
 
 	return (
+		<>
 			<div className="table-wrapper">
-			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+				<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
 			<div>
-				<CheckBox {...getToggleHideAllColumnsProps()}></CheckBox>
+				<CheckBox {...getToggleHideAllColumnsProps()}/>
 					<span key="totalCheckbox" className="text">Pokaż wszystkie kolumny</span>
 			</div>
 			{
-				allColumns.map((column, index) =>
-					{
-						return (
-							<span className="fl-table td" key={index}>
-								<input className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
-								{column.Header}
-							</span>
-						)
-					}
-				)
+				allColumns.map((column, index) => (
+					<span key={index} className="fl-table td">
+						<input className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
+						{column.Header}
+					</span>
+				))
 			}
 			<div>
-				<div>
-					<FontAwesomeIcon onClick={onDownload} title="Excel" icon={faTableCells}></FontAwesomeIcon>
-				</div>
-				<div>
-					<FontAwesomeIcon onClick={() => setIsModalAddNew(true) } title="Dodaj" icon={faEdit}></FontAwesomeIcon>
-					{getCurrentFormAdd()}
-
-				</div>
+				<FontAwesomeIcon onClick={onDownload} title="Excel" icon={faTableCells}/>
+			</div>
+			<div>
+				<FontAwesomeIcon onClick={() => setIsModalAddNew(true) } title="Dodaj" icon={faEdit}/>
+				{isModalAddNew ? getCurrentFormAdd(): null}
 			</div>
 			<table className="fl-table" ref={tableRef} {...getTableProps()}>
 				<thead>
@@ -302,6 +315,7 @@ export const TableTypeAdmin = (props) => {
 			<button title="nestPage" onClick={()=> nextPage()} disabled={!canNextPage}>{'>'}</button>
 			<button title="lastPage" onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}> {'>>'}</button>
 		</div>
+		</>
 
 	)
 }
