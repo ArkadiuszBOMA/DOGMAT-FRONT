@@ -5,17 +5,11 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
-import UserTypeAdd from "./UserTypeModal/UserTypeAdd/UserTypeAdd";
-import UserTypeArchive from "./UserTypeModal/UserTypeArchive/UserTypeArchive";
-import UserTypeUpdate from "./UserTypeModal/UserTypeUpdate/UserTypeUpdate";
 
-export const UserType = () => {
+export const UserPrivilege = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
-	const addNewRecord = useState(<UserTypeAdd/>);
-	const addArchive = useState(<UserTypeArchive/>);
-	const addUpdate = useState(<UserTypeUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -24,7 +18,7 @@ export const UserType = () => {
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getUserTypes();
+			const databaseData = await dataHandler.getUserPrivileges();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -36,8 +30,8 @@ export const UserType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)
 }
-export default UserType
+export default UserPrivilege

@@ -18,13 +18,13 @@ const VoivodeshipAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.addAnimalType(data);
+        const dataRow = await dataHandler.addVoivodeship(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
             return;
         }
-        navigate('/breeds');
+        navigate('/voivodeships');
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (
@@ -33,10 +33,10 @@ const VoivodeshipAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-                <h2 className="modal-header">Dodaj zwierzaka</h2>
+                <h2 className="modal-header">Dodaj Województwo</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
-                    <input className="modal-header" type="text" name="animalType" placeholder="Wybierz zwierzaka"></input>
+                    <input className="modal-header" type="text" name="name" placeholder="Nazwa"></input>
+                    <input className="modal-header" type="text" name="terytId" placeholder="Kod TERYT"></input>
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>

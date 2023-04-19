@@ -16,5 +16,6 @@
   "getAllTrainingLevels": "/api/v1/training-levels",
   "getAllUserTypes": "/api/v1/user-types",
   "getAllUserRoles": "/api/v1/user-roles",
+  "getAllUserPrivileges": "/api/v1/user-privileges",
   "getAllVoivodeship": "/api/v1/voivodeships"
 }

@@ -4,7 +4,6 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faEdit} from "@fortawesome/free-solid-svg-icons";
 

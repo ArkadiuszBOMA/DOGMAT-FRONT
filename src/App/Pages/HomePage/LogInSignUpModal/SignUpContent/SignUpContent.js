@@ -17,13 +17,12 @@ const SignUpContent = props => {
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
         const user = await dataHandler.addNewUser(data);
-        setIsLoading(false);
-        if (!user) {
-            setIsError(true);
-            return;
-        }
-        navigate('/');
-        authenticate.loginUser(user.id, user.email, user.firstName, user.lastName, user.userType, user.avatarSmallLocation);
+        // setIsLoading(false);
+        // if (!user) {
+        //     setIsError(true);
+        //     return;
+        // }
+        navigate('/login');
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
@@ -40,8 +39,7 @@ const SignUpContent = props => {
                     <input type="email" name="email" placeholder="Email"></input>
                     <input type="password" name="password" placeholder="Hasło"></input>
                     <input type="password" name="repeatPassword" placeholder="Powtórz hasło"></input>
-                    <input type="hidden" name="userType" value={1}></input>
-                    <input type="hidden" name="cityId" value={0}></input>
+                    <input type="hidden" name="cityId" value="0"></input>
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>

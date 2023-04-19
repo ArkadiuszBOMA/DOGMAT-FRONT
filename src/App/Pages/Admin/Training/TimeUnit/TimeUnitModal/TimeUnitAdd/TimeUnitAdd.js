@@ -18,13 +18,13 @@ const TimeUnitAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.addAnimalType(data);
+        const dataRow = await dataHandler.addTimeUnit(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
             return;
         }
-        navigate('/breeds');
+        navigate('/time-units');
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (

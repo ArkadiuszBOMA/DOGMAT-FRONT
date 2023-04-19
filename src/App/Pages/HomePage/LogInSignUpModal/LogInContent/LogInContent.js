@@ -39,7 +39,7 @@ const LogInContent = props => {
             return;
         }
         navigate('/About');
-        authenticate.loginUser(user.id, user.email, user.firstName, user.lastName, user.userType, user.avatarSmallLocation);
+        authenticate.loginUser(user.id, user.email, user.firstName, user.lastName, user.avatarSmallLocation, user.token);
     }
 
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;

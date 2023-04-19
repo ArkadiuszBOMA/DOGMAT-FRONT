@@ -10,26 +10,46 @@ import {faArchive, faDeleteLeft, faEdit, faTableCells} from "@fortawesome/free-s
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 import {useLocation} from "react-router-dom";
+// ADD
 import AnimalTypeAdd from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
 import BreedAdd from "../../../Pages/Admin/Animal/Breed/BreedModal/BreedAdd/BreedAdd";
-import VoivodeshipAdd from "../../../Pages/Admin/Localization/Voivodeship/VoivodeshipModal/VoivodeshipAdd/VoivodeshipAdd";
-import ProvinceAdd from "../../../Pages/Admin/Localization/Province/ProvinceModal/ProvinceAdd/ProvinceAdd";
+
+import AppUserAdd from "../../../Pages/Admin/AppUser/AppUsers/AppUserModal/AppUserAdd/AppUserAdd";
+import UserRoleAdd from "../../../Pages/Admin/AppUser/UserRole/UserRoleModal/UserRoleAdd/UserRoleAdd";
+import UserPrivilegeAdd from "../../../Pages/Admin/AppUser/UserPrivilege/UserPrivilegeModal/UserPrivilegeAdd/UserPrivilegeAdd";
+
+import CareTypeAdd from "../../../Pages/Admin/Care/CareType/CareTypeModal/CareTypeAdd/CareTypeAdd"
+
 import CityAdd from "../../../Pages/Admin/Localization/City/CityModal/CityAdd/CityAdd";
-import TrainingTypeAdd from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeAdd/TrainingTypeAdd";
+import ProvinceAdd from "../../../Pages/Admin/Localization/Province/ProvinceModal/ProvinceAdd/ProvinceAdd";
+import VoivodeshipAdd from "../../../Pages/Admin/Localization/Voivodeship/VoivodeshipModal/VoivodeshipAdd/VoivodeshipAdd";
+
+import TimeUnitAdd from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitAdd/TimeUnitAdd";
 import TrainingLevelAdd from "../../../Pages/Admin/Training/TrainingLevel/TrainingLevelModal/TrainingLevelAdd/TrainingLevelAdd";
 import TrainingStepAdd from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepAdd/TrainingStepAdd";
-import TimeUnitAdd from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitAdd/TimeUnitAdd";
-import UserTypeAdd from "../../../Pages/Admin/AppUser/UserType/UserTypeModal/UserTypeAdd/UserTypeAdd";
+import TrainingTypeAdd from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeAdd/TrainingTypeAdd";
+
+
+// UPDATE
 import AnimalTypeUpdate from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
 import BreedUpdate from "../../../Pages/Admin/Animal/Breed/BreedModal/BreedUpdate/BreedUpdate";
-import VoivodeshipUpdate from "../../../Pages/Admin/Localization/Voivodeship/VoivodeshipModal/VoivodeshipUpdate/VoivodeshipUpdate";
-import ProvinceUpdate from "../../../Pages/Admin/Localization/Province/ProvinceModal/ProvinceUpdate/ProvinceUpdate";
+
+import AppUserUpdate from "../../../Pages/Admin/AppUser/AppUsers/AppUserModal/AppUserUpdate/AppUserUpdate";
+import UserPrivilegeUpdate from "../../../Pages/Admin/AppUser/UserPrivilege/UserPrivilegeModal/UserPrivilegeUpdate/UserPrivilegeUpdate";
+import UserRoleUpdate from "../../../Pages/Admin/AppUser/UserRole/UserRoleModal/UserRoleUpdate/UserRoleUpdate";
+
+import CareTypeUpdate from "../../../Pages/Admin/Care/CareType/CareTypeModal/CareTypeUpdate/CareTypeUpdate"
+
 import CityUpdate from "../../../Pages/Admin/Localization/City/CityModal/CityUpdate/CityUpdate";
-import TrainingTypeUpdate from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeUpdate/TrainingTypeUpdate";
+import ProvinceUpdate from "../../../Pages/Admin/Localization/Province/ProvinceModal/ProvinceUpdate/ProvinceUpdate";
+import VoivodeshipUpdate from "../../../Pages/Admin/Localization/Voivodeship/VoivodeshipModal/VoivodeshipUpdate/VoivodeshipUpdate";
+
+
+import TimeUnitUpdate from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitUpdate/TimeUnitUpdate";
 import TrainingLevelUpdate from "../../../Pages/Admin/Training/TrainingLevel/TrainingLevelModal/TrainingLevelUpdate/TrainingLevelUpdate";
 import TrainingStepUpdate from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepUpdate/TrainingStepUpdate";
-import TimeUnitUpdate from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/TimeUnitUpdate/TimeUnitUpdate";
-import UserTypeUpdate from "../../../Pages/Admin/AppUser/UserType/UserTypeModal/UserTypeUpdate/UserTypeUpdate";
+import TrainingTypeUpdate from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeUpdate/TrainingTypeUpdate";
+
 
 export const TableTypeAdmin = (props) => {
 
@@ -38,44 +58,53 @@ export const TableTypeAdmin = (props) => {
 
 	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej storny
 	const getCurrentFormAdd = () => {
+		console.log(location.pathname)
 		switch (location.pathname) {
 			case "/animal-types":
 				return <AnimalTypeAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/breeds":
 				return <BreedAdd onClose={() => setIsModalAddNew(false)}/>
-			case "/voivodeships":
-				return <VoivodeshipAdd onClose={() => setIsModalAddNew(false)}/>
-			case "/provinces":
-				return <ProvinceAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/cities":
 				return <CityAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/provinces":
+				return <ProvinceAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/voivodeships":
+				return <VoivodeshipAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/time-units":
+				return <TimeUnitAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-types":
 				return <TrainingTypeAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-levels":
 				return <TrainingLevelAdd onClose={() => setIsModalAddNew(false)}/>
 			case "/training-steps":
 				return <TrainingStepAdd onClose={() => setIsModalAddNew(false)}/>
-			case "/time-units":
-				return <TimeUnitAdd onClose={() => setIsModalAddNew(false)}/>
-			case "/user-types":
-				return <UserTypeAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/user-roles":
+				return <UserRoleAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/user-privileges":
+				return <UserPrivilegeAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/users":
+				return <AppUserAdd onClose={() => setIsModalAddNew(false)}/>
+			case "/care-announcement":
+				return <CareTypeAdd onClose={() => setIsModalAddNew(false)}/>
+
 			default:
 				return null;
 		}
 	}
 	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla updatów
 	const getCurrentFormUpdate = (dataToModal) => {
+		console.log(location.pathname)
 		switch (location.pathname) {
 			case "/animal-types":
 				return <AnimalTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/breeds":
 				return <BreedUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
-			case "/voivodeships":
-				return <VoivodeshipUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
-			case "/provinces":
-				return <ProvinceUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/cities":
 				return <CityUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
+			case "/provinces":
+				return <ProvinceUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
+			case "/voivodeships":
+				return <VoivodeshipUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/training-types":
 				return <TrainingTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/training-levels":
@@ -84,14 +113,21 @@ export const TableTypeAdmin = (props) => {
 				return <TrainingStepUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/time-units":
 				return <TimeUnitUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
-			case "/user-types":
-				return <UserTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
+			case "/user-roles":
+				return <UserRoleUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
+			case "/user-privileges":
+				return <UserPrivilegeUpdate onClose={() => setIsModalAddNew(false)}/>
+			case "/users":
+				return <AppUserUpdate onClose={() => setIsModalAddNew(false)}/>
+			case "/care-announcement":
+				return <CareTypeUpdate onClose={() => setIsModalAddNew(false)}/>
 			default:
 				return null;
 		}
 	}
 	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla archiwizacji
 	const getCurrentFormArchive = (id) => {
+		console.log(location.pathname)
 		switch (location.pathname) {
 			case "/animal-types":
 				return async () => await dataHandler.archiveAnimalType(id)
@@ -111,13 +147,20 @@ export const TableTypeAdmin = (props) => {
 				return async () => await dataHandler.archiveTrainingStep(id)
 			case "/time-units":
 				return async () => await dataHandler.archiveTimeUnit(id)
-			case "/user-types":
-				return async () => await dataHandler.archiveUserType(id)
+			case "/user-roles":
+				return async () => await dataHandler.archiveUserRole(id)
+			case "/user-privileges":
+				return async () => await dataHandler.archiveUserPrivilege(id)
+			case "/users":
+				return async () => await dataHandler.archiveAppUser(id)
+			case "/care-announcement":
+				return async () => await dataHandler.archiveCareAnnouncement(id)
 			default:
 				return null
 		}
 	}
 	const getCurrentFormDelete = (id) => {
+		console.log(location.pathname)
 		switch (location.pathname) {
 			case "/animal-types":
 				return async () => await dataHandler.deleteAnimalType(id)
@@ -137,8 +180,12 @@ export const TableTypeAdmin = (props) => {
 				return async () => await dataHandler.deleteTrainingStep(id)
 			case "/time-units":
 				return async () => await dataHandler.deleteTimeUnit(id)
-			case "/user-types":
-				return async () => await dataHandler.deleteUserType(id)
+			case "/user-roles":
+				return async () => await dataHandler.deleteUserRole(id)
+			case "/user-privileges":
+				return async () => await dataHandler.deleteUserPrivilege(id)
+			case "/care-announcement":
+				return async () => await dataHandler.deleteCareAnnouncement(id)
 			default:
 				return null
 		}
@@ -187,11 +234,12 @@ export const TableTypeAdmin = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({ row }) => (
 						<div>
-							<FontAwesomeIcon onClick={() => getCurrentFormUpdate(row.original)} icon={faEdit} />
+							<button id= {"UPD" + row.original.id.valueOf()} onClick={() => setIsModalUpdate(true) }>UAKTUALNIJ</button>
+							{isModalUpdate ? getCurrentFormUpdate(row.original.id.valueOf()): null}
 							<br/>
-							<FontAwesomeIcon onClick={() => getCurrentFormArchive(row.original.id.valueOf())} icon={faArchive}/>
+							<button id= {"ARC" + row.original.id.valueOf()} onClick={() => getCurrentFormArchive(row.original.id.valueOf())}>ARCHIWIZUJ</button>
 							<br/>
-							<FontAwesomeIcon onClick={() => getCurrentFormDelete(row.original.id.valueOf())} icon={faDeleteLeft}/>
+							<button id= {"DEL" + row.original.id.valueOf()} onClick={() => getCurrentFormDelete(row.original.id.valueOf())} >USUŃ</button>
 						</div>
 					),
 				},
@@ -236,16 +284,16 @@ export const TableTypeAdmin = (props) => {
 			{
 				allColumns.map((column, index) => (
 					<span key={index} className="fl-table td">
-						<input className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
+						<input key={column.Header} className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
 						{column.Header}
 					</span>
 				))
 			}
 			<div>
-				<FontAwesomeIcon onClick={onDownload} title="Excel" icon={faTableCells}/>
+				<FontAwesomeIcon id="Excel" onClick={onDownload} title="Excel" icon={faTableCells}/>
 			</div>
 			<div>
-				<FontAwesomeIcon onClick={() => setIsModalAddNew(true) } title="Dodaj" icon={faEdit}/>
+				<FontAwesomeIcon id="Dodaj" onClick={() => setIsModalAddNew(true) } title="Dodaj" icon={faEdit}/>
 				{isModalAddNew ? getCurrentFormAdd(): null}
 			</div>
 			<table className="fl-table" ref={tableRef} {...getTableProps()}>
@@ -253,7 +301,7 @@ export const TableTypeAdmin = (props) => {
 				{headerGroups.map((headerGroup) => (
 					<tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
 						{
-							headerGroup.headers.map((columns) => (
+							headerGroup.headers.map((columns, index) => (
 								<th key = {columns.id} {...columns.getHeaderProps(columns.getSortByToggleProps)}>
 									{columns.render('Header')}
 									<div>
@@ -272,11 +320,14 @@ export const TableTypeAdmin = (props) => {
 				{page.map((row) => {
 					prepareRow(row)
 					return (
-						<tr key={row.id} {...row.getRowProps()}>
-							{row.cells.map((cell) => {
-								return <td key={cell.id} {...cell.getCellProps()}>
+						<tr key={row.id} {...row.getRowProps()} onClick={() => console.log(row.original)}>
+							{row.cells.map((cell, j) => {
+								return (
+									<td
+										rowSpan={cell.rowSpan}
+										{...cell.getCellProps()}>
 									{cell.render('Cell')}
-								</td>
+								</td>)
 							})}
 						</tr>
 					)

@@ -8,7 +8,7 @@ const NavBar = (props) => {
 	const [IsSignUp, setIsSignUp] = useState(false);
 	const navigate = useNavigate();
 	const navigateToAbout = () => {navigate('/about');}
-	const navigateToProfile = () => {navigate('/about');}
+	const navigateToProfile = () => {navigate('/user');}
 	const navigateToProvinces = () => {navigate('/provinces');}
 	const navigateToVoivodeships = () => {navigate('/voivodeships');}
 	const navigateToCities = () => {navigate('/cities');}
@@ -18,8 +18,9 @@ const NavBar = (props) => {
 	const navigateToTrainingLevel = () => {navigate('/training-levels');}
 	const navigateToTrainingStep = () => {navigate('/training-steps');}
 	const navigateToTimeUnits = () => {navigate('/time-units');}
-	const navigateToUserTypes = () => {navigate('/user-types');}
 	const navigateToUserRole = () => {navigate('/user-roles');}
+	const navigateToUserPrivilege = () => {navigate('/user-privilege');}
+	const navigateToCareAnnouncement = () => {navigate('/care-announcement');}
 	const navigateToLogout = () => {navigate('/');}
 
 
@@ -30,16 +31,17 @@ const NavBar = (props) => {
 		{onClick:() => {setIsSignUp(false);navigateToProfile()}, text:"Mój profil", id:"1"},
 		{onClick:() => {setIsSignUp(false);navigateToAnimalTypes()}, text:"Typy Zwierzaków", id:"2"},
 		{onClick:() => {setIsSignUp(false);navigateToBreeds()}, text:"Rasy", id:"3"},
-		{onClick:() => {setIsSignUp(false);navigateToVoivodeships()}, text:"Województwa", id:"4"},
-		{onClick:() => {setIsSignUp(false);navigateToProvinces()}, text:"Powiaty", id:"5"},
-		{onClick:() => {setIsSignUp(false);navigateToCities()}, text:"Miasta", id:"6"},
-		{onClick:() => {setIsSignUp(false);navigateToTrainingType()}, text:"Lekcje", id:"7"},
-		{onClick:() => {setIsSignUp(false);navigateToTrainingLevel()}, text:"Poziom Trudności", id:"8"},
-		{onClick:() => {setIsSignUp(false);navigateToTrainingStep()}, text:"Kroki", id:"9"},
-		{onClick:() => {setIsSignUp(false);navigateToTimeUnits()}, text:"Jednostki miary", id:"10"},
-		{onClick:() => {setIsSignUp(false);navigateToUserTypes()}, text:"Typ użytkownika", id:"11"},
+		{onClick:() => {setIsSignUp(false);navigateToCareAnnouncement()}, text:"Pomoc", id:"4"},
+		{onClick:() => {setIsSignUp(false);navigateToCities()}, text:"Miasta", id:"5"},
+		{onClick:() => {setIsSignUp(false);navigateToProvinces()}, text:"Powiaty", id:"6"},
+		{onClick:() => {setIsSignUp(false);navigateToVoivodeships()}, text:"Województwa", id:"7"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingType()}, text:"Lekcje", id:"8"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingLevel()}, text:"Poziom Trudności", id:"9"},
+		{onClick:() => {setIsSignUp(false);navigateToTrainingStep()}, text:"Kroki", id:"10"},
+		{onClick:() => {setIsSignUp(false);navigateToTimeUnits()}, text:"Jednostki miary", id:"11"},
 		{onClick:() => {setIsSignUp(false);navigateToUserRole()}, text:"Role użytkownika", id:"12"},
-		{onClick:() => {setIsSignUp(false);navigateToLogout()}, text:"Wyloguj się", id:"13"},
+		{onClick:() => {setIsSignUp(false);navigateToUserPrivilege()}, text:"Prawa użytkownika", id:"13"},
+		{onClick:() => {setIsSignUp(false);navigateToLogout()}, text:"Wyloguj się", id:"14"},
 
 	]
 

@@ -11,6 +11,9 @@ export let dataHandler = {
 	loginUser: async function (data) {
 		return await apiPost(api.hostCredential + api.getAllAppUsers + "/login", data);
 	},
+	archiveAppUser: async function (id){
+		return await apiPutNoBody(api.hostCredential + api.getAllAppUsers + "/"+ id + "?archive");
+	},
 	// ========================== ADMINISTRATION ===================
 	// ANIMALS
 
@@ -21,13 +24,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllAnimals, data);
 	},
 	updateAnimal: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllAnimals + data.id, data);
+		return await apiPutWithBody(api.hostCredential + api.getAllAnimals+ "?update", data);
 	},
 	archiveAnimal: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllAnimals + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllAnimals + "/"+ id +"?archive");
 	},
 	deleteAnimal: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllAnimals + id +"?delete" );
+		return await apiDelete(api.hostCredential + api.getAllAnimals  + "/"+ id);
 	},
 
 	// ANIMAL TYPE
@@ -38,13 +41,14 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllAnimalTypes, data);
 	},
 	updateAnimalType: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes+ "?update", data);
 	},
 	archiveAnimalType: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllAnimalTypes + id +"?archive");
+		console.log("tutaj jestem")
+		return await apiPutNoBody(api.hostCredential + api.getAllAnimalTypes + "/"+ id +"?archive");
 	},
 	deleteAnimalType: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllAnimalTypes + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllAnimalTypes + "/"+ id);
 	},
 
 	// BREED
@@ -55,13 +59,30 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllBreeds + data);
 	},
 	updateBreed: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllBreeds + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllBreeds+ "?update", data);
 	},
 	archiveBreed: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllBreeds + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllBreeds + "/"+ id +"?archive");
 	},
 	deleteBreed: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllBreeds + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllBreeds + "/"+ id);
+	},
+
+	// CARE ANNOUNCEMENT
+	getCareAnnouncements: async function () {
+		return await apiGet(api.hostCredential + api.getAllCareAnnouncementTypes);
+	},
+	addCareAnnouncement: async function (data) {
+		return await apiPost(api.hostCredential + api.getAllCareAnnouncementTypes, data);
+	},
+	updateCareAnnouncement: async function (data) {
+		return await apiPutWithBody(api.hostCredential + api.getAllCareAnnouncementTypes+ "?update", data);
+	},
+	archiveCareAnnouncement: async function (id) {
+		return await apiPutNoBody(api.hostCredential + api.getAllCareAnnouncementTypes + "/"+ id +"?archive");
+	},
+	deleteCareAnnouncement: async function (id) {
+		return await apiDelete(api.hostCredential + api.getAllCareAnnouncementTypes + "/"+ id);
 	},
 
 	// VOIVODESHIP
@@ -72,13 +93,14 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllVoivodeship , data);
 	},
 	updateVoivodeship: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllVoivodeship + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllVoivodeship+ "?update", data);
 	},
 	archiveVoivodeship: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllVoivodeship + id +"?archive");
+		console.log(api.hostCredential + api.getAllVoivodeship + "/"+ id +"?archive")
+		return await apiPutNoBody(api.hostCredential + api.getAllVoivodeship + "/"+ id +"?archive");
 	},
 	deleteVoivodeship: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllVoivodeship + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllVoivodeship + "/"+ id);
 	},
 
 	// PROVINCES
@@ -89,13 +111,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllProvinces , data);
 	},
 	updateProvince: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllProvinces + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllProvinces+ "?update", data);
 	},
 	archiveProvince: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllProvinces + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllProvinces + "/"+ id +"?archive");
 	},
 	deleteProvince: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllProvinces + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllProvinces + "/"+ id);
 	},
 
 	// CITIES
@@ -106,13 +128,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllCities , data);
 	},
 	updateCity: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllCities + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllCities+ "?update", data);
 	},
 	archiveCity: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllCities + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllCities + "/"+ id +"?archive");
 	},
 	deleteCity: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllCities + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllCities + "/"+ id);
 	},
 
 	// TRAINING TYPE
@@ -123,13 +145,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllLessons , data);
 	},
 	updateTrainingType: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllLessons + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllLessons+ "?update", data);
 	},
 	archiveTrainingType: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllLessons + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllLessons + "/"+ id +"?archive");
 	},
 	deleteTrainingType: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllLessons + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllLessons + "/"+ id);
 	},
 
 	// TRAINING LEVELS
@@ -140,13 +162,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllTrainingLevels , data);
 	},
 	updateTrainingLevel: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllTrainingLevels + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllTrainingLevels+ "?update", data);
 	},
 	archiveTrainingLevel: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllTrainingLevels + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllTrainingLevels + "/"+ id +"?archive");
 	},
 	deleteTrainingLevel: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllTrainingLevels + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllTrainingLevels + "/"+ id);
 	},
 
 	// TRAINING STEPS
@@ -157,13 +179,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllLessonSteps , data);
 	},
 	updateTrainingStep: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllLessonSteps + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllLessonSteps+ "?update", data);
 	},
 	archiveTrainingStep: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllLessonSteps + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllLessonSteps + "/"+ id +"?archive");
 	},
 	deleteTrainingStep: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllLessonSteps + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllLessonSteps + "/"+ id);
 	},
 
 	// TIME UNITS
@@ -174,30 +196,13 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllTimeUnits , data);
 	},
 	updateTimeUnit: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllTimeUnits + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllTimeUnits+ "?update", data);
 	},
 	archiveTimeUnit: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllTimeUnits + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllTimeUnits + "/"+ id +"?archive");
 	},
 	deleteTimeUnit: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllTimeUnits + id +"?delete");
-	},
-
-	// USER TYPE
-	getUserTypes: async function () {
-		return await apiGet(api.hostCredential + api.getAllUserTypes);
-	},
-	addUserType: async function (data) {
-		return await apiPost(api.hostCredential + + api.getAllUserTypes + "/add" + data);
-	},
-	updateUserType: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllUserTypes + data.id + "?update", data);
-	},
-	archiveUserType: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllUserTypes + id +"?archive");
-	},
-	deleteUserType: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllUserTypes + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllTimeUnits + "/"+ id);
 	},
 
 	// USER ROLE
@@ -205,16 +210,33 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllUserRoles);
 	},
 	addUserRole: async function (data) {
-		return await apiPost(api.hostCredential + + api.getAllUserRoles + "/add" + data);
+		return await apiPost(api.hostCredential + + api.getAllUserRoles, + data);
 	},
 	updateUserRole: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllUserRoles + data.id + "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllUserRoles+ "?update", data);
 	},
 	archiveUserRole: async function (id) {
-		return await apiPutNoBody(api.hostCredential + api.getAllUserRoles + id +"?archive");
+		return await apiPutNoBody(api.hostCredential + api.getAllUserRoles + "/"+ id +"?archive");
 	},
 	deleteUserRole: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllUserRoles + id +"?delete");
+		return await apiDelete(api.hostCredential + api.getAllUserRoles + "/"+ id);
+	},
+
+	// USER PRIVILEGES
+	getUserPrivileges: async function () {
+		return await apiGet(api.hostCredential + api.getAllUserPrivileges);
+	},
+	addUserPrivilege: async function (data) {
+		return await apiPost(api.hostCredential + + api.getAllUserPrivileges, + data);
+	},
+	updateUserPrivilege: async function (data) {
+		return await apiPutWithBody(api.hostCredential + api.getAllUserPrivileges+ "?update", data);
+	},
+	archiveUserPrivilege: async function (id) {
+		return await apiPutNoBody(api.hostCredential + api.getAllUserPrivileges + "/"+ id +"?archive");
+	},
+	deleteUserPrivilege: async function (id) {
+		return await apiDelete(api.hostCredential + api.getAllUserPrivileges + "/"+ id);
 	},
 }
 

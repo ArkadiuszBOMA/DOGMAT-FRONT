@@ -1,21 +1,15 @@
 import React, {useEffect, useState, useMemo} from 'react'
-import videoMain from "../../../../../assets/video/bac1.mp4";
+import videoMain from "../../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
-import {dataHandler} from "../../../../Api/dataHandler";
-import NavBar from "../../../../NavBar/Navbar";
-import Spinner from "../../../../Utils/Spinners/Spinner";
-import Table from "../../../../Utils/TableTypeAdmin/TableTypeAdmin/TableTypeAdmin";
-import UserTypeAdd from "./UserTypeModal/UserRoleAdd/UserRoleAdd";
-import UserTypeArchive from "./UserTypeModal/UserRoleArchive/UserRoleArchive";
-import UserTypeUpdate from "./UserTypeModal/UserTypeUpdate/UserTypeUpdate";
+import {dataHandler} from "../../../../../Api/dataHandler";
+import NavBar from "../../../../../NavBar/Navbar";
+import Spinner from "../../../../../Utils/Spinners/Spinner";
+import Table from "../../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
 
 export const AppUser = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
-	const addNewRecord = useState(<UserTypeAdd/>);
-	const addArchive = useState(<UserTypeArchive/>);
-	const addUpdate = useState(<UserTypeUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
@@ -36,7 +30,7 @@ export const AppUser = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<Table data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+			<Table data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)
 }

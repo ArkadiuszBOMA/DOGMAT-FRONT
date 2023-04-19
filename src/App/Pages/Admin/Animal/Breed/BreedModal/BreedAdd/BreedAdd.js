@@ -4,7 +4,6 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -20,7 +19,7 @@ const BreedAdd = (props) => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.addAnimalType(data);
+        const dataRow = await dataHandler.addBreeds(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);

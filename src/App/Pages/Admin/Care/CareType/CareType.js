@@ -5,26 +5,20 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
-import CareTypeAdd from "./CareTypeModal/CareTypeAdd/CareTypeAdd";
-import CareTypeArchive from "./CareTypeModal/CareTypeArchive/CareTypeArchive";
-import CareTypeUpdate from "./CareTypeModal/CareTypeUpdate/CareTypeUpdate";
 
 export const CareType = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [data, setData] = useState([]);
-	const addNewRecord = useState(<CareTypeAdd/>);
-	const addArchive = useState(<CareTypeArchive/>);
-	const addUpdate = useState(<CareTypeUpdate/>);
 
 	const columns = useMemo(() => COLUMNS, []);
 	const file = "Dogmate";
-	const sheet = "Typ Użytkownika";
+	const sheet = "Pomoc";
 
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
-			const databaseData = await dataHandler.getUserTypes();
+			const databaseData = await dataHandler.getCareAnnouncements();
 			setData(databaseData);
 			setIsLoading(false);
 		}
@@ -36,7 +30,7 @@ export const CareType = () => {
 			<video className="video" src={videoMain} autoPlay loop muted />
 			<NavBar/>
 			{isLoading ? <Spinner/> : null}
-			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet} addNewRecord={addNewRecord} addArchive={addArchive} addUpdate={addUpdate}/>
+			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)
 }

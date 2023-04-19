@@ -1,4 +1,4 @@
-import './UserTypeAdd.css'
+import './UserPrivilegeAdd.css'
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
@@ -7,7 +7,7 @@ import Spinner from "../../../../../../Utils/Spinners/Spinner";
 import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
 
 
-const UserTypeAdd = props => {
+const UserPrivilegeAdd = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -18,7 +18,7 @@ const UserTypeAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.addAnimalType(data);
+        const dataRow = await dataHandler.addUserPrivilege(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
@@ -45,4 +45,4 @@ const UserTypeAdd = props => {
 }
 
 
-export default UserTypeAdd;
+export default UserPrivilegeAdd;

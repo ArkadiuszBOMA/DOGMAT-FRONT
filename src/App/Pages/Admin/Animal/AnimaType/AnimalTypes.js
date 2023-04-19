@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo, Component} from 'react'
+import React, {useEffect, useState, useMemo} from 'react'
 import videoMain from "../../../../../assets/video/bac1.mp4";
 import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";

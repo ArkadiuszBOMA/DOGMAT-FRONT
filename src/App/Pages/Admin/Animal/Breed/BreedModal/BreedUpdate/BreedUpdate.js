@@ -16,8 +16,8 @@ const AnimalTypeAdd = props => {
     async function onSubmitClick(e) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.updateAnimalType(data);
-        navigate('/animal-type');
+        const dataRow = await dataHandler.updateBreed(data);
+        navigate('/breeds');
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;

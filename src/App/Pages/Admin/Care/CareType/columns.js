@@ -9,8 +9,8 @@ export const COLUMNS = [
 		disableFilters: true
 	},
 	{
-		Header: 'Rasa',
-		Footer: 'Rasa',
+		Header: 'Pomoc',
+		Footer: 'Pomoc',
 		accessor: 'name',
 		isEditable: false,
 	},

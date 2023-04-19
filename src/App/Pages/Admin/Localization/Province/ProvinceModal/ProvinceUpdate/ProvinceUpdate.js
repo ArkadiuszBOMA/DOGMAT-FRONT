@@ -5,7 +5,7 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 
 
-const AnimalTypeAdd = props => {
+const ProvinceUpdate = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -14,8 +14,8 @@ const AnimalTypeAdd = props => {
     async function onSubmitClick(e) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.updateAnimalType(data);
-        navigate('/animal-type');
+        const dataRow = await dataHandler.updateProvince(data);
+        navigate('/provinces');
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
@@ -36,4 +36,4 @@ const AnimalTypeAdd = props => {
 }
 
 
-export default AnimalTypeAdd;
+export default ProvinceUpdate;

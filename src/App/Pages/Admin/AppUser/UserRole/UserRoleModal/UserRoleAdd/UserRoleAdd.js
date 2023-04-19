@@ -18,7 +18,7 @@ const UserRoleAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        const dataRow = await dataHandler.addAnimalType(data);
+        const dataRow = await dataHandler.addUserRole(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
