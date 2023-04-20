@@ -1,4 +1,5 @@
 import api from './apis.json'
+import {authenticate} from "../Authenticate/authenticate";
 
 export let dataHandler = {
 	// =========================        USER     ==================
@@ -6,10 +7,10 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllAppUsers);
 	},
 	addNewUser: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllAppUsers + "/register", data);
+		return await apiLoginRegister(api.hostCredential + api.getAllAppUsers + "/register", data);
 	},
 	loginUser: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllAppUsers + "/login", data);
+		return await apiLoginRegister(api.hostCredential + api.getAllAppUsers + "/login", data);
 	},
 	archiveAppUser: async function (id){
 		return await apiPutNoBody(api.hostCredential + api.getAllAppUsers + "/"+ id + "?archive");
@@ -243,9 +244,25 @@ export let dataHandler = {
 
 // ========================= ASYNCHRONICZNE FUNKCJE   ==================
 async function apiGet(url) {
+	const token = authenticate.getAppUser().token;
 	let response = await fetch(url, {
 		method: "GET",
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	if (response.ok) {
+		return await response.json();
+	}
+}
 
+async function apiLoginRegister(url, payload) {
+	let response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
 	});
 	if (response.ok) {
 		return await response.json();
@@ -253,11 +270,12 @@ async function apiGet(url) {
 }
 
 async function apiPost(url, payload) {
+	const token = authenticate.getAppUser().token;
 	let response = await fetch(url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
+			'Authorization': `Bearer ${token}`
 		},
 		body: JSON.stringify(payload),
 	});
@@ -267,11 +285,12 @@ async function apiPost(url, payload) {
 }
 
 async function apiPutWithBody(url, payload) {
+	const token = authenticate.getAppUser().token;
 	let response = await fetch(url, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
+			'Authorization': `Bearer ${token}`
 		},
 		body: JSON.stringify(payload),
 	});
@@ -281,8 +300,12 @@ async function apiPutWithBody(url, payload) {
 }
 
 async function apiPutNoBody(url) {
+	const token = authenticate.getAppUser().token;
 	let response = await fetch(url, {
 		method: "PUT",
+		headers: {
+			'Authorization': `Bearer ${token}`
+		},
 	});
 	if (response.ok) {
 		return response;
@@ -290,8 +313,12 @@ async function apiPutNoBody(url) {
 }
 
 async function apiDelete(url) {
+	const token = authenticate.getAppUser().token;
 	let response = await fetch(url, {
 		method: "DELETE",
+		headers: {
+			'Authorization': `Bearer ${token}`
+		},
 	});
 	if (response.ok) {
 		return response;
