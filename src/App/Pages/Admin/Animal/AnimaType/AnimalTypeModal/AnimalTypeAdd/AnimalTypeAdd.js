@@ -32,8 +32,8 @@ const AnimalTypeAdd = (props) => {
         <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
-                {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
+                {isError ? <ErrorModal text="Nazwa musi mieć długość minimalną 5 i maksymalną 50 znaków"/> : null}
                 <h2 className="modal-header">Dodaj zwierzaka</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>

@@ -1,15 +1,16 @@
+// SYSTEMOWE
 import React, {useMemo, useRef, useState} from "react";
 import {useDownloadExcel} from 'react-export-table-to-excel'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table'
 import {GlobalFilter} from "../Filters/GlobalFilter/GlobalFilter";
 import {ColumnFilter} from "../Filters/ColumnFilter/ColumnFilter";
-import "./TableTypeAdmin.css"
 import {CheckBox} from "../CheckBox/CheckBox";
-import {dataHandler} from "../../../Api/dataHandler";
-import {faArchive, faDeleteLeft, faEdit, faTableCells} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faTableCells} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
 import {useLocation} from "react-router-dom";
+// DANE
+import {dataHandler} from "../../../Api/dataHandler";
+import "./TableTypeAdmin.css"
 // ADD
 import AnimalTypeAdd from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeAdd/AnimalTypeAdd";
 import BreedAdd from "../../../Pages/Admin/Animal/Breed/BreedModal/BreedAdd/BreedAdd";
@@ -28,8 +29,6 @@ import TimeUnitAdd from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal/Ti
 import TrainingLevelAdd from "../../../Pages/Admin/Training/TrainingLevel/TrainingLevelModal/TrainingLevelAdd/TrainingLevelAdd";
 import TrainingStepAdd from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepAdd/TrainingStepAdd";
 import TrainingTypeAdd from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeAdd/TrainingTypeAdd";
-
-
 // UPDATE
 import AnimalTypeUpdate from "../../../Pages/Admin/Animal/AnimaType/AnimalTypeModal/AnimalTypeUpdate/AnimalTypeUpdate";
 import BreedUpdate from "../../../Pages/Admin/Animal/Breed/BreedModal/BreedUpdate/BreedUpdate";
@@ -49,14 +48,14 @@ import TimeUnitUpdate from "../../../Pages/Admin/Training/TimeUnit/TimeUnitModal
 import TrainingLevelUpdate from "../../../Pages/Admin/Training/TrainingLevel/TrainingLevelModal/TrainingLevelUpdate/TrainingLevelUpdate";
 import TrainingStepUpdate from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepUpdate/TrainingStepUpdate";
 import TrainingTypeUpdate from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeUpdate/TrainingTypeUpdate";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
 
 
 export const TableTypeAdmin = (props) => {
 
 	// zmienne do komunikowania się ze ścieżką
 	const location = useLocation();
-
-	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej storny
+	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dodawanie
 	const getCurrentFormAdd = () => {
 		console.log(location.pathname)
 		switch (location.pathname) {
@@ -159,6 +158,7 @@ export const TableTypeAdmin = (props) => {
 				return null
 		}
 	}
+	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla usuwanie
 	const getCurrentFormDelete = (id) => {
 		console.log(location.pathname)
 		switch (location.pathname) {
@@ -191,11 +191,11 @@ export const TableTypeAdmin = (props) => {
 		}
 	}
 
-
+	//HOOKI
 	const [isModalAddNew, setIsModalAddNew] = useState(false);;
 	const [isModalUpdate, setIsModalUpdate] = useState(false);
+	const data = props.data
 
-	const data = props.data;
 	const tableRef = useRef(null);
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
@@ -203,15 +203,14 @@ export const TableTypeAdmin = (props) => {
 		sheet:props.sheet
 	});
 
-
 	const columns = props.columns
-
 	const defaultColumn = useMemo(() => {return{Filter:ColumnFilter,}},[]);
 
 	const tableInstance = useTable({
 			columns,
 			data,
 			defaultColumn,
+
 		},
 		useFilters,
 		useGlobalFilter,

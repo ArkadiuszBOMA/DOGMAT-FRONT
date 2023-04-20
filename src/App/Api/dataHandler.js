@@ -21,7 +21,7 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllAnimals);
 	},
 	addAnimal: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllAnimals, data);
+		return await apiPost(api.hostCredential + api.getAllAnimals , data);
 	},
 	updateAnimal: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllAnimals+ "?update", data);
@@ -38,7 +38,7 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllAnimalTypes);
 	},
 	addAnimalType: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllAnimalTypes, data);
+		return await apiPost(api.hostCredential + api.getAllAnimalTypes , data);
 	},
 	updateAnimalType: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes+ "?update", data);
@@ -56,7 +56,7 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllBreeds);
 	},
 	addBreeds: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllBreeds + data);
+		return await apiPost(api.hostCredential + api.getAllBreeds , data);
 	},
 	updateBreed: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllBreeds+ "?update", data);

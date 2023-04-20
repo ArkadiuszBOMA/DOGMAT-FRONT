@@ -4,7 +4,6 @@ import {useState} from "react";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from "../../../../Utils/ErrorModal/ErrorModal";
-import {authenticate} from "../../../../Authenticate/authenticate";
 
 const SignUpContent = props => {
 

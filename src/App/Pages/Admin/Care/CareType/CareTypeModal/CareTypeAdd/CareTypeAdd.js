@@ -31,7 +31,7 @@ const CareTypeAdd = props => {
         <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
-                {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
+                {isError ? <ErrorModal text="Nazwa musi mieś długość minimalną 5 i maksymalną 50 znaków"/> : null}
                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
                 <h2 className="modal-header">Dodaj nazwę pomocy</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
