@@ -5,8 +5,6 @@ import {dataHandler} from "../../../../Api/dataHandler";
 import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
-import CityAdd from "./CityModal/CityAdd/CityAdd";
-import CityUpdate from "./CityModal/CityUpdate/CityUpdate";
 
 export const City = () => {
 

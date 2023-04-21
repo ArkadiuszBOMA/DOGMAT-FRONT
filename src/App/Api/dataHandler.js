@@ -90,6 +90,11 @@ export let dataHandler = {
 	getVoivodeships: async function () {
 		return await apiGet(api.hostCredential + api.getAllVoivodeship);
 	},
+
+	getProvincesForThisVoivodeship: async function (id) {
+		return await apiGet(api.hostCredential + api.getAllVoivodeship+ "/"+ id +"?provinces")
+	},
+
 	addVoivodeship: async function (data) {
 		return await apiPost(api.hostCredential + api.getAllVoivodeship , data);
 	},
@@ -111,6 +116,11 @@ export let dataHandler = {
 	addProvince: async function (data) {
 		return await apiPost(api.hostCredential + api.getAllProvinces , data);
 	},
+
+	getCitiesForThisProvince: async function (id) {
+		return await apiGet(api.hostCredential + api.getAllProvinces + "/"+ id +"?cities")
+	},
+
 	updateProvince: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllProvinces+ "?update", data);
 	},
@@ -125,6 +135,7 @@ export let dataHandler = {
 	getCities: async function () {
 		return await apiGet(api.hostCredential + api.getAllCities);
 	},
+
 	addCity: async function (data) {
 		return await apiPost(api.hostCredential + api.getAllCities , data);
 	},
@@ -237,7 +248,7 @@ export let dataHandler = {
 		return await apiPutNoBody(api.hostCredential + api.getAllUserPrivileges + "/"+ id +"?archive");
 	},
 	deleteUserPrivilege: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllUserPrivileges + "/"+ id);
+		return await apiDelete(api.hostCredential + api.getAllUserPrivileges + "/delete/"+ id);
 	},
 }
 

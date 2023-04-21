@@ -1,10 +1,11 @@
 import './UserRoleAdd.css'
 import {dataHandler} from "../../../../../../Api/dataHandler";
+import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const UserRoleAdd = props => {
@@ -12,7 +13,6 @@ const UserRoleAdd = props => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate();
-
 
     async function onSubmitClick(e) {
         e.preventDefault();
@@ -22,17 +22,18 @@ const UserRoleAdd = props => {
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
-            return;
         }
-        navigate('/breeds');
+        navigate('/user-roles');
     }
+
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
+
     return (
         <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
+                <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
                 <h2 className="modal-header">Dodaj zwierzaka</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>

@@ -1,5 +1,4 @@
 import {format} from "date-fns"
-import {ColumnFilter} from "../../../../Utils/Table/Filters/ColumnFilter/ColumnFilter";
 export const COLUMNS = [
 	{
 		Header: 'ID',

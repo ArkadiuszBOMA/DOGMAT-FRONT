@@ -7,7 +7,7 @@ import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-const AnimalTypeAdd = props => {
+const BreedUpdate = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -39,4 +39,4 @@ const AnimalTypeAdd = props => {
 }
 
 
-export default AnimalTypeAdd;
+export default BreedUpdate;
