@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const ButtonWithIconSubmit = props => {
 
     return (
-        <div>
+        <div className="modalButton">
             <FontAwesomeIcon onClick={props.onClick} icon={faEdit}/>
         </div>
     )

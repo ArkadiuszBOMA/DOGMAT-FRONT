@@ -97,7 +97,7 @@ export const TableTypeAdmin = (props) => {
 			case "/animal-types":
 				return <AnimalTypeUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/breeds":
-				return <BreedUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
+				return <BreedUpdate dataRow={dataToModal}  onClose={() => setIsModalUpdate(false)}/>
 			case "/cities":
 				return <CityUpdate dataRow={dataToModal} onClose={() => setIsModalUpdate(false)}/>
 			case "/provinces":
@@ -192,8 +192,8 @@ export const TableTypeAdmin = (props) => {
 	}
 
 	//HOOKI
-	const [isModalAddNew, setIsModalAddNew] = useState(false);;
-	const [isModalUpdate, setIsModalUpdate] = useState(false);
+	const [isModalAddNew, setIsModalAddNew] = useState(false);
+	const [isModalUpdate, setIsModalUpdate] = useState(true);
 	const data = props.data
 
 	const tableRef = useRef(null);

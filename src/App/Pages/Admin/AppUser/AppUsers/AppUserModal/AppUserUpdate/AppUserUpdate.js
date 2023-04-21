@@ -5,7 +5,7 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 
 
-const AnimalTypeAdd = props => {
+const AppUserUpdate= props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -36,4 +36,4 @@ const AnimalTypeAdd = props => {
 }
 
 
-export default AnimalTypeAdd;
+export default AppUserUpdate;

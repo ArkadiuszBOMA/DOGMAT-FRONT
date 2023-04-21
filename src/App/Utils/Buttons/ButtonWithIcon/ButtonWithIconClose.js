@@ -1,12 +1,12 @@
 import './ButtonWithIcon.css'
-import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ButtonWithIconAddress = props => {
 
     return (
-        <div>
-            <FontAwesomeIcon onClick={props.onClick} icon={faEdit}/>
+        <div className="modalButton">
+            <FontAwesomeIcon onClick={props.onClick} icon={faTimesCircle}/>
         </div>
     )
 }
