@@ -3,6 +3,7 @@ import {dataHandler} from "../../../../../../Api/dataHandler";
 import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
+import Spinner from "../../../../../../Utils/Spinners/Spinner";
 
 
 const UserPrivilegeUpdate = props => {
@@ -15,14 +16,15 @@ const UserPrivilegeUpdate = props => {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
         const dataRow = await dataHandler.updateUserPrivilege(data);
-        navigate('/privileges');
+        navigate('/user-privilege');
     }
 
-    const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
+    const contentModal = `modal ${isLoading ? "hidden" : ""}`;
 
     return (
         <div>
-            <div className={contentClasses}>
+            {isLoading ? <Spinner/> : null}
+            <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <h2 className="text">Dodaj zwierzaka</h2>
                 <form className="add" onSubmit={onSubmitClick}>

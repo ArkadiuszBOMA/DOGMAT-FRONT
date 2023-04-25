@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 
 const TrainingTypeUpdate = props => {
 
-    const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate();
 
@@ -18,11 +17,8 @@ const TrainingTypeUpdate = props => {
         navigate('/training-types');
     }
 
-    const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
-
     return (
         <div>
-            <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <h2 className="text">Dodaj zwierzaka</h2>
                 <form className="add" onSubmit={onSubmitClick}>
@@ -31,7 +27,6 @@ const TrainingTypeUpdate = props => {
                     <button className="submitButton" type="submit">Wykonaj</button>
                 </form>
             </div>
-        </div>
     )
 }
 

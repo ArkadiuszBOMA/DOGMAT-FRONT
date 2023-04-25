@@ -45,7 +45,6 @@ export let dataHandler = {
 		return await apiPutWithBody(api.hostCredential + api.getAllAnimalTypes+ "?update", data);
 	},
 	archiveAnimalType: async function (id) {
-		console.log("tutaj jestem")
 		return await apiPutNoBody(api.hostCredential + api.getAllAnimalTypes + "/"+ id +"?archive");
 	},
 	deleteAnimalType: async function (id) {
@@ -102,7 +101,6 @@ export let dataHandler = {
 		return await apiPutWithBody(api.hostCredential + api.getAllVoivodeship+ "?update", data);
 	},
 	archiveVoivodeship: async function (id) {
-		console.log(api.hostCredential + api.getAllVoivodeship + "/"+ id +"?archive")
 		return await apiPutNoBody(api.hostCredential + api.getAllVoivodeship + "/"+ id +"?archive");
 	},
 	deleteVoivodeship: async function (id) {
@@ -245,10 +243,11 @@ export let dataHandler = {
 		return await apiPutWithBody(api.hostCredential + api.getAllUserPrivileges+ "?update", data);
 	},
 	archiveUserPrivilege: async function (id) {
+		console.log("jestem tutaj")
 		return await apiPutNoBody(api.hostCredential + api.getAllUserPrivileges + "/"+ id +"?archive");
 	},
 	deleteUserPrivilege: async function (id) {
-		return await apiDelete(api.hostCredential + api.getAllUserPrivileges + "/delete/"+ id);
+		return await apiDelete(api.hostCredential + api.getAllUserPrivileges + "/"+ id);
 	},
 }
 
@@ -306,6 +305,7 @@ async function apiPutWithBody(url, payload) {
 		body: JSON.stringify(payload),
 	});
 	if (response.ok) {
+
 		return await response.json();
 	}
 }

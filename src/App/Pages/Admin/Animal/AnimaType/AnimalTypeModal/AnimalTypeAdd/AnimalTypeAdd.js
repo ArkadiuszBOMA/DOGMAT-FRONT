@@ -1,11 +1,10 @@
-import './AnimalTypeAdd.css'
+import '../../../../../../Utils/CSS/BasicForms.css';
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClose, faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
 
 
 const AnimalTypeAdd = (props) => {
@@ -32,13 +31,15 @@ const AnimalTypeAdd = (props) => {
         <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
-                <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
                 {isError ? <ErrorModal text="Nazwa musi mieć długość minimalną 5 i maksymalną 50 znaków"/> : null}
                 <h2 className="modal-header">Dodaj zwierzaka</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>
-                    <input className="modal-header" type="text" name="description" placeholder="Dodaj opis"></input>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                    <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>
+                    <br/>
+                    <input className="filterGlobalBox" type="text" name="description" placeholder="Dodaj opis"></input>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

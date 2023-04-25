@@ -4,9 +4,9 @@ import "./ColumnFilter.css"
 export const ColumnFilter =({ column }) =>{
 	const {filterValue, setFilter} = column
 	return(
-		<label className="text">
+		<label className="filterColumnBox">
 			Znajdź: {''}
-			<input value={filterValue || ''} onChange={(e)=> setFilter(e.target.value)}/>
+			<input className="filterColumnText" value={filterValue || ''} onChange={(e)=> setFilter(e.target.value)}/>
 		</label>
 	)
 }

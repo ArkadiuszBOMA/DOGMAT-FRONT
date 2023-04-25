@@ -1,12 +1,10 @@
 import './BreedAdd.css'
+import '../../../../../../Utils/CSS/BasicForms.css';
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import {faClose} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
 
 const BreedAdd = (props) => {
 
@@ -40,22 +38,25 @@ const BreedAdd = (props) => {
         navigate('/breeds');
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
+
     return (
         <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Rasa zwierzaka musi mieć długość minimalną 5 i maksymalną 55 znaków"/> : null}
-                <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
-                <h2 className="modal-header">Dodaj Rasę</h2>
+                <h2 className="h2SigneUp">Dodaj Rasę</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
-                    <select className="select form-control-lg" name="animalType">
+                    <input className="filterGlobalText" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
+                    <br/>
+                    <select className="filterGlobalBox" name="animalType">
                         <option value="">Wybierz typ zwierzaka</option>
                         {optionList.map(selectedItem =>
                                 <option value={selectedItem.id} key={selectedItem.name} >{selectedItem.name}</option>
                             )}
                     </select>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit">Wykonaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

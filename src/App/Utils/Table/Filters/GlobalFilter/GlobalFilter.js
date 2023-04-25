@@ -1,5 +1,6 @@
 import React, {useState }from 'react'
 import "./GlobalFilter.css"
+import "../../../CSS/BasicForms.css"
 import {useAsyncDebounce} from "react-table";
 
 export const GlobalFilter =({filter, setFilter}) => {
@@ -11,9 +12,9 @@ export const GlobalFilter =({filter, setFilter}) => {
 
 	return(
 		<span>
-			<label className="text">
+			<label className="filterGlobalBox">
 				Znajdź: {' '}
-				<input value={value || ''}
+				<input className="filterGlobalText" value={value || ''}
 					   onChange={(e)=> {
 						   setValue(e.target.value)
 						   onChange(e.target.value)

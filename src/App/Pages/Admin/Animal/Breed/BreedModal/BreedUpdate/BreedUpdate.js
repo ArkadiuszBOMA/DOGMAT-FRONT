@@ -5,6 +5,7 @@ import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Spinner from "../../../../../../Utils/Spinners/Spinner";
 
 
 const BreedUpdate = props => {
@@ -20,11 +21,12 @@ const BreedUpdate = props => {
         navigate('/breeds');
     }
 
-    const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
+    const contentModal = `modal ${isLoading ? "hidden" : ""}`;
 
     return (
         <div>
-            <div className={contentClasses}>
+            {isLoading ? <Spinner/> : null}
+            <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <h2 className="text">Dodaj zwierzaka</h2>
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>

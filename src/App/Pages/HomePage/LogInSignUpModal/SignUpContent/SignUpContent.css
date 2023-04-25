@@ -1,21 +1,22 @@
 .boxSigneUp {
-    background-color: transparent;
+    background-color: grey;
     border-radius: 1px;
-    padding: 1px;
-    text-align: center;
+    width: auto;
 }
 .h2SigneUp {
-    background-color: transparent;
+    background-color: grey;
     padding: 1px;
     text-align: center;
     font-family: Calibri, serif;
     font-size: 25px;
     font-kerning: auto;
+    width: auto;
 }
-.headerLogin {
-    background-color: transparent;
+.headerSigneUp {
+    background-color: grey;
     border-radius: 15px;
     padding: 5px;
     text-align: center;
-    font-size: 35px;
+    font-size: 40px;
+    width: auto;
 }

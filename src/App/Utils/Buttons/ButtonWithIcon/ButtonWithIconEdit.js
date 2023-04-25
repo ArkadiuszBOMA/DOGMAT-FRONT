@@ -5,11 +5,7 @@ import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 const ButtonWithIconEdit = props => {
 
     return (
-        <div>
-            <button onClick={props.onClick}>
-                <FontAwesomeIcon icon={faAddressBook}/>
-            </button>
-        </div>
+        <FontAwesomeIcon className="modalButton" onClick={props.onClick} icon={faAddressBook}/>
     )
 }
 export default ButtonWithIconEdit;

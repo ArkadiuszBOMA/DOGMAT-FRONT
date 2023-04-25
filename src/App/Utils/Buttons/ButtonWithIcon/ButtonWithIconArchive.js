@@ -5,11 +5,7 @@ import {faArchive} from '@fortawesome/free-solid-svg-icons'
 const ButtonWithIconEdit = props => {
 
     return (
-        <div>
-            <button onClick={props.onClick}>
-                <FontAwesomeIcon icon={faArchive}/>
-            </button>
-        </div>
+            <FontAwesomeIcon className="modalButton" onClick={props.onClick} icon={faArchive}/>
     )
 }
 export default ButtonWithIconEdit;

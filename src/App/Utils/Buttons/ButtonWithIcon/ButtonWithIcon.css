@@ -15,6 +15,25 @@
     transition: 0.5s ease-out;
 }
 
+.input[type=submit].hover
+{
+    width:300px;
+    background-color: black;
+    font-size: 20px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.input[type=submit].hover
+{
+    background-color:gray;
+    color: black;
+}
+
 .clicked {
     border: 1px solid white;
 }

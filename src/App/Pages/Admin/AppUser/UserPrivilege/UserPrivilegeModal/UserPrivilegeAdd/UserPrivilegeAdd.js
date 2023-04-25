@@ -24,9 +24,10 @@ const UserPrivilegeAdd = props => {
             setIsError(true);
             return;
         }
-        navigate('/breeds');
+        navigate('/user-privilege');
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
+
     return (
         <div>
             {isLoading ? <Spinner/> : null}

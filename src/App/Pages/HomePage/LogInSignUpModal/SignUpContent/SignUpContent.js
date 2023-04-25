@@ -28,18 +28,24 @@ const SignUpContent = props => {
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
 
     return (
-        <div className="headerLogin">
+        <div className="boxSigneUp">
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="h2Login">Zarejestruj się</h2>
-                <form className="headerLogin">
-                    <input type="text" name="firstName" placeholder="Imię"></input>
-                    <input type="text" name="lastName" placeholder="Nazwisko"></input>
-                    <input type="email" name="email" placeholder="Email"></input>
-                    <input type="password" name="password" placeholder="Hasło"></input>
-                    <input type="password" name="repeatPassword" placeholder="Powtórz hasło"></input>
-                    <input type="hidden" name="cityId" value="0"></input>
+                <h2 className="headerSigneUp">Zarejestruj się</h2>
+                <form>
+                    <input className="h2SigneUp" type="text" name="firstName" placeholder="Imię"></input>
+                    <br/>
+                    <input className="h2SigneUp" type="text" name="lastName" placeholder="Nazwisko"></input>
+                    <br/>
+                    <input className="h2SigneUp" type="email" name="email" placeholder="Email"></input>
+                    <br/>
+                    <input className="h2SigneUp" type="password" name="password" placeholder="Hasło"></input>
+                    <br/>
+                    <input className="h2SigneUp" type="password" name="repeatPassword" placeholder="Powtórz hasło"></input>
+                    <br/>
+                    <input className="h2SigneUp" type="hidden" name="cityId" value="0"></input>
+                    <br/>
                     <ButtonWithIconSubmit onClick ={onSubmitClick}></ButtonWithIconSubmit>
                 </form>
             </div>

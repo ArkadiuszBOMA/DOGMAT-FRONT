@@ -52,6 +52,6 @@ export const COLUMNS = [
 		Header: 'Czy w archiwum?',
 		Footer: 'Czy w archiwum?',
 		isEditable: false,
-		accessor: d => { return d ? 'Tak' : 'Nie' },
+		accessor: d => { return d.archive ? 'Tak' : 'Nie' },
 	},
 ]

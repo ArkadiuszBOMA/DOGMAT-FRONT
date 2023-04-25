@@ -1,14 +1,18 @@
 import './HomePage.css';
-import NavBar from "../../NavBar/Navbar";
-import videoMain from "../../../assets/video/bac1.mp4";
-import MiddleSection from "./MiddleSection/MiddleSection";
+import videobBack from "../../../assets/video/bac1.mp4"
+import HomePageHeader from "./HomePageHeader/HomePageHeader";
+import LeftSection from "./LeftSection/LeftSection";
+import MainSection from "./MainSection/MainSection";
+import CheckedVideo from "../../Utils/CheckedVideo/CheckedVideo";
 
 const HomePage = props => {
+
 	return (
 		<div>
-			<video className="video" src={videoMain} autoPlay loop muted />
-			<NavBar/>
-			<MiddleSection/>
+			<CheckedVideo src={videobBack}/>
+			<HomePageHeader/>
+			<LeftSection/>
+			<MainSection/>
 		</div>
 	);
 }

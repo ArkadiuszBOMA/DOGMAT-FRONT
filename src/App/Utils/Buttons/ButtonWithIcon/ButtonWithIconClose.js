@@ -5,9 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const ButtonWithIconAddress = props => {
 
     return (
-        <div className="modalButton">
-            <FontAwesomeIcon onClick={props.onClick} icon={faTimesCircle}/>
-        </div>
+            <FontAwesomeIcon className="modalButton" onClick={props.onClick} icon={faTimesCircle}/>
     )
 }
 export default ButtonWithIconAddress;

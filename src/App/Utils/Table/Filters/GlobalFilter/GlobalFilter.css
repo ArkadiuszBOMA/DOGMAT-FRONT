@@ -1,0 +1,21 @@
+.filterGlobalBox {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 1em;
+    padding: 0.7em 0.9em;
+    transition: 0.5s ease-out;
+    font-size: 15px;
+}
+.filterGlobalText {
+    color: black;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 1em;
+    transition: 0.5s ease-out;
+    padding: 0.7em 0.9em;
+    font-size: 15px;
+}

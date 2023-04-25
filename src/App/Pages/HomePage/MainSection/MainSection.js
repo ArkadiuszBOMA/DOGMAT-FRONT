@@ -1,10 +1,10 @@
-import {useEffect, useState} from "react";
-import LogInSignUpModal from "../LogInSignUpModal/LogInSignUpModal";
+import "./MainSection.css"
+import '../HomePage.css'
+import React, {useEffect, useState} from "react";
 import ModalButton from "../../../Utils/Buttons/ModalButton/ModalButton";
-import "./MiddleSection.css"
+import LogInSignUpModal from "../LogInSignUpModal/LogInSignUpModal";
 
-const MiddleSection = props => {
-
+const MainSection = (props) => {
 	const [isModal, setIsModal] = useState(false);
 	const [isSignUp, setIsSignUp] = useState(false);
 
@@ -51,7 +51,7 @@ const MiddleSection = props => {
 
 
 	return (
-		<div className="middleSection">
+		<div className='middleSection'>
 			<span className="tagline"><p>Wszystko dla twojego</p>
 				<h1>
 					<span className="txt-rotate"  data-rotate='[ "przy", "psyjaciela" ]'>
@@ -67,4 +67,4 @@ const MiddleSection = props => {
 	);
 }
 
-export default MiddleSection;
+export default MainSection;

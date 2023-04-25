@@ -1,4 +1,5 @@
 import './CareTypeAdd.css'
+import '../../../../../../Utils/CSS/BasicForms.css';
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
@@ -33,10 +34,12 @@ const CareTypeAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Nazwa musi mieś długość minimalną 5 i maksymalną 50 znaków"/> : null}
                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-                <h2 className="modal-header">Dodaj nazwę pomocy</h2>
+                <h2 className="h2SigneUp">Dodaj nazwę pomocy</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę"></input>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                    <input className="filterGlobalText" type="text" name="name" placeholder="Podaj nazwę"></input>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit">Wykonaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

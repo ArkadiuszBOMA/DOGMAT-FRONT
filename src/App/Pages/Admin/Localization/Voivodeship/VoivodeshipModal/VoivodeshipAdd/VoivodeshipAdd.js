@@ -19,12 +19,13 @@ const VoivodeshipAdd = props => {
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
         const dataRow = await dataHandler.addVoivodeship(data);
+
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
             return;
         }
-        navigate('/voivodeships');
+        window.location.reload();
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (

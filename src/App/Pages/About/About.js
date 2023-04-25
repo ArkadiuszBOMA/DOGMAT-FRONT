@@ -1,12 +1,18 @@
 import './About.css';
 import NavBar from "../../NavBar/Navbar";
-import videoMain from "../../../assets/video/bac1.mp4";
+import videoMain from "../../../assets/video/logged.mp4";
+import CheckedVideo from "../../Utils/CheckedVideo/CheckedVideo";
+import HomePageHeader from "../HomePage/HomePageHeader/HomePageHeader";
+import LeftSection from "../HomePage/LeftSection/LeftSection";
+import React from "react";
 
 const About= props => {
 	return (
 		<div>
-			<video className="video" src={videoMain} autoPlay loop muted />
-			<NavBar/>
+			<CheckedVideo src={videoMain}/>
+			<HomePageHeader/>
+			<LeftSection/>
+
 			<div className='mianDiv'>
 			<h1>DogMate (sprint 3)</h1>
 				<h3>Dbasz o swojego zwierzaka</h3>

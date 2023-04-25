@@ -1,5 +1,6 @@
 // CSS do stylizacji
 import './LogInContent.css'
+import '../../../../Utils/CSS/BasicForms.css';
 
 // Funkcje wbudowane
 import {dataHandler} from "../../../../Api/dataHandler";
@@ -45,15 +46,18 @@ const LogInContent = props => {
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;
 
     return (
-        <div>
+        <div className='boxLogin'>
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
-                <h2 className="text">Zaloguj się</h2>
-                    <form className="loginUpForm" onSubmit={onSubmitClick}>
-                        <input className="" type="text" name="email" placeholder="Email"></input>
-                        <input className="" type="password" name="password" placeholder="Password"></input>
-                        <button className="submitButton" type="submit">Wykonaj</button>
+                <h2 className="headerLogin">Zaloguj się</h2>
+                    <form className="modal" onSubmit={onSubmitClick}>
+                        <input className="filterGlobalBox" type="text" name="email" placeholder="Email"></input>
+                        <br/>
+                        <input className="filterGlobalBox" type="password" name="password" placeholder="Password"></input>
+                        <br/>
+                        <button className="filterGlobalBox" type="submit">Wykonaj</button>
+                        <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                     </form>
             </div>
         </div>
