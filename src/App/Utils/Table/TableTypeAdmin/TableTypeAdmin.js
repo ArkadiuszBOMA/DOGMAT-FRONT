@@ -130,35 +130,34 @@ export const TableTypeAdmin = (props) => {
 		}
 	}
 	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla archiwizacji
-	const getCurrentFormArchive = (id) => {
-		console.log(location.pathname)
+	const getCurrentFormArchive = async (id) => {
 		switch (location.pathname) {
 			case "/animal-types":
-				return async () => await dataHandler.archiveAnimalType(id)
+				return await dataHandler.archiveAnimalType(id)
 			case "/breeds":
-				return async () => await dataHandler.archiveBreed(id)
+				return await dataHandler.archiveBreed(id)
 			case "/voivodeships":
-				return async () => await dataHandler.archiveVoivodeship(id)
+				return await dataHandler.archiveVoivodeship(id)
 			case "/provinces":
-				return async () => await dataHandler.archiveProvince(id)
+				return await dataHandler.archiveProvince(id)
 			case "/cities":
-				return async () => await dataHandler.archiveCity(id)
+				return await dataHandler.archiveCity(id)
 			case "/training-types":
-				return async () => await dataHandler.archiveTrainingType(id)
+				return await dataHandler.archiveTrainingType(id)
 			case "/training-levels":
-				return async () => await dataHandler.archiveTrainingLevel(id)
+				return await dataHandler.archiveTrainingLevel(id)
 			case "/training-steps":
-				return async () => await dataHandler.archiveTrainingStep(id)
+				return await dataHandler.archiveTrainingStep(id)
 			case "/time-units":
-				return async () => await dataHandler.archiveTimeUnit(id)
+				return await dataHandler.archiveTimeUnit(id)
 			case "/user-roles":
-				return async () => await dataHandler.archiveUserRole(id)
-			case "/user-privileges":
-				return async () => await dataHandler.archiveUserPrivilege(id)
+				return await dataHandler.archiveUserRole(id)
+			case "/user-privilege":
+				return await dataHandler.archiveUserPrivilege(id)
 			case "/users":
-				return async () => await dataHandler.archiveAppUser(id)
+				return await dataHandler.archiveAppUser(id)
 			case "/care-announcement":
-				return async () => await dataHandler.archiveCareAnnouncement(id)
+				return await dataHandler.archiveCareAnnouncement(id)
 			default:
 				return null
 		}
@@ -280,6 +279,82 @@ export const TableTypeAdmin = (props) => {
 
 	const {globalFilter} = state
 	const {pageIndex, pageSize} = state
+
+	const displayTable = () => {
+		return (
+			<div>
+				<table className="fl-table" ref={tableRef} {...getTableProps()}>
+					<thead>
+					{headerGroups.map((headerGroup) => (
+						<tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
+							{
+								headerGroup.headers.map((columns, index) => (
+									<th key = {columns.index} {...columns.getHeaderProps(columns.getSortByToggleProps)}>
+										{columns.render('Header')}
+										<div>
+											{columns.canFilter ? columns.render('Filter') : null}
+										</div>
+										<span className="text-white">
+									{columns.isSorted ? (columns.isSortedDesc ? '🠛' : '🠙') :''}
+									</span>
+									</th>
+								))
+							}
+						</tr>
+					))}
+					</thead>
+					<tbody {...getTableBodyProps()}>
+					{page.map((row) => {
+						prepareRow(row)
+						return (
+							<tr key={row.id} {...row.getRowProps()}>
+								{row.cells.map((cell, j) => {
+									return (
+										<td
+											rowSpan={cell.rowSpan}
+											{...cell.getCellProps()}>
+											{cell.render('Cell')}
+										</td>)
+								})}
+							</tr>
+						)
+					})}
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
+				<span className="selectPage">
+						Strona{' '}
+					<strong> {pageIndex +1} z {pageOptions.length}
+						</strong>{' '}
+					</span>
+				<label className="selectPage ">
+					Idż do strony {' '}
+					<input className="filterGlobalText "
+						   type='number'
+						   defaultValue={pageIndex+1}
+						   onChange={e => {
+							   const pageNumber = e.target.value ? Number(e.target.value) -1 : 0
+							   gotoPage(pageNumber)
+						   }}
+					/>
+				</label>
+				<select className="selectPage" id="RowByPage" title={"Page"} value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+					{
+						[5,10,25,50,100,200].map(pageSize => (
+							<option key={pageSize} value={pageSize}>
+								Pokaż {pageSize}
+							</option>
+						))
+					}
+				</select>
+				<button className="selectPage" title="firstPage" onClick={()=> gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+				<button className="selectPage" title="previousPage" onClick={()=> previousPage()} disabled={!canPreviousPage}>{'<'}</button>
+				<button className="selectPage" title="nestPage" onClick={()=> nextPage()} disabled={!canNextPage}>{'>'}</button>
+				<button className="selectPage" title="lastPage" onClick={()=> gotoPage(pageCount - 1)} disabled={!canNextPage}> {'>>'}</button>
+			</div>
+		)
+	}
 
 
 	return (
