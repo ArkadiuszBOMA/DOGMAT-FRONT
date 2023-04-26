@@ -1,5 +1,5 @@
-import './BreedAdd.css'
 import '../../../../../../Utils/CSS/BasicForms.css';
+import '../../../../../../Utils/Modals/AnyContentModal.css';
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
@@ -35,7 +35,7 @@ const BreedAdd = (props) => {
             setIsError(true);
             return;
         }
-        navigate('/breeds');
+        window.location.reload();
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
 
@@ -44,7 +44,7 @@ const BreedAdd = (props) => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Rasa zwierzaka musi mieć długość minimalną 5 i maksymalną 55 znaków"/> : null}
-                <h2 className="h2SigneUp">Dodaj Rasę</h2>
+                <h2 className="anyContentModalTitle">Dodaj Rasę</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="filterGlobalText" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
                     <br/>

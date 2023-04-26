@@ -28,7 +28,7 @@ const BreedUpdate = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="text">Dodaj zwierzaka</h2>
+                <h2 className="anyContentModalTitle">Uaktualniej  zwierzaka</h2>
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
                 <form className="add" onSubmit={onSubmitClick}>
                     <input type="hidden" name="id"></input>

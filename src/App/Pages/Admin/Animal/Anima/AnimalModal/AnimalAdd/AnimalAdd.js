@@ -1,5 +1,5 @@
-import './AnimalAdd.css'
-import '../../../../../HomePage/HomePage'
+import '../../../../../../Utils/CSS/BasicForms.css';
+import '../../../../../../Utils/Modals/AnyContentModal.css';
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
@@ -34,7 +34,7 @@ const AnimalAdd = (props) => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
             {isError ? <ErrorModal text="Nazwa musi mieć długość minimalną 5 i maksymalną 50 znaków"/> : null}
-            <h2 className="modal-header">Dodaj zwierzaka</h2>
+            <h2 className="anyContentModalTitle">Dodaj zwierzaka</h2>
             <form className="modal" onSubmit={onSubmitClick}>
                 <input type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>
                 <br/>

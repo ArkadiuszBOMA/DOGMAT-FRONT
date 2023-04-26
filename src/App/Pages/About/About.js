@@ -1,5 +1,4 @@
 import './About.css';
-import NavBar from "../../NavBar/Navbar";
 import videoMain from "../../../assets/video/logged.mp4";
 import CheckedVideo from "../../Utils/CheckedVideo/CheckedVideo";
 import HomePageHeader from "../HomePage/HomePageHeader/HomePageHeader";

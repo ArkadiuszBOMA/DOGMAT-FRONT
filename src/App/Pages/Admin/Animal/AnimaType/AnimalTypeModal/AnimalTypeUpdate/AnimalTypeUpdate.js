@@ -41,7 +41,7 @@ return (
         {isLoading ? <Spinner/> : null}
         <div className={contentModal}>
             {isError ? <ErrorModal text="Nazwa musi mieć długość minimalną 5 i maksymalną 50 znaków"/> : null}
-            <h2 className="modal-header">Uaktualnij dane zwierzaka</h2>
+            <h2 className="anyContentModalTitle">Uaktualnij dane zwierzaka</h2>
             <form className="modal" onSubmit={onSubmitClick}>
                 <input type="hidden" name="id" value={props.dataRow.id.valueOf()}></input>
                 <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę zwierzaka" defaultValue={props.dataRow.name.valueOf()}></input>

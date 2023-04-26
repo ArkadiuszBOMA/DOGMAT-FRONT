@@ -24,7 +24,7 @@ const AppUserAdd = props => {
             setIsError(true);
             return;
         }
-        navigate('/breeds');
+        window.location.reload();
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (

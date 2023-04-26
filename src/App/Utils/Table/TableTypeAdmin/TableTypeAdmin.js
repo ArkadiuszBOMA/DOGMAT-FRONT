@@ -194,8 +194,6 @@ export const TableTypeAdmin = (props) => {
 		}
 	}
 
-
-
 	const tableRef = useRef(null);
 	const {onDownload} = useDownloadExcel({
 		currentTableRef: tableRef.current,
@@ -205,7 +203,6 @@ export const TableTypeAdmin = (props) => {
 
 	const columns = props.columns
 	const defaultColumn = useMemo(() => {return{Filter:ColumnFilter,}},[]);
-
 	const tableInstance = useTable({
 			columns,
 			data,
@@ -237,7 +234,6 @@ export const TableTypeAdmin = (props) => {
 							<button className="filterGlobalBox" id= {"UPD" + row.original.id.valueOf()}
 									onClick={()=> {
 										console.log("Mój Status Modala" + " " + isModalUpdate);
-										console.log(row.original);
 										setIsModalUpdate(true);
 										console.log("ALE JESTEM LENIWY I NIC NIE ROBIĘ BO DALEJ MAM "+ isModalUpdate)
 									}}>Uaktualnij</button>
@@ -355,38 +351,31 @@ export const TableTypeAdmin = (props) => {
 			</div>
 		)
 	}
-
-
 	return (
-		<article>
-				<div className="table-wrapper">
-					<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
-				<div>
-					<CheckBox {...getToggleHideAllColumnsProps()}/>
-						<span className="filterGlobalBox" key="input" {...getToggleHideAllColumnsProps()}>
-							Pokaż wszystkie kolumny
-							</span>
-				</div>
-				{
-					allColumns.map((column, index) => (
-						<span key={index} className="filterGlobalBox">
-							<input key={column.Header} className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
-							{column.Header}
-						</span>
-					))
-				}
-				<div>
-					<button className="filterGlobalBox" id="Excel" title="Excle" onClick={onDownload}>EXPORT DO EXCEL</button>
-					<button className="filterGlobalBox" id="Dodaj" title="Dodaj"
-							onClick={()=> {setIsModalAddNew(true); setIsTable(false)}}>DODAJ NOWY REKORD </button>
-					{isModalAddNew ? <AnyContentModal content={getCurrentFormAdd()}
-													  onClose={() => {setIsModalAddNew(false); setIsTable(true)}
-					}/> : null}
-				</div>
-					{isTable ? displayTable() : null}
-			</div>
-		</article>
-
+		<div className="table-wrapper">
+			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+		<div>
+			<CheckBox {...getToggleHideAllColumnsProps()}/>
+				<span className="filterGlobalBox" key="input" {...getToggleHideAllColumnsProps()}>Pokaż wszystkie kolumny</span>
+		</div>
+		{
+			allColumns.map((column, index) => (
+				<span key={index} className="filterGlobalBox">
+					<input key={column.Header} className="inputCheckBox" type='checkbox' {...column.getToggleHiddenProps()}/>
+					{column.Header}
+				</span>
+			))
+		}
+		<div>
+			<button className="filterGlobalBox" id="Excel" title="Excle" onClick={onDownload}>EXPORT DO EXCEL</button>
+			<button className="filterGlobalBox" id="Dodaj" title="Dodaj"
+					onClick={()=> {setIsModalAddNew(true); setIsTable(false)}}>DODAJ NOWY REKORD </button>
+			{isModalAddNew ? <AnyContentModal content={getCurrentFormAdd()}
+											  onClose={() => {setIsModalAddNew(false); setIsTable(true)}
+			}/> : null}
+		</div>
+			{isTable ? displayTable() : null}
+	</div>
 	)
 }
 export default TableTypeAdmin

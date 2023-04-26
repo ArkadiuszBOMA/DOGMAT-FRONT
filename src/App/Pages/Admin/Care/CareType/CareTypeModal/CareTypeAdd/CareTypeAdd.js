@@ -25,7 +25,7 @@ const CareTypeAdd = props => {
             setIsError(true);
             return;
         }
-        navigate('/care-announcement');
+        window.location.reload();
     }
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (
@@ -34,7 +34,7 @@ const CareTypeAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Nazwa musi mieś długość minimalną 5 i maksymalną 50 znaków"/> : null}
                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-                <h2 className="h2SigneUp">Dodaj nazwę pomocy</h2>
+                <h2 className="anyContentModalTitle">Dodaj nazwę pomocy</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="filterGlobalText" type="text" name="name" placeholder="Podaj nazwę"></input>
                     <br/>

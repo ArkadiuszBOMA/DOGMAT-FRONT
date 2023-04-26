@@ -14,8 +14,7 @@ export const COLUMNS = [
 		Header: 'Zwierzę',
 		Footer: 'Zwierzę',
 		isEditable: false,
-		accessor: 'name'
-
+		accessor: 'name',
 	},
 	{
 		Header: 'Daty',

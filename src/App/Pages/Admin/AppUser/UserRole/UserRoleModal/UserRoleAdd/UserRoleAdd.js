@@ -23,7 +23,7 @@ const UserRoleAdd = props => {
         if (!dataRow) {
             setIsError(true);
         }
-        navigate('/user-roles');
+        window.location.reload();
     }
 
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
@@ -34,7 +34,7 @@ const UserRoleAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
-                <h2 className="modal-header">Dodaj zwierzaka</h2>
+                <h2 className="anyContentModalTitle">Dodaj zwierzaka</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
                     <input className="modal-header" type="text" name="animalType" placeholder="Wybierz zwierzaka"></input>
