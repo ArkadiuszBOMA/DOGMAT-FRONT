@@ -56,6 +56,7 @@ export const TableTypeAdmin = (props) => {
 	const [isTable, setIsTable] = useState(true);
 	const [isModalAddNew, setIsModalAddNew] = useState(false);
 	const [isModalUpdate, setIsModalUpdate] = useState(false);
+	const [currentlyEditedRow, setCurrentlyEditedRow] = useState()
 	const data = props.data
 
 	// zmienne do komunikowania się ze ścieżką
@@ -234,11 +235,10 @@ export const TableTypeAdmin = (props) => {
 							<button className="filterGlobalBox" id= {"UPD" + row.original.id.valueOf()}
 									onClick={()=> {
 										console.log("Mój Status Modala" + " " + isModalUpdate);
+										setCurrentlyEditedRow(row.original);
 										setIsModalUpdate(true);
 										console.log("ALE JESTEM LENIWY I NIC NIE ROBIĘ BO DALEJ MAM "+ isModalUpdate)
 									}}>Uaktualnij</button>
-							{isModalUpdate ? <AnyContentModal content={getCurrentFormUpdate(row.original.valueOf())}
-															  onClose={() => {setIsModalUpdate(false)}}/> : null}
 							<br/>
 							<button className="filterGlobalBox" id= {"ARC" + row.original.id.valueOf()}
 									onClick={() => {getCurrentFormArchive(row.original.id.valueOf()); window.location.reload()}}>Archiwizuj</button>
@@ -373,6 +373,8 @@ export const TableTypeAdmin = (props) => {
 			{isModalAddNew ? <AnyContentModal content={getCurrentFormAdd()}
 											  onClose={() => {setIsModalAddNew(false); setIsTable(true)}
 			}/> : null}
+			{isModalUpdate ? <AnyContentModal content={getCurrentFormUpdate(currentlyEditedRow)}
+											  onClose={() => {setIsModalUpdate(false)}}/> : null}
 		</div>
 			{isTable ? displayTable() : null}
 	</div>
