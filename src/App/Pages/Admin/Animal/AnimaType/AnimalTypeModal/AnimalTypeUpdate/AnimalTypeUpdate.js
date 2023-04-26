@@ -32,7 +32,7 @@ const AnimalTypeUpdate = (props) => {
         if (!dataRow) {
             setIsError(true);
         }
-        navigate('/animal-types');
+        window.location.reload()
     }
 
 const contentModal = `modal ${isLoading ? "hidden" : ""}`;
