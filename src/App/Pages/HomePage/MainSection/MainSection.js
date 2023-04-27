@@ -51,7 +51,7 @@ const MainSection = (props) => {
 
 
 	return (
-		<div className='middleSection'>
+		<div>
 			<span className="tagline"><p>Wszystko dla twojego</p>
 				<h1>
 					<span className="txt-rotate"  data-rotate='[ "przy", "psyjaciela" ]'>

@@ -1,12 +1,7 @@
 .modalButton {
-    background-color: transparent;
+    background-color: black;
     border: 0;
-    color: #39312C;
-    font-size: 15px;
-    letter-spacing: 1px;
-    line-height: 1.5em;
-    width: 96%;
-    font-weight: 400;
+    color: white;
     zoom: 250%
 }
 

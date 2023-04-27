@@ -8,6 +8,8 @@ import {CheckBox} from "../CheckBox/CheckBox";
 import {useLocation} from "react-router-dom";
 import './TableTypeAdmin.css'
 import '../../../Pages/HomePage/HomePage.css'
+import {faArchive, faClose, faDeleteLeft, faEdit} from "@fortawesome/free-solid-svg-icons";
+
 // DANE
 import {dataHandler} from "../../../Api/dataHandler";
 import "./TableTypeAdmin.css"
@@ -48,6 +50,11 @@ import TrainingLevelUpdate from "../../../Pages/Admin/Training/TrainingLevel/Tra
 import TrainingStepUpdate from "../../../Pages/Admin/Training/TrainingStep/TrainingStepModal/TrainingStepUpdate/TrainingStepUpdate";
 import TrainingTypeUpdate from "../../../Pages/Admin/Training/TrainingType/TrainingTypeModal/TrainingTypeUpdate/TrainingTypeUpdate";
 import AnyContentModal from "../../Modals/AnyContentModal";
+import ButtonWithIconClose from "../../Buttons/ButtonWithIcon/ButtonWithIconClose";
+import ButtonWithIconArchive from "../../Buttons/ButtonWithIcon/ButtonWithIconArchive";
+import ButtonWithIconEdit from "../../Buttons/ButtonWithIcon/ButtonWithIconEdit";
+import ButtonWithIconDelete from "../../Buttons/ButtonWithIcon/ButtonWithIconDelete";
+
 
 
 export const TableTypeAdmin = (props) => {
@@ -232,18 +239,11 @@ export const TableTypeAdmin = (props) => {
 					Header: 'Zdecyduj',
 					Cell: ({row}) => (
 						<div >
-							<button className="filterGlobalBox" id= {"UPD" + row.original.id.valueOf()}
-									onClick={()=> {
-										console.log("Mój Status Modala" + " " + isModalUpdate);
-										setCurrentlyEditedRow(row.original);
-										setIsModalUpdate(true);
-										console.log("ALE JESTEM LENIWY I NIC NIE ROBIĘ BO DALEJ MAM "+ isModalUpdate)
-									}}>Uaktualnij</button>
+							<ButtonWithIconEdit id= {"UPD" + row.original.id.valueOf()} onClick={()=> {setCurrentlyEditedRow(row.original);setIsModalUpdate(true);}}></ButtonWithIconEdit>
 							<br/>
-							<button className="filterGlobalBox" id= {"ARC" + row.original.id.valueOf()}
-									onClick={() => {getCurrentFormArchive(row.original.id.valueOf()); window.location.reload()}}>Archiwizuj</button>
-						<br/>
-							<button className="filterGlobalBox" id= {"DEL" + row.original.id.valueOf()} onClick={() => {getCurrentFormDelete(row.original.id.valueOf()); window.location.reload()}}>Usuń</button>
+							<ButtonWithIconArchive id= {"ARC" + row.original.id.valueOf()} onClick={() => {getCurrentFormArchive(row.original.id.valueOf()); window.location.reload()}}></ButtonWithIconArchive>
+							<br/>
+							<ButtonWithIconDelete id= {"DEL" + row.original.id.valueOf()} onClick={() => {getCurrentFormDelete(row.original.id.valueOf()); window.location.reload()}}></ButtonWithIconDelete>
 						</div>
 					),
 				},

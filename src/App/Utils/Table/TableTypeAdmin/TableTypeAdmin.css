@@ -32,7 +32,8 @@
 
 .table-wrapper{
     background-color: black;
-    height: 20%;
+    height: 10%;
+    position: fixed;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
     border-radius: 50px;
 }

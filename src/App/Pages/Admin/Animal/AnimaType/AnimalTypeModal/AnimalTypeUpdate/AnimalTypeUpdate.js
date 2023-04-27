@@ -44,9 +44,9 @@ return (
             <h2 className="anyContentModalTitle">Uaktualnij dane zwierzaka</h2>
             <form className="modal" onSubmit={onSubmitClick}>
                 <input type="hidden" name="id" value={props.dataRow.id.valueOf()}></input>
-                <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę zwierzaka" defaultValue={props.dataRow.name.valueOf()}></input>
+                <input className="formHeader" type="text" name="name" placeholder="Podaj nazwę zwierzaka" defaultValue={props.dataRow.name.valueOf()}></input>
                 <br/>
-                <input className="filterGlobalBox" type="text" name="description" placeholder="Dodaj opis" defaultValue={props.dataRow.description.valueOf()}></input>
+                <textarea className="formDescription" rows="15" cols="40" name="description" placeholder="Dodaj opis" defaultValue={props.dataRow.description.valueOf()}></textarea>
                 <br/>
                 <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
                 <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>

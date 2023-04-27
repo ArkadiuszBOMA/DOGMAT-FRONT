@@ -34,9 +34,9 @@ const AnimalTypeAdd = (props) => {
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>
                     <br/>
-                    <textarea rows="4" cols="50" name="description" placeholder="Dodaj opis"></textarea>
+                    <textarea className="formDescription" rows="15" cols="40" name="description" placeholder="Dodaj opis"></textarea>
                     <br/>
-                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="submit"> Dodaj</button>
                     <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>

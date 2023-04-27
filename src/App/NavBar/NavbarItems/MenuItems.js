@@ -1,6 +1,7 @@
 import "../Navbar.css"
 import Dropdown from "./Dropdown";
 import {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
 
 const MenuItems = ({ items, depthLevel }) => {
@@ -37,27 +38,26 @@ const MenuItems = ({ items, depthLevel }) => {
 
 	return (
 
-		<li className="buttonNavbar buttonNavbar" ref={ref}
+		<li className="nav" ref={ref}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onClick={closeDropdown}
 		>
-
 			{items.submenu ? (
 				<>
-					<button className='buttonNavbar buttonNavbar'
+					<button
 						aria-expanded={dropdown ? "true" : "false"}
 						onClick={() => setDropdown((prev) => !prev)}
 					>
 						{items.title}{" "}
-						{depthLevel > 0 ? <span className='buttonNavbar buttonNavbar'>&raquo;</span> : <span className="arrow"
-						>{"->"}</span>}
+						{depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow"
+						></span>}
 					</button>
 					<Dropdown submenus={items.submenu} dropdown={dropdown} depthLevel={depthLevel}
 					/>
 				</>
 			) : (
-				<a className='buttonNavbar buttonNavbar' href={items.url}>{items.title}</a>
+				<Link to={items.url} className={items.cName}>{items.title}</Link>
 			)}
 		</li>
 	);

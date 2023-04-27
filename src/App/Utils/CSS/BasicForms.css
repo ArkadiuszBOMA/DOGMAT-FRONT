@@ -7,16 +7,32 @@
     color: white;
     border: none;
     cursor: pointer;
+    text-align: center;
     letter-spacing: 1px;
+}
+
+.formTitle {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 1em;
+    padding: 0.7em 0.9em;
+    transition: 0.5s ease-out;
+    font-size: 15px;
+    text-align: center;
+}
+
+.formDescription {
+    text-align: left;
 }
 
 textarea{
     background-color: black;
-    font-size: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: #61dafb;
+    color: white;
     outline: none;
 }
 .formSpan{

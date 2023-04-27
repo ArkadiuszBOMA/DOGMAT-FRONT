@@ -16,78 +16,78 @@
 //     const [listVoivodeships, setVoivodeshis] = useState([{"id": "name"}]);
 //
 //     const navigate = useNavigate();
-//
-//     //uzyskanie danych do selecta o powiatach- o tym trzeba pamiętać !!!
-//
-//     // function selectCity () {
-//     //     useEffect(() => {
-//     //         async function fetchData() {
-//     //             setIsLoading(true);
-//     //             const databaseData = await dataHandler.getVoivodeships();
-//     //             setVoivodeshis(databaseData);
-//     //             setIsLoading(false);
-//     //         }
-//     //
-//     //         fetchData();
-//     //     }, []);
-//     //
-//
-//     //     const [state, setState] = useState([]);
-//     //
-//     //     const handleCountry = (id) => {
-//     //         async function fetchData() {
-//     //             const matchedProvinces = await dataHandler.getProvincesForThisVoivodeship(id)
-//     //             setIsLoading(true);
-//     //             setProvinces(matchedProvinces);
-//     //             setIsLoading(false);
-//     //         }
-//     //         fetchData();
-//     //     };
-//     //
-//     //     return (
-//     //         <div>
-//     //             <select className="select form-control-lg" name="province" onChange={(e) => handleCountry(e.target.value)}>
-//     //                 <option value="">Wybierz województwo</option>
-//     //                 {
-//     //                     listVoivodeships &&
-//     //                     listVoivodeships !== undefined ?
-//     //                         listVoivodeships.map(voivodeship => {
-//     //                             return (
-//     //                                 <option value={voivodeship.id} key={voivodeship.name}
-//     //                                         defaultValue={0}>{voivodeship.name}</option>
-//     //                             )
-//     //                         })
-//     //                         : "Nie wybrano województwa"
-//     //                 }
-//     //             </select>
-//     //         </div>
-//     //     );
-//     // }
-//     //
-//     //     useEffect(() => {
-//     //         async function fetchData() {
-//     //             setIsLoading(true);
-//     //             const databaseData = await dataHandler.getProvincesForThisVoivodeship(id);
-//     //             setProvinces(databaseData);
-//     //             setIsLoading(false);
-//     //         }
-//     //
-//     //         fetchData();
-//     //     }, [])
-//     //
-//     //     useEffect(() => {
-//     //         async function fetchData() {
-//     //             setIsLoading(true);
-//     //             const databaseData = await dataHandler.getCitiesForThisProvince(id);
-//     //             setCities(databaseData);
-//     //             setIsLoading(false);
-//     //         }
-//     //
-//     //         fetchData();
-//     //     }, [])
-//
-//
-//
+
+    //uzyskanie danych do selecta o powiatach- o tym trzeba pamiętać !!!
+
+    // function selectCity () {
+    //     useEffect(() => {
+    //         async function fetchData() {
+    //             setIsLoading(true);
+    //             const databaseData = await dataHandler.getVoivodeships();
+    //             setVoivodeshis(databaseData);
+    //             setIsLoading(false);
+    //         }
+    //
+    //         fetchData();
+    //     }, []);
+    //
+
+    //     const [state, setState] = useState([]);
+    //
+    //     const handleCountry = (id) => {
+    //         async function fetchData() {
+    //             const matchedProvinces = await dataHandler.getProvincesForThisVoivodeship(id)
+    //             setIsLoading(true);
+    //             setProvinces(matchedProvinces);
+    //             setIsLoading(false);
+    //         }
+    //         fetchData();
+    //     };
+    //
+    //     return (
+    //         <div>
+    //             <select className="select form-control-lg" name="province" onChange={(e) => handleCountry(e.target.value)}>
+    //                 <option value="">Wybierz województwo</option>
+    //                 {
+    //                     listVoivodeships &&
+    //                     listVoivodeships !== undefined ?
+    //                         listVoivodeships.map(voivodeship => {
+    //                             return (
+    //                                 <option value={voivodeship.id} key={voivodeship.name}
+    //                                         defaultValue={0}>{voivodeship.name}</option>
+    //                             )
+    //                         })
+    //                         : "Nie wybrano województwa"
+    //                 }
+    //             </select>
+    //         </div>
+    //     );
+    // }
+    //
+    //     useEffect(() => {
+    //         async function fetchData() {
+    //             setIsLoading(true);
+    //             const databaseData = await dataHandler.getProvincesForThisVoivodeship(id);
+    //             setProvinces(databaseData);
+    //             setIsLoading(false);
+    //         }
+    //
+    //         fetchData();
+    //     }, [])
+    //
+    //     useEffect(() => {
+    //         async function fetchData() {
+    //             setIsLoading(true);
+    //             const databaseData = await dataHandler.getCitiesForThisProvince(id);
+    //             setCities(databaseData);
+    //             setIsLoading(false);
+    //         }
+    //
+    //         fetchData();
+    //     }, [])
+
+
+
 //
 //     async function onSubmitClick(e) {
 //         e.preventDefault();

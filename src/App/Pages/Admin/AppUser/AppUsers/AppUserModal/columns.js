@@ -9,9 +9,21 @@ export const COLUMNS = [
 		disableFilters: true
 	},
 	{
-		Header: 'Rasa',
-		Footer: 'Rasa',
-		accessor: 'name',
+		Header: 'Imię',
+		Footer: 'Imię',
+		accessor: 'first_name',
+		isEditable: false,
+	},
+	{
+		Header: 'Nazwisko',
+		Footer: 'Nazwisko',
+		accessor: 'last_name',
+		isEditable: false,
+	},
+	{
+		Header: 'Email',
+		Footer: 'Email',
+		accessor: 'email',
 		isEditable: false,
 	},
 	{
