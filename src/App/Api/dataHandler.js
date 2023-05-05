@@ -91,7 +91,7 @@ export let dataHandler = {
 	},
 
 	getProvincesForThisVoivodeship: async function (id) {
-		return await apiGet(api.hostCredential + api.getAllVoivodeship+ "/"+ id +"?provinces")
+		return await apiGet(api.hostCredential + api.getAllVoivodeship+ "/"+ id +"?province")
 	},
 
 	addVoivodeship: async function (data) {
