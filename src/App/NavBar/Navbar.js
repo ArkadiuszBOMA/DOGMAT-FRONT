@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import "../Utils/Buttons/ModalButton/ModalButton.css";
 import MenuItems from "./NavbarItems/MenuItems";
 import{manuItems} from './manuItems'
 import * as FaIcons from "react-icons/fa";
@@ -16,19 +17,22 @@ const NavBar = () => {
 
 	const showSideBar = () => setSideBar(!sideBar);
 
-
 	return (
 		<>
-		<FaIcons.FaBars onClick={showSideBar}/>
 			{sideBar?
 				<nav className="navbar">
-					<ul className="navbar">
+					<FaIcons.FaBars color= "red" size='30px' title="Nawigacja" onClick={showSideBar}/>
+					<ul>
 						{manuItems.map((menu, index) => {const depthLevel = 0;
 							return <MenuItems items={menu} key={index} depthLevel={depthLevel}/>;}
 						)}
 					</ul>
 				</nav>
-				: null}
+				:
+				<nav className="nav-menu">
+					<FaIcons.FaBars color= "red" size='30px' title="Nawigacja" onClick={showSideBar}/>
+				</nav>
+				}
 		</>
 	);
 };

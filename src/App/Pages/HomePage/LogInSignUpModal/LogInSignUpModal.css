@@ -1,12 +1,12 @@
 .headerLoginModal {
     background-color: black;
     border-radius: 15px;
-    padding: 5px;
+    padding: 1px;
     text-align: center;
 }
 .columnLoginModal {
     background-color: gray;
-    border-radius: 15px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 1px;
     height: auto;
 }

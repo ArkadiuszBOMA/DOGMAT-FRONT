@@ -1,34 +1,70 @@
 .modalButton {
-    background-color: black;
-    border: 0;
-    color: white;
-    zoom: 250%
+    background-color: transparent;
+    zoom: 100%
+}
+
+.modalButton {
+    background-color: transparent;
+    zoom: 100%
 }
 
 .modalButton:hover {
-    border: 1px solid white;
     transition: 0.5s ease-out;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-.input[type=submit].hover
-{
-    width:300px;
-    background-color: black;
-    font-size: 20px;
-    color: white;
-    padding: 15px 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    letter-spacing: 2px;
+.clicked {
+    border: 1px solid white;
 }
+
+.modalButton[type=delete]{
+    color: red;
+}
+
+.modalButton[type=delete]:hover{
+    background-color: red;
+}
+
+.modalButton[type=close]{
+    color: black;
+}
+
+.modalButton[type=close]:hover{
+    background-color: black;
+}
+
+.modalButton[type=edit]{
+    color: green;
+}
+
+.modalButton[type=edit]:hover{
+    background-color: green;
+}
+
+.modalButton[type=archive]{
+    color: blue;
+}
+
+.modalButton[type=archive]:hover{
+    background-color: blue;
+}
+
+.input[type=submit]
+{
+    color: black;
+}
+
 .input[type=submit].hover
 {
     background-color:gray;
     color: black;
 }
 
-.clicked {
-    border: 1px solid white;
-}
+

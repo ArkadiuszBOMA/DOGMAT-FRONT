@@ -2,21 +2,23 @@
     color: black;
     background-color: white;
     cursor: pointer;
-    border: 1px solid grey;
+    border: none;
     border-radius: 1em;
-    padding: 0.7em 0.9em;
+    padding: 1px;
     transition: 0.5s ease-out;
     font-size: 15px;
     text-align: center;
+    marker: none;
 }
 .filterGlobalText {
     color: black;
     text-align: center;
     background-color: transparent;
     cursor: pointer;
-    border: 1px solid grey;
+    border: none;
     border-radius: 1em;
     transition: 0.5s ease-out;
-    padding: 0.7em 0.9em;
+    padding: 1px;
     font-size: 15px;
+    marker: none;
 }

@@ -1,8 +1,6 @@
 import React, {useEffect, useState, useMemo} from 'react'
-import videoMain from "../../../../../assets/video/login.mp4";
 import {COLUMNS} from "./columns";
 import {dataHandler} from "../../../../Api/dataHandler";
-import NavBar from "../../../../NavBar/Navbar";
 import Spinner from "../../../../Utils/Spinners/Spinner";
 import TableTypeAdmin from "../../../../Utils/Table/TableTypeAdmin/TableTypeAdmin";
 import TableTitleDisplay from "../../../../Utils/Table/TableTitleDisplay/TableTitleDisplay";

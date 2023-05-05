@@ -5,12 +5,12 @@ import LogInContent from "./LogInContent/LogInContent";
 const LogInSignUpModal = props => {
 
     return (
-        <div className="headerLoginModal">
-            <div className="columnLoginModal">
+        <>
+            <di>
                 <span onClick={props.onClose} className="close">&times;</span>
                 {props.isSignUp ? <SignUpContent/> : <LogInContent/>}
-            </div>
-        </div>
+            </di>
+        </>
     )
 }
 

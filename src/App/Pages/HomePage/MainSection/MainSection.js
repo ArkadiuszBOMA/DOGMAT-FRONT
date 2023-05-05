@@ -59,8 +59,9 @@ const MainSection = (props) => {
 					</span>
 				</h1>
 				<p>od prawdziwych psyjaciół!</p>
-				<ModalButton onClick={() => {setIsModal(true); setIsSignUp(false)}} text="Masz już konto zaloguj się"/>
-				<ModalButton onClick={() => {setIsModal(true); setIsSignUp(true)}}  text="Zarejestruj się"/>
+				<ModalButton className="filterGlobalBox" onClick={() => {setIsModal(true); setIsSignUp(false)}} text="Zaloguj się"/>
+				<br/>
+				<ModalButton className="filterGlobalBox" onClick={() => {setIsModal(true); setIsSignUp(true)}}  text="Zarejestruj się"/>
 				{isModal ? <LogInSignUpModal isSignUp={isSignUp} onClose={() => setIsModal(false)}/> : null}
 			</span>
 		</div>

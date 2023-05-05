@@ -1,8 +1,7 @@
 .navbar {
     z-index: 1;
-    position: fixed;
-    height: 95vh;
-    width: 10em;
+    position: center;
+    width: max-content;
     padding: 1em;
     box-sizing: border-box;
     transition: all 1s ease;
@@ -26,20 +25,17 @@
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;
-    height: 60px;
 
 }
-
 .menu-bars{
-    margin-left: 5%;
+    background-color: transparent;
+    width: max-content;
     font-size: 10rem;
-    background: none;
 }
 
 .nav-menu{
-    background-color: black;
-    width: auto;
-    height: 100vh;
+    background-color: transparent;
+    width: max-content;
     transition: 800ms;
 
 }

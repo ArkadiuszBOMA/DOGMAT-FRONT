@@ -1,11 +1,10 @@
 import '../HomePage.css'
 import LogoTop from "./LogoTop/LogoTop";
-
 const HomePageHeader = props => {
 	return (
-			<div className="container">
-				<LogoTop/>
-			</div>
+		<div>
+			<LogoTop/>
+		</div>
 	);
 }
 export default HomePageHeader;

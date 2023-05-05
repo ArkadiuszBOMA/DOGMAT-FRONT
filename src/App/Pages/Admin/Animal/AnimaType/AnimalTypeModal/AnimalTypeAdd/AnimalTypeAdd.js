@@ -4,7 +4,6 @@ import {dataHandler} from "../../../../../../Api/dataHandler";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useState} from "react";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
-import {faClose} from "@fortawesome/free-solid-svg-icons";
 
 
 const AnimalTypeAdd = (props) => {

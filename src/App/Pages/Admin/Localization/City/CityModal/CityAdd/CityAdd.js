@@ -1,128 +1,86 @@
-// import './CityAdd.css'
-// import {dataHandler} from "../../../../../../Api/dataHandler";
-// import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
-// import {useNavigate} from "react-router-dom";
-// import Spinner from "../../../../../../Utils/Spinners/Spinner";
-// import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
-// import {id} from "date-fns/locale";
-//
-//
-// const CityAdd = props => {
-//
-//     const [isLoading, setIsLoading] = useState(false);
-//     const [isError, setIsError] = useState(false);
-//     const [listCities,setCities] = useState([{"id":"name"}])
-//     const [listProvinces,setProvinces] = useState([{"id":"name"}])
-//     const [listVoivodeships, setVoivodeshis] = useState([{"id": "name"}]);
-//
-//     const navigate = useNavigate();
-
-    //uzyskanie danych do selecta o powiatach- o tym trzeba pamiętać !!!
-
-    // function selectCity () {
-    //     useEffect(() => {
-    //         async function fetchData() {
-    //             setIsLoading(true);
-    //             const databaseData = await dataHandler.getVoivodeships();
-    //             setVoivodeshis(databaseData);
-    //             setIsLoading(false);
-    //         }
-    //
-    //         fetchData();
-    //     }, []);
-    //
-
-    //     const [state, setState] = useState([]);
-    //
-    //     const handleCountry = (id) => {
-    //         async function fetchData() {
-    //             const matchedProvinces = await dataHandler.getProvincesForThisVoivodeship(id)
-    //             setIsLoading(true);
-    //             setProvinces(matchedProvinces);
-    //             setIsLoading(false);
-    //         }
-    //         fetchData();
-    //     };
-    //
-    //     return (
-    //         <div>
-    //             <select className="select form-control-lg" name="province" onChange={(e) => handleCountry(e.target.value)}>
-    //                 <option value="">Wybierz województwo</option>
-    //                 {
-    //                     listVoivodeships &&
-    //                     listVoivodeships !== undefined ?
-    //                         listVoivodeships.map(voivodeship => {
-    //                             return (
-    //                                 <option value={voivodeship.id} key={voivodeship.name}
-    //                                         defaultValue={0}>{voivodeship.name}</option>
-    //                             )
-    //                         })
-    //                         : "Nie wybrano województwa"
-    //                 }
-    //             </select>
-    //         </div>
-    //     );
-    // }
-    //
-    //     useEffect(() => {
-    //         async function fetchData() {
-    //             setIsLoading(true);
-    //             const databaseData = await dataHandler.getProvincesForThisVoivodeship(id);
-    //             setProvinces(databaseData);
-    //             setIsLoading(false);
-    //         }
-    //
-    //         fetchData();
-    //     }, [])
-    //
-    //     useEffect(() => {
-    //         async function fetchData() {
-    //             setIsLoading(true);
-    //             const databaseData = await dataHandler.getCitiesForThisProvince(id);
-    //             setCities(databaseData);
-    //             setIsLoading(false);
-    //         }
-    //
-    //         fetchData();
-    //     }, [])
+import './CityAdd.css'
+import {dataHandler} from "../../../../../../Api/dataHandler";
+import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
+import {useEffect, useState} from "react";
+import Spinner from "../../../../../../Utils/Spinners/Spinner";
+import ButtonWithIconClose from "../../../../../../Utils/Buttons/ButtonWithIcon/ButtonWithIconClose";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
 
 
+const CityAdd = props => {
 
-//
-//     async function onSubmitClick(e) {
-//         e.preventDefault();
-//         setIsLoading(true);
-//         const data = Object.fromEntries(new FormData(e.target).entries());
-//         const dataRow = await dataHandler.addCity(data);
-//         setIsLoading(false);
-//         if (!dataRow) {
-//             setIsError(true);
-//             return;
-//         }
-//         navigate('/cities');
-//     }
-//     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
-//     return (
-//         <div>
-//             {isLoading ? <Spinner/> : null}
-//             <div className={contentModal}>
-//                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-//                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-//                 <h2 className="modal-header">Dodaj miasto</h2>
-//                 <form className="modal" onSubmit={onSubmitClick}>
-//                     <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę miasta"></input>
-//                     <select className="select form-control-lg" name="province">
-//                         <option value="">Wybierz powiat</option>
-//                         {listCities.map(selectedItem =>
-//                             <option value={selectedItem.id} key={selectedItem.name} defaultValue={0}>{selectedItem.name}</option>
-//                         )}
-//                     </select>
-//                     <button className="submitButton" type="submit">Wykonaj</button>
-//                 </form>
-//             </div>
-//         </div>
-//     )
-// }
-//
-//
-// export default CityAdd;
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+    const [voivodeship,setVoivodeship] = useState([]);
+    const [province,setProvince] = useState([]);
+    const [selectedProvinceId, setSelectedProvinceId] = useState(0);
+
+    //zmienne pomocnicza do wyświetlania selecta - województw
+    let voivodeships = voivodeship.map((selectedV) => (<option key={selectedV.terytId} value={selectedV.id}>{selectedV.name}</option>));
+
+    useEffect(() => {
+        async function fetchData() {
+            setIsLoading(true);
+            setVoivodeship(await dataHandler.getVoivodeships());
+            setIsLoading(false);
+        }
+        fetchData();
+    }, [])
+
+
+    async function onSubmitClick(e) {
+        e.preventDefault();
+        setIsLoading(true);
+        const data = Object.fromEntries(new FormData(e.target).entries());
+        data.province = selectedProvinceId;
+        const dataRow = await dataHandler.addCity(data);
+        setIsLoading(false);
+        if (!dataRow) {
+            setIsError(true);
+            return;
+        }
+        window.location.reload();
+    }
+
+    const voivodeshipOnChangeHandler = async (event) => {
+        const provinces = await dataHandler.getProvincesForThisVoivodeship(event.target.value);
+        setProvince(provinces);
+    }
+
+    const provinceOnChangeHandler = (event) => {
+        setSelectedProvinceId(event.target.value);
+    }
+
+
+    const contentModal = `modal ${isLoading ? "hidden" : ""}`;
+    return (
+        <div>
+            {isLoading ? <Spinner/> : null}
+            <div className={contentModal}>
+                {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
+                <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
+                <h2 className="anyContentModalTitle">Dodaj miasto</h2>
+                <form className="modal" onSubmit={onSubmitClick}>
+                    <input type="text" name="name" placeholder="Podaj nazwę Miasta"></input>
+                    <br/>
+                    <input className="formHeader" type="text" name="terytId" placeholder="TERYT" ></input>
+                    <br/>
+                    <div className="formHeader">
+                        <select onChange={voivodeshipOnChangeHandler}>{voivodeships}</select>
+                        <select onChange={provinceOnChangeHandler}>{province && (
+                            province.map((selectedP) => (<option key={selectedP.terytId} value={selectedP.id}>{selectedP.name}</option>))
+                        )}</select>
+                    </div>
+
+                    <br/>
+                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+
+export default CityAdd;

@@ -5,7 +5,7 @@ import {faArchive} from '@fortawesome/free-solid-svg-icons'
 const ButtonWithIconArchive = props => {
 
     return (
-            <FontAwesomeIcon className="modalButton" onClick={props.onClick} icon={faArchive}/>
+            <FontAwesomeIcon className="modalButton" type="archive" onClick={props.onClick} icon={faArchive}/>
     )
 }
 export default ButtonWithIconArchive;

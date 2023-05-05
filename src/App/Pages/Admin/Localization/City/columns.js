@@ -15,6 +15,20 @@ export const COLUMNS = [
 
 	},
 	{
+		Header: 'Powiat',
+		Footer: 'Powiat',
+		isEditable: false,
+		accessor: 'province'
+
+	},
+	{
+		Header: 'Województwo',
+		Footer: 'Województwo',
+		isEditable: false,
+		accessor: 'voivodeship'
+
+	},
+	{
 		Header: 'Daty',
 		Footer: 'Daty',
 		columns:

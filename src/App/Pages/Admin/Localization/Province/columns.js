@@ -15,9 +15,15 @@ export const COLUMNS = [
 		isEditable: false,
 	},
 	{
-		Header: 'Nazwa Województwa',
-		Footer: 'Nazwa Województwa',
+		Header: 'Nazwa Powiatu',
+		Footer: 'Nazwa Powiatu',
 		accessor: 'name',
+		isEditable: false,
+	},
+	{
+		Header: 'Województwo',
+		Footer: 'Województwo',
+		accessor: 'voivodeship',
 		isEditable: false,
 	},
 	{

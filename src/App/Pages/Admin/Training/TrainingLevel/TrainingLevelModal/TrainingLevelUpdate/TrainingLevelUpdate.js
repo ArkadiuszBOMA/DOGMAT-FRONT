@@ -3,19 +3,19 @@ import {dataHandler} from "../../../../../../Api/dataHandler";
 import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
 import {useNavigate} from "react-router-dom";
+import {faClose} from "@fortawesome/free-solid-svg-icons";
 
 
 const TrainingLevelUpdate = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const navigate = useNavigate();
 
     async function onSubmitClick(e) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
         const dataRow = await dataHandler.updateTrainingLevel(data);
-        navigate('/training-levels');
+        window.location.reload()
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;
@@ -24,11 +24,15 @@ const TrainingLevelUpdate = props => {
         <div>
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="text">Dodaj zwierzaka</h2>
-                <form className="add" onSubmit={onSubmitClick}>
+                <h2 className="anyContentModalTitle">Uaktualnij poziom trudności</h2>
+                <form className="modal" onSubmit={onSubmitClick}>
                     <input type="hidden" name="id"></input>
-                    <input type="text" name="name" placeholder="Podaj nazwę zwierzaka"></input>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                    <input className="filterGlobalBox" type="text" name="name" defaultValue={props.dataRow.name.valueOf()}></input>
+                    <br/>
+                    <textarea className="formDescription" rows="15" cols="40" name="description" defaultValue={props.dataRow.description.valueOf()}></textarea>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

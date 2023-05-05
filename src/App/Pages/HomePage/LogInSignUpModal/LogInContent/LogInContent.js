@@ -46,17 +46,18 @@ const LogInContent = props => {
     const contentClasses = `logInContent ${isLoading ? "hidden" : ""}`;
 
     return (
-        <div className='boxLogin'>
+        <div>
             {isLoading ? <Spinner/> : null}
             <div className={contentClasses}>
                 {isError ? <ErrorModal text="Niepoprawne dane !"/> : null}
-                <h2 className="headerLogin">Zaloguj się</h2>
-                    <form className="modal" onSubmit={onSubmitClick}>
+                <h2>Zaloguj się</h2>
+                    <form onSubmit={onSubmitClick}>
                         <input className="filterGlobalBox" type="text" name="email" placeholder="Email"></input>
                         <br/>
                         <input className="filterGlobalBox" type="password" name="password" placeholder="Password"></input>
                         <br/>
                         <button className="filterGlobalBox" type="submit">Wykonaj</button>
+                        <br/>
                         <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                     </form>
             </div>

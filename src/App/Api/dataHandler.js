@@ -206,6 +206,7 @@ export let dataHandler = {
 		return await apiPost(api.hostCredential + api.getAllTimeUnits , data);
 	},
 	updateTimeUnit: async function (data) {
+
 		return await apiPutWithBody(api.hostCredential + api.getAllTimeUnits+ "?update", data);
 	},
 	archiveTimeUnit: async function (id) {
