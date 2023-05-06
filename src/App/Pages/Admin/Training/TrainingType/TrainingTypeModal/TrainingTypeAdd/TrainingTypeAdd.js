@@ -13,8 +13,6 @@ const TrainingTypeAdd = props => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [optionList,setOptionList] = useState([{'name':"id"}])
-    const [file,setFile] = useState(null)
-
 
 
     useEffect(() => {
@@ -32,8 +30,8 @@ const TrainingTypeAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
+        data.imageLocation = ImagesLoader.File
         const dataRow = await dataHandler.addTrainingType(data);
-        console.log(dataRow)
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
@@ -48,16 +46,16 @@ const TrainingTypeAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <ButtonWithIconClose onClick={props.onClose} className="close"></ButtonWithIconClose>
-                <h2 className="anyContentModalTitle">Dodaj treningu</h2>
+                <h2 className="anyContentModalTitle">Dodaj trening</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="filterGlobalBox" type="text" name="name" placeholder="Nazwa"></input>
                     <br/>
-                    <ImagesLoader/>
+                        <ImagesLoader type="file" name="imageLocation"/>
                     <br/>
                     <select className="filterGlobalBox" name="trainingLevel">
-                        <option value="">Wybierz Poziom Trudności</option>
+                        <option className="filterGlobalBox" value="">Wybierz poziom trudności</option>
                         {optionList.map(selectedItem =>
-                            <option value={selectedItem.id} key={selectedItem.name} >{selectedItem.name} </option>
+                            <option className="filterGlobalBox" value={selectedItem.id} key={selectedItem.name} >{selectedItem.name} </option>
                         )}
                     </select>
                     <br/>

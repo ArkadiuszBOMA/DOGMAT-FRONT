@@ -49,8 +49,8 @@ const TrainingStepAdd = props => {
                     <br/>
                     <input className="filterGlobalBox" type="number" name="stepNumber" placeholder="Numer kroku"></input>
                     <br/>
-                    <select className="filterGlobalBox" name="voivodeship">
-                        <option value="">Wybierz Poziom Trudności</option>
+                    <select className="filterGlobalBox" name="lesson">
+                        <option value="">Wybierz Trening</option>
                         {optionList.map(selectedItem =>
                             <option value={selectedItem.id} key={selectedItem.name} >{selectedItem.name} </option>
                         )}

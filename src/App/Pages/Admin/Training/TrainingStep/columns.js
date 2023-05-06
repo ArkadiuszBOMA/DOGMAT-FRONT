@@ -9,9 +9,21 @@ export const COLUMNS = [
 		disableFilters: true
 	},
 	{
-		Header: 'Nazwa jednostki miary',
-		Footer: 'Nazwa jednostki miary',
+		Header: 'Trening',
+		Footer: 'Trening',
+		accessor: 'lessonStep',
+		isEditable: false,
+	},
+	{
+		Header: 'Krok',
+		Footer: 'Krok',
 		accessor: 'name',
+		isEditable: false,
+	},
+	{
+		Header: 'Numer kolejny',
+		Footer: 'Numer kolejny',
+		accessor: 'stepNumber',
 		isEditable: false,
 	},
 	{

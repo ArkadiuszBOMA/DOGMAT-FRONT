@@ -7,7 +7,7 @@ const ImagesLoader = () => {
   return (
     <div>
       {selectedImage && (
-        <div>
+        <div >
           <img
             alt="not found"
             width={"250px"}
@@ -21,7 +21,7 @@ const ImagesLoader = () => {
       <br />
       <input
         type="file"
-        name="myImage"
+        name="imageLocation"
         onChange={(event) => {
           console.log(event.target.files[0]);
           setSelectedImage(event.target.files[0]);
