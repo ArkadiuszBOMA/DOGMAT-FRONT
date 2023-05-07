@@ -4,4 +4,5 @@
     font-size: 50px;
     color: black;
     margin-top: 1px;
+    flex: fit-content;
 }

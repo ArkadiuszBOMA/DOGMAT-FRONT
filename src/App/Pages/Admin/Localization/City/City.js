@@ -8,6 +8,9 @@ import CheckedVideo from "../../../../Utils/CheckedVideo/CheckedVideo";
 import videobBack from "../../../../../assets/video/bac1.mp4";
 import HomePageHeader from "../../../HomePage/HomePageHeader/HomePageHeader";
 import LeftSection from "../../../HomePage/LeftSection/LeftSection";
+import LogoTop from "../../../HomePage/HomePageHeader/LogoTop/LogoTop";
+import NavBar from "../../../../NavBar/Navbar";
+import videoMain from "../../../../../assets/video/login.mp4";
 
 export const City = () => {
 
@@ -30,11 +33,13 @@ export const City = () => {
 
 	return (
 		<div>
-			<CheckedVideo src={videobBack}/>
-			<HomePageHeader/>
+			<CheckedVideo src={videoMain}/>
+			<div>
+				<HomePageHeader/>
+				<TableTitleDisplay textName={textName}></TableTitleDisplay>
+			</div>
 			<LeftSection/>
 			{isLoading ? <Spinner/> : null}
-			<TableTitleDisplay textName={textName}></TableTitleDisplay>
 			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)

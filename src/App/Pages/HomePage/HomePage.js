@@ -5,7 +5,6 @@ import videobBack from "../../../assets/video/bac1.mp4"
 import HomePageHeader from "./HomePageHeader/HomePageHeader";
 import MainSection from "./MainSection/MainSection";
 import CheckedVideo from "../../Utils/CheckedVideo/CheckedVideo";
-import NavBar from "../../NavBar/Navbar";
 
 const HomePage = props => {
 
@@ -14,7 +13,6 @@ const HomePage = props => {
 		<div>
 			<CheckedVideo src={videobBack}/>
 			<HomePageHeader/>
-			<NavBar/>
 			<MainSection/>
 		</div>
 	);

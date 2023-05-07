@@ -33,11 +33,13 @@ export const CareType = () => {
 
 	return (
 		<div>
-			<CheckedVideo src={videobBack}/>
-			<HomePageHeader/>
+			<CheckedVideo src={videoMain}/>
+			<div>
+				<HomePageHeader/>
+				<TableTitleDisplay textName={textName}></TableTitleDisplay>
+			</div>
 			<LeftSection/>
 			{isLoading ? <Spinner/> : null}
-			<TableTitleDisplay textName={textName}></TableTitleDisplay>
 			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)

@@ -38,7 +38,7 @@ const MenuItems = ({ items, depthLevel }) => {
 
 	return (
 
-		<li className='filterGlobalText' ref={ref}
+		<li className='navbar-dark' ref={ref}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onClick={closeDropdown}

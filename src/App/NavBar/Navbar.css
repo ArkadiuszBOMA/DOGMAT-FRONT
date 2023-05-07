@@ -2,17 +2,22 @@
     z-index: 1;
     position: center;
     width: max-content;
-    padding: 1em;
     box-sizing: border-box;
-    transition: all 1s ease;
-    margin: 1em;
+    margin: 1px;
     border-radius: 1em;
-    background-color: black;
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    color: black;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    padding: 5px 5px;
+    transition: 0.5s ease-out;
+    font-size: 15px;
+    text-align: center;
+    marker: none;
 }
 
 .nav-menu.active{
@@ -41,12 +46,14 @@
 }
 
 .navbar a {
-    float: left;
-    font-size: 16px;
+    background-color: black;
     color: white;
+    display: flex;
+    float: left;
+    font-size: 20px;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    padding: 5px 5px;
+    text-decoration: #61dafb;
 }
 
 .dropdown {
@@ -54,7 +61,7 @@
     overflow: hidden;
     position: center;
     display: none;
-    background-color: brown;
+    background-color: transparent;
     border: green;
     border-radius: 10px;
     color: black;

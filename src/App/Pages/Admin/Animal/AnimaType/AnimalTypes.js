@@ -35,10 +35,12 @@ export const AnimalType = (props) => {
 	return (
 		<div>
 			<CheckedVideo src={videoMain}/>
-			<HomePageHeader/>
+			<div>
+				<HomePageHeader/>
+				<TableTitleDisplay textName={textName}></TableTitleDisplay>
+			</div>
 			<LeftSection/>
 			{isLoading ? <Spinner/> : null}
-			<TableTitleDisplay textName={textName}></TableTitleDisplay>
 			<TableTypeAdmin data={data} columns={columns} file={file} sheet={sheet}/>
 		</div>
 	)

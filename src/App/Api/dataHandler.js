@@ -203,7 +203,7 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllTimeUnits);
 	},
 	addTimeUnit: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllTimeUnits , data);
+		return await apiPost(api.hostCredential + api.getAllTimeUnits, data);
 	},
 	updateTimeUnit: async function (data) {
 
@@ -221,7 +221,7 @@ export let dataHandler = {
 		return await apiGet(api.hostCredential + api.getAllUserRoles);
 	},
 	addUserRole: async function (data) {
-		return await apiPost(api.hostCredential + + api.getAllUserRoles, + data);
+		return await apiPost(api.hostCredential + api.getAllUserRoles, data);
 	},
 	updateUserRole: async function (data) {
 		return await apiPutWithBody(api.hostCredential + api.getAllUserRoles+ "?update", data);

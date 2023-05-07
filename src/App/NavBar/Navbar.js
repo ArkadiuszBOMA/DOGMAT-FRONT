@@ -29,7 +29,7 @@ const NavBar = () => {
 					</ul>
 				</nav>
 				:
-				<nav className="nav-menu">
+				<nav className="navbar">
 					<FaIcons.FaBars color= "red" size='30px' title="Nawigacja" onClick={showSideBar}/>
 				</nav>
 				}

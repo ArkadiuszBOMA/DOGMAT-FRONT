@@ -39,11 +39,12 @@ const BreedUpdate = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="anyContentModalTitle">Uaktualniej  zwierzaka</h2>
+                <h2 className="anyContentModalTitle">Uaktualniej rasę</h2>
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
                 <form className="add" onSubmit={onSubmitClick}>
                     <input type="hidden" name="id"></input>
-                    <input type="text" name="name" placeholder="Podaj nazwę rasy"></input>
+                    <input type="text" name="name" placeholder="Podaj nazwę rasy" defaultValue={props.dataRow.name.valueOf()}></input>
+                    <br/>
                     <select className="filterGlobalBox" name="animalType">
                         <option value="">Wybierz typ zwierzaka</option>
                         {optionList.map(selectedItem =>

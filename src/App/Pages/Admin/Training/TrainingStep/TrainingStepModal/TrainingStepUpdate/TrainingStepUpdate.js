@@ -11,13 +11,12 @@ const TrainingStepUpdate = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const navigate = useNavigate();
 
     async function onSubmitClick(e) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
         const dataRow = await dataHandler.updateTrainingStep(data);
-        navigate('/training-steps');
+        window.location.reload()
     }
 
     const contentClasses = `signUpContent ${isLoading ? "hidden" : ""}`;

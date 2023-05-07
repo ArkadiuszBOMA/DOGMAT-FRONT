@@ -9,15 +9,15 @@ export const COLUMNS = [
 		disableFilters: true
 	},
 	{
-		Header: 'TERYT ID',
-		Footer: 'TERYT ID',
-		accessor: 'terytId',
-		isEditable: false,
-	},
-	{
 		Header: 'Nazwa Województwa',
 		Footer: 'Nazwa Województwa',
 		accessor: 'name',
+		isEditable: false,
+	},
+	{
+		Header: 'TERYT ID',
+		Footer: 'TERYT ID',
+		accessor: 'terytId',
 		isEditable: false,
 	},
 	{

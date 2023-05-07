@@ -2,7 +2,6 @@ import './UserRoleAdd.css'
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
-import {useNavigate} from "react-router-dom";
 import Spinner from "../../../../../../Utils/Spinners/Spinner";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -12,7 +11,6 @@ const UserRoleAdd = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const navigate = useNavigate();
 
     async function onSubmitClick(e) {
         e.preventDefault();
@@ -34,11 +32,12 @@ const UserRoleAdd = props => {
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
                 <FontAwesomeIcon onClick={props.onClose} icon={faClose}></FontAwesomeIcon>
-                <h2 className="anyContentModalTitle">Dodaj zwierzaka</h2>
+                <h2 className="anyContentModalTitle">Dodaj role</h2>
                 <form className="modal" onSubmit={onSubmitClick}>
-                    <input className="modal-header" type="text" name="name" placeholder="Podaj nazwę rasy"></input>
-                    <input className="modal-header" type="text" name="animalType" placeholder="Wybierz zwierzaka"></input>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                    <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę roli"></input>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit"> Dodaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

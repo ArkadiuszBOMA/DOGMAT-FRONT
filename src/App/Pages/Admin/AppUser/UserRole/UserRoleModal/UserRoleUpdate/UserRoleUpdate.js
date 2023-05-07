@@ -26,11 +26,12 @@ const UserRoleUpdate = props => {
             {isLoading ? <Spinner/> : null}
             <div className={contentModal}>
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
-                <h2 className="text">Dodaj zwierzaka</h2>
-                <form className="add" onSubmit={onSubmitClick}>
-                    <input type="hidden" name="id"></input>
-                    <input type="text" name="name" placeholder="Podaj nazwę roli"></input>
-                    <button className="submitButton" type="submit">Wykonaj</button>
+                <h2 className="anyContentModalTitle">Uaktualnij role</h2>
+                <form className="modal" onSubmit={onSubmitClick}>
+                    <input className="filterGlobalBox" type="text" name="name" placeholder="Podaj nazwę roli" defaultValue={props.dataRow.name.valueOf()}></input>
+                    <br/>
+                    <button className="filterGlobalBox" type="submit"> Dodaj</button>
+                    <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>
         </div>

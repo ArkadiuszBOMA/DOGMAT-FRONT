@@ -6,7 +6,6 @@ export const TableTitleDisplay = (props) => {
 
 	return (
 		<div className="tableTitle">{props.textName}</div>
-
 	)
 }
 export default TableTitleDisplay
