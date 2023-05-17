@@ -2,7 +2,6 @@ import "./TrainingLevelUpdate.css"
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import {useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
-import {useNavigate} from "react-router-dom";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
 
 
@@ -31,7 +30,7 @@ const TrainingLevelUpdate = props => {
                     <br/>
                     <textarea className="formDescription" rows="15" cols="40" name="description" defaultValue={props.dataRow.description.valueOf()}></textarea>
                     <br/>
-                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Uaktualnij </button>
                     <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>

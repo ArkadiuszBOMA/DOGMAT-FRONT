@@ -2,8 +2,8 @@ import "./TrainingTypeUpdate.css"
 import {dataHandler} from "../../../../../../Api/dataHandler";
 import {useEffect, useState} from "react";
 import ErrorModal from "../../../../../../Utils/ErrorModal/ErrorModal";
-import ImagesLoader from "../../../../../../Utils/ImagesLoader/ImagesLoader";
 import {faClose} from "@fortawesome/free-solid-svg-icons";
+import ImagesLoader from "../../../../../../Utils/ImagesLoader/ImagesLoader";
 
 
 const TrainingTypeUpdate = props => {
@@ -11,12 +11,26 @@ const TrainingTypeUpdate = props => {
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [optionList,setOptionList] = useState([{'name':"id"}])
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    async function dataUrlToFile(dataUrl: string, fileName: string): Promise<File> {
+        const res = await fetch(dataUrl);
+        const blob = await res.blob();
+        return new File([blob], fileName, { type: 'image/png' });
+    }
 
     useEffect(() => {
         async function fetchData() {
             setIsLoading(true);
-            const databaseData = await dataHandler.getTrainingLevels();
-            setOptionList(databaseData);
+            // odczytanie danych z bazy do listy wyboru
+            const trainingLevel = await dataHandler.getTrainingLevels();
+            setOptionList(trainingLevel);
+            // odczytanie danych z konkretnego rekordu a podaniem ID tutaj przyszły złe dane !!!
+            const databaseData = await dataHandler.getLessonByLessonId(props.dataRow.id.valueOf());
+            // stworzenie zmiennej z tablicy bytea (zmiana na obraz) - nazwa liku
+            const data = await dataUrlToFile(databaseData.imageLocation, "file.png");
+            setSelectedImage(data);
+            // mam dane i tablicę
             setIsLoading(false);
         }
         fetchData();
@@ -26,8 +40,11 @@ const TrainingTypeUpdate = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        data.imageLocation = ImagesLoader.File
-        const dataRow = await dataHandler.addTrainingType(data);
+        // zmiana danych z pliku na listę bytów base 64
+        const buffer = await selectedImage.arrayBuffer()
+        data.imageLocation = btoa(String.fromCharCode(...new Uint8Array(buffer)))
+        // ostateczne zapisanie danych do bazy
+        const dataRow = await dataHandler.updateTrainingType(data);
         setIsLoading(false);
         if (!dataRow) {
             setIsError(true);
@@ -41,15 +58,15 @@ const TrainingTypeUpdate = props => {
                 {isError ? <ErrorModal text="Niewłaściwe dane"/> : null}
             <h2 className="anyContentModalTitle">Uaktualnij trening</h2>
             <form className="modal" onSubmit={onSubmitClick}>
-                <input className="filterGlobalBox" type="hidden" name="id"></input>
+                <input className="filterGlobalBox" type="hidden" name="id" value={props.dataRow.id.valueOf()}></input>
                 <input className="filterGlobalBox" type="text" name="name" placeholder="Nazwa" defaultValue={props.dataRow.name.valueOf()}></input>
                 <br/>
-                <ImagesLoader type="file" name="imageLocation"/>
+                <ImagesLoader selectedImage = {selectedImage} setSelectedImage = {setSelectedImage } type="file" name="imageLocation"/>
                 <br/>
                 <select className="filterGlobalBox" name="trainingLevel">
-                    <option className="filterGlobalBox" value="">Zmień  poziom trudności</option>
+                    <option className="filterGlobalBox" value="">Zmień poziom trudności</option>
                     {optionList.map(selectedItem =>
-                        <option className="filterGlobalBox" value={selectedItem.id} key={selectedItem.name} defaultValue={props.dataRow.name.valueOf()}>{selectedItem.name}</option>
+                        <option className="filterGlobalBox" value={selectedItem.id} key={selectedItem.name}>{selectedItem.name}</option>
                     )}
                 </select>
                 <br/>

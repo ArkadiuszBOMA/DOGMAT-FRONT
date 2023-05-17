@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-
-const ImagesLoader = () => {
-
-  const [selectedImage, setSelectedImage] = useState(null);
-
+const ImagesLoader = (props) => {
   return (
     <div>
-      {selectedImage && (
+      {props.selectedImage && (
         <div >
           <img
-            alt="not found"
+            alt="no file"
             width={"250px"}
-            src={URL.createObjectURL(selectedImage)}
+            src={URL.createObjectURL(props.selectedImage)}
           />
           <br />
-          <button onClick={() => setSelectedImage(null)}>Usuń</button>
+          <button onClick={() => props.setSelectedImage(null)}>Usuń</button>
         </div>
       )}
       <br />
@@ -23,8 +18,7 @@ const ImagesLoader = () => {
         type="file"
         name="imageLocation"
         onChange={(event) => {
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
+          props.setSelectedImage(event.target.files[0]);
         }}
       />
     </div>

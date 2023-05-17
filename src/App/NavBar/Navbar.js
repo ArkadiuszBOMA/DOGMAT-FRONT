@@ -9,6 +9,7 @@ import {authenticate} from "../Authenticate/authenticate";
 const NavBar = () => {
 	const [sideBar,setSideBar]= useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isAdmin, setAdmin] = useState(false);
 
 	useEffect(() => {
 		const user = authenticate.getAppUser();

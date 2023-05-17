@@ -48,7 +48,7 @@ return (
                 <br/>
                 <textarea className="formDescription" rows="15" cols="40" name="description" placeholder="Dodaj opis" defaultValue={props.dataRow.description.valueOf()}></textarea>
                 <br/>
-                <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                <button className="filterGlobalBox" type="submit"><i className={faClose}></i>Uaktualnij</button>
                 <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
             </form>
         </div>

@@ -28,7 +28,7 @@ const TimeUnitUpdate = props => {
                     <input type="hidden" name="id"></input>
                     <input className="filterGlobalBox" type="text" name="name" defaultValue={props.dataRow.name.valueOf()}></input>
                     <br/>
-                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Wykonaj</button>
+                    <button className="filterGlobalBox" type="submit"><i className={faClose}></i> Uaktualnij </button>
                     <button className="filterGlobalBox" type="close" id="Close" title="Zamknij" onClick={props.onClose}> Zamknij</button>
                 </form>
             </div>

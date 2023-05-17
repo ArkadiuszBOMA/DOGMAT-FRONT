@@ -11,6 +11,7 @@ import ImagesLoader from "../../../../../../Utils/ImagesLoader/ImagesLoader";
 const TrainingTypeAdd = props => {
 
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
     const [isError, setIsError] = useState(false);
     const [optionList,setOptionList] = useState([{'name':"id"}])
 
@@ -30,7 +31,8 @@ const TrainingTypeAdd = props => {
         e.preventDefault();
         setIsLoading(true);
         const data = Object.fromEntries(new FormData(e.target).entries());
-        data.imageLocation = ImagesLoader.File
+        const buffer = await selectedImage.arrayBuffer();
+        data.imageLocation = btoa(String.fromCharCode(...new Uint8Array(buffer)));
         const dataRow = await dataHandler.addTrainingType(data);
         setIsLoading(false);
         if (!dataRow) {
@@ -39,6 +41,7 @@ const TrainingTypeAdd = props => {
         }
         window.location.reload();
     }
+
     const contentModal = `modal ${isLoading ? "hidden" : ""}`;
     return (
         <div>
@@ -50,7 +53,7 @@ const TrainingTypeAdd = props => {
                 <form className="modal" onSubmit={onSubmitClick}>
                     <input className="filterGlobalBox" type="text" name="name" placeholder="Nazwa"></input>
                     <br/>
-                        <ImagesLoader type="file" name="imageLocation"/>
+                        <ImagesLoader selectedImage = {selectedImage} setSelectedImage = {setSelectedImage } type="file" name="imageLocation"/>
                     <br/>
                     <select className="filterGlobalBox" name="trainingLevel">
                         <option className="filterGlobalBox" value="">Wybierz poziom trudności</option>

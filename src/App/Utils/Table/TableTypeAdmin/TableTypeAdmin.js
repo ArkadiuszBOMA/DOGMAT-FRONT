@@ -104,8 +104,6 @@ export const TableTypeAdmin = (props) => {
 	}
 	// wybór opcji umożliwiającej zmianę importów w zależności od wywołanej dla updatów
 	const getCurrentFormUpdate = (dataToModal) => {
-		console.log(location.pathname)
-		console.log(dataToModal)
 		switch (location.pathname) {
 			case "/animal-types":
 				return <AnimalTypeUpdate dataRow={dataToModal} onClose={() => {setIsModalUpdate(false)}}/>

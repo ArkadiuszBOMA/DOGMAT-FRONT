@@ -151,11 +151,15 @@ export let dataHandler = {
 	getTrainingType: async function () {
 		return await apiGet(api.hostCredential + api.getAllLessons);
 	},
+
+	getLessonByLessonId: async function (id) {
+		return await apiGet(api.hostCredential + api.getAllLessons + "/"+ id);
+	},
 	addTrainingType: async function (data) {
-		return await apiPost(api.hostCredential + api.getAllLessons , data);
+		return await apiPost(api.hostCredential + api.getAllLessons, data);
 	},
 	updateTrainingType: async function (data) {
-		return await apiPutWithBody(api.hostCredential + api.getAllLessons+ "?update", data);
+		return await apiPutWithBody(api.hostCredential + api.getAllLessons + "?update", data);
 	},
 	archiveTrainingType: async function (id) {
 		return await apiPutNoBody(api.hostCredential + api.getAllLessons + "/"+ id +"?archive");
@@ -244,7 +248,6 @@ export let dataHandler = {
 		return await apiPutWithBody(api.hostCredential + api.getAllUserPrivileges+ "?update", data);
 	},
 	archiveUserPrivilege: async function (id) {
-		console.log("jestem tutaj")
 		return await apiPutNoBody(api.hostCredential + api.getAllUserPrivileges + "/"+ id +"?archive");
 	},
 	deleteUserPrivilege: async function (id) {
